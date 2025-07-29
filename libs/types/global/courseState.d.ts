@@ -1,4 +1,4 @@
-import { InteractionModes } from "../enums"; 
+import { InteractionModes } from "../enums";
 
 declare global {
   type InteractionMode = typeof InteractionModes[keyof typeof InteractionModes];
@@ -11,4 +11,4 @@ declare global {
   }
 }
 
-export { }
+export { };

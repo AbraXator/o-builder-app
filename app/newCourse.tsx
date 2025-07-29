@@ -1,4 +1,4 @@
-import { Back, Settings } from '@/constants/icons';
+import { Back, Settings } from '@/constants/icons/icons';
 import * as ImagePicker from 'expo-image-picker';
 import { router } from 'expo-router';
 import React, { useState } from 'react';

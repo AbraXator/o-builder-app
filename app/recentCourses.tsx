@@ -1,3 +1,4 @@
+import { Home, Settings } from '@/constants/icons/icons';
 import { appState } from '@/libs/state/store';
 import { router } from 'expo-router';
 import React, { useEffect, useState } from 'react';
@@ -87,11 +88,11 @@ const RecentCoursesPage = () => {
     <View style={{ flex: 1 }}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.push('/')} style={styles.button}>
-          <Text>🏠</Text>
+          <Home />
         </TouchableOpacity>
         <Text style={styles.title}>RECENT COURSES</Text>
         <TouchableOpacity onPress={() => router.push('/')} style={styles.button}>
-          <Text>⚙️</Text>
+          <Settings />
         </TouchableOpacity>
       </View>
       <RecentCourseComponent />

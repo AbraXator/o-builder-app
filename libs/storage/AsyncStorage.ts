@@ -23,6 +23,24 @@ export const saveCourse = async (course: Course) => {
   }
 };
 
+export const setCourse = async (course: Course, id: number) => {
+  try {
+    const coursesJson = await AsyncStorage.getItem(COURSES_KEY);
+    let courses: Course[] = coursesJson ? JSON.parse(coursesJson) : [];
+
+    const index = courses.findIndex((c) => c.id === id);
+    if (index !== -1) {
+      courses[index] = { ...course, id };
+    } else {
+      courses.push({ ...course, id });
+    }
+
+    await AsyncStorage.setItem(COURSES_KEY, JSON.stringify(courses));
+  } catch (e) {
+    console.error('Error setting course', e);
+  }
+};
+
 export const getCourses = async (): Promise<Course[]> => {
   try {
     const coursesJson = await AsyncStorage.getItem(COURSES_KEY);

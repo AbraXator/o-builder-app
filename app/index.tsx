@@ -1,4 +1,4 @@
-import { Language, Sun } from '@/constants/icons';
+import { Language, Sun } from '@/constants/icons/icons';
 import { router } from 'expo-router';
 import { Dimensions, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 

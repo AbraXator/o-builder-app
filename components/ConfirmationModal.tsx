@@ -8,6 +8,7 @@ type ConfirmationModalProps = {
   cancelText?: string;
   onConfirm: () => void;
   onCancel: () => void;
+  showModal: boolean;
 };
 
 export default function ConfirmationModal({
@@ -17,29 +18,34 @@ export default function ConfirmationModal({
   cancelText = 'Cancel',
   onConfirm,
   onCancel,
+  showModal = true,
 }: ConfirmationModalProps) {
   return (
+    <View>
     <Modal
       transparent
       animationType="fade"
-      visible={true}
+      visible={showModal}
       onRequestClose={onCancel}
     >
-      <View style={styles.backdrop}>
-        <View style={styles.container}>
-          <Text style={styles.title}>{title}</Text>
-          <Text style={styles.message}>{message}</Text>
-          <View style={styles.buttons}>
-            <TouchableOpacity style={styles.cancelButton} onPress={onCancel}>
-              <Text style={styles.cancelText}>{cancelText}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.confirmButton} onPress={onConfirm}>
-              <Text style={styles.confirmText}>{confirmText}</Text>
-            </TouchableOpacity>
+      <View style={{ flex: 1 }}>
+        <View style={styles.backdrop}>
+          <View style={styles.container}>
+            <Text style={styles.title}>{title}</Text>
+            <Text style={styles.message}>{message}</Text>
+            <View style={styles.buttons}>
+              <TouchableOpacity style={styles.cancelButton} onPress={onCancel}>
+                <Text style={styles.cancelText}>{cancelText}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.confirmButton} onPress={onConfirm}>
+                <Text style={styles.confirmText}>{confirmText}</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </View>
     </Modal>
+    </View>
   );
 }
 

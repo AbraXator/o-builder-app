@@ -1,8 +1,11 @@
-import { Home, Settings } from '@/constants/icons/icons';
+import ToolbarButton from '@/components/ToolbarButton';
 import { appState } from '@/libs/state/store';
+import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Alert, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Alert, FlatList, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import Header from '../components/Header';
 import { deleteCourse, getCourses } from '../libs/storage/AsyncStorage';
 
 const RecentCourseComponent = () => {
@@ -51,69 +54,48 @@ const RecentCourseComponent = () => {
   }
 
   return (
-    <FlatList
-      data={courses}
-      keyExtractor={(item, index) => index.toString()}
-      numColumns={2}
-      contentContainerStyle={styles.courseList}
-      renderItem={({ item }) => (
-        <View style={styles.courseCard}>
-          <Text style={styles.courseName}>{item.name}</Text>
-          <Text style={styles.courseScale}>Scale: {item.scale}</Text>
+    <SafeAreaProvider>
+      <SafeAreaView style={{ flex: 1 }}>
+        <FlatList
+          data={courses}
+          keyExtractor={(index) => index.toString()}
+          numColumns={2}
+          contentContainerStyle={styles.courseList}
+          renderItem={({ item }) => (
+            <View style={styles.courseCard}>
+              <Text style={styles.courseName}>{item.name}</Text>
+              <Text style={styles.courseScale}>Scale: {item.scale}</Text>
 
-          <Image source={{ uri: item.map }} style={styles.courseImage} />
+              <Image source={{ uri: item.map }} style={styles.courseImage} />
 
-          <View style={styles.actions}>
-            <TouchableOpacity onPress={() => confirmDelete(item)} style={styles.button}>
-              <Text>🗑</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                setCurrentCourse(item);
-                router.push('/map/map');
-              }}
-              style={styles.button}
-            >
-              <Text>📝</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      )}
-    />
+              <View style={styles.actions}>
+                <ToolbarButton onPress={() => confirmDelete(item)} icon={<Text>🗑</Text>} />
+                <ToolbarButton
+                  label="Edit"
+                  onPress={() => {
+                    setCurrentCourse(item);
+                    router.push('/map/map');
+                  }}
+                />
+              </View>
+            </View>
+          )}
+        />
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 };
 
 const RecentCoursesPage = () => {
   return (
     <View style={{ flex: 1 }}>
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => router.push('/')} style={styles.button}>
-          <Home />
-        </TouchableOpacity>
-        <Text style={styles.title}>RECENT COURSES</Text>
-        <TouchableOpacity onPress={() => router.push('/')} style={styles.button}>
-          <Settings />
-        </TouchableOpacity>
-      </View>
+      <Header name="Recent Courses" />
       <RecentCourseComponent />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  header: {
-    height: 64,
-    backgroundColor: '#f4f4f5',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    elevation: 4,
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: '600',
-  },
   button: {
     padding: 8,
     backgroundColor: '#e4e4e7',
@@ -124,7 +106,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   courseCard: {
-    flex: 1,
     backgroundColor: '#e4e4e7',
     padding: 16,
     borderRadius: 12,

@@ -1,7 +1,8 @@
 import { GetIcon } from '@/constants/icons/controlIcons';
 import { appState } from '@/libs/state/store';
-import { ControlTypes } from '@/libs/types/enums';
-import { Dimensions, Text, View } from 'react-native';
+import { ControlTypes, InteractionModes } from '@/libs/types/enums';
+import { useState } from 'react';
+import { Dimensions, Text, TouchableOpacity } from 'react-native';
 import {
   Gesture,
   GestureDetector,
@@ -11,24 +12,81 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue
 } from 'react-native-reanimated';
+import { Notification, NotificationState } from './Notification';
+
 
 const window = Dimensions.get('window');
 
-function addControl(x: number, y: number) {
+function ControlMarker({ control, index }: { control: Control; index: number }) {
+  const currentCourseState = appState((s) => s.currentCourseState);
+  const updateCurrentCourseState = appState((s) => s.updateCurrentCourseState);
+  const interactionMode = appState((s) => s.currentCourseState.mode);
+
+  const handleTap = () => {
+    if (interactionMode === InteractionModes.SELECTING) {
+      updateCurrentCourseState({ selectedControl: index });
+    }
+  }
+
+  return (
+    <TouchableOpacity
+      key={index}
+      onPress={handleTap}
+      style={{
+        position: 'absolute',
+        left: control.coords[0],
+        top: control.coords[1],
+        height: 24,
+        width: 24,
+      }}
+    >
+      <GetIcon type={control.type} props={{ stroke: currentCourseState.selectedControl === index ? "#6a32ed" : "#ed3288"}} />
+      <Text style={{ color: 'white', fontSize: 12 }}>
+        {control.code}
+      </Text>
+    </TouchableOpacity>
+
+  )
+}
+
+function addControl(x: number, y: number, type: ControlType, controlsList: Control[], setNotification: SetState<NotificationState>) {
   console.log("Tap detected at:", x, y);
   const state = appState.getState();
   const currentCourse = state.currentCourse;
   const currentCourseState = state.currentCourseState;
   const addControlToCurrentRoute = state.addControlToCurrentRoute;
 
+  const cannotAddControl = (type: ControlType) => {
+    return (type === ControlTypes.FINISH || type === ControlTypes.START) && controlsList.some(c => c.type === type);
+  }
+
+  if (cannotAddControl(type)) {
+    setNotification({
+      show: true,
+      message: `Cannot add ${type} control more than once.`,
+      type: 'error',
+    });
+
+    return;
+  }
+
   addControlToCurrentRoute({
-    type: ControlTypes.CONTROL,
+    type: type,
     coords: [x, y],
     code: 0,
     number: -1,
     symbols: [],
   });
 }
+
+function deselectControl(setCurrentCourseState: (data: Partial<CourseState>) => void, currentCourseState: CourseState) {
+  console.log("Deselecting control");
+  if( currentCourseState.mode !== InteractionModes.PLACING && currentCourseState.selectedControl !== null ) {
+    setCurrentCourseState({ selectedControl: null });
+    console.log(currentCourseState.selectedControl);
+  }
+}
+
 
 export function MapView({ imageUri }: { imageUri: string }) {
   const scale = useSharedValue(1);
@@ -39,6 +97,11 @@ export function MapView({ imageUri }: { imageUri: string }) {
   const translateY = useSharedValue(0);
   const offsetX = useSharedValue(0);
   const offsetY = useSharedValue(0);
+  const interactionMode = appState((s) => s.currentCourseState.mode);
+  const selectedControlType = appState((s) => s.currentCourseState.selectedControlType);
+  const [currentNotificationState, setNotificationState] = useState<NotificationState>({ show: false, message: '', type: 'info' });
+  const setCurrentCourseState = appState((s) => s.updateCurrentCourseState);
+  const currentCourseState = appState((s) => s.currentCourseState);
 
   const panGesture = Gesture.Pan()
     .onUpdate((event) => {
@@ -67,17 +130,17 @@ export function MapView({ imageUri }: { imageUri: string }) {
     });
 
   const tapGesture = Gesture.Tap()
-    .onStart((event) => {
+    .onStart(runOnJS((event) => {
       try {
-        runOnJS(addControl)(event.x, event.y);
+        deselectControl(setCurrentCourseState, currentCourseState);
+        addControl(event.x, event.y, selectedControlType, appState.getState().currentRoute().controls, setNotificationState);
       } catch (error) {
         console.error("Error handling tap gesture:", error);
       }
-    });
+    }));
 
   const composed = Gesture.Exclusive(
-    tapGesture,
-    Gesture.Simultaneous(panGesture, pinchGesture, rotationGesture)
+    panGesture, pinchGesture, rotationGesture
   );
 
   const animatedStyle = useAnimatedStyle(() => ({
@@ -90,10 +153,9 @@ export function MapView({ imageUri }: { imageUri: string }) {
   }));
 
   const controls = appState((s) => s.currentRoute()).controls;
-  console.log(controls);
 
   return (
-    <GestureDetector gesture={composed}>
+    <GestureDetector gesture={interactionMode !== InteractionModes.PLACING ? composed : tapGesture}>
       <Animated.View
         style={[
           {
@@ -103,6 +165,11 @@ export function MapView({ imageUri }: { imageUri: string }) {
           animatedStyle,
         ]}
       >
+        {currentNotificationState.show && <Notification
+          message={currentNotificationState.message}
+          type={currentNotificationState.type}
+          onClose={() => setNotificationState({ show: false, message: '', type: 'info' })}
+        />}
         <Animated.Image
           source={{ uri: imageUri }}
           style={{
@@ -113,21 +180,7 @@ export function MapView({ imageUri }: { imageUri: string }) {
         />
 
         {controls.map((control, index) => (
-          <View
-            key={index}
-            style={{
-              position: 'absolute',
-              left: control.coords[0],
-              top: control.coords[1],
-              height: 24,
-              width: 24,
-            }}
-          >
-            <GetIcon type={control.type} />
-            <Text style={{ color: 'white', fontSize: 12 }}>
-              {control.code}
-            </Text>
-          </View>
+          <ControlMarker key={index} control={control} index={index} />
         ))}
       </Animated.View>
 

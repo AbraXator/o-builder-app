@@ -4,6 +4,7 @@ interface AppState {
   currentCourse: Course;
   currentCourseState: CourseState;
   theme: String;
+  
   currentRoute: () => Route;
   createRoute: (route: Route) => void;
   updateRoute: (id: number, data: Partial<Route>) => void;

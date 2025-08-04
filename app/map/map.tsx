@@ -5,10 +5,11 @@ import { MapView } from '../../components/MapView';
 //import { exportAsImage, ExportDialog } from '../components/ExportCourse';
 import { Notification, NotificationState } from '@/components/Notification';
 import { GetIcon } from '@/constants/icons/controlIcons';
-import { ChooseControlType, Home, Pointer, Print, Save, Trashcan, Undo } from '@/constants/icons/icons';
+import { Home, Pointer, Print, Save, Trashcan, Undo } from '@/constants/icons/icons';
+import { removeControl } from '@/hooks/ControlHooks';
 import { appState } from '@/libs/state/store';
 import { setCourse } from '@/libs/storage/AsyncStorage';
-import { InteractionModes } from '@/libs/types/enums';
+import { ControlTypes, InteractionModes } from '@/libs/types/enums';
 import { router } from 'expo-router';
 import ToolbarButton from '../../components/ToolbarButton';
 
@@ -17,6 +18,7 @@ function UpperToolbar() {
   const currentCourse = appState((s) => s.currentCourse);
   const updateRoute = appState((s) => s.updateRoute);
   const updateCurrentCourseState = appState((s) => s.updateCurrentCourseState);
+  const 
 
   return (
     <View style={styles.toolbarContainer}>
@@ -33,26 +35,42 @@ function UpperToolbar() {
       />
 
       <ToolbarButton
-        icon={<ChooseControlType />}
-        onPress={() => router.push('/map/controlTypes')}
-      />
-
-      <ToolbarButton
         icon={<Trashcan />}
         onPress={() => {
           if (currentCourseState.selectedControl !== undefined) {
-            const routeBeingEdited = currentCourse.routes[currentCourseState.currentRoute];
-            updateRoute(currentCourseState.currentRoute, {
-              controls: routeBeingEdited.controls.filter((_, i) => i !== currentCourseState.selectedControl),
-            });
+            removeControl(currentCourseState.selectedControl, currentCourse, updateRoute);
             updateCurrentCourseState({ selectedControl: undefined });
           }
         }}
       />
 
-      <ToolbarButton icon={<Undo />} onPress={() => {}} />
+      <ToolbarButton icon={<Undo />} onPress={() => {
+        const lastAction = 
+
+      }} />
     </View>
   );
+}
+
+export function ChangeControlTypeLowerToolbar() {
+  const setCurrentCourseState = appState((s) => s.updateCurrentCourseState);
+  const currentCourseState = appState((s) => s.currentCourseState);
+
+  const ControlTypeButton: React.FC<{ type: ControlTypes }> = ({ type }) => (
+    <ToolbarButton
+      active={currentCourseState.selectedControlType === type}
+      icon={<GetIcon type={type} />}
+      onPress={() => setCurrentCourseState({ selectedControlType: type })}
+    />
+  );
+
+  return (
+    <View style={styles.lowerToolbarContainer}>
+      <ControlTypeButton type={ControlTypes.START} />
+      <ControlTypeButton type={ControlTypes.CONTROL} />
+      <ControlTypeButton type={ControlTypes.FINISH} />
+    </View>
+  )
 }
 
 export function LowerToolbar({ setShowModal, setNotificationState }: {
@@ -93,6 +111,7 @@ export default function MapPage() {
   });
   const [showModal, setShowModal] = useState(false);
   const [showExportDialog, setShowExportDialog] = useState(false);
+  const currentCourseState = appState((s) => s.currentCourseState);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -103,6 +122,7 @@ export default function MapPage() {
           confirmText={'Exit'}
           onConfirm={() => router.push('/')}
           onCancel={() => setShowModal(false)}
+          showModal={showModal}
         />
       )}
       {/* {showExportDialog && <ExportDialog />} */}
@@ -120,10 +140,17 @@ export default function MapPage() {
         <MapView imageUri={appState((s) => s.currentCourse.map)} />
       </View>
 
-      <LowerToolbar
-        setShowModal={setShowModal}
-        setNotificationState={setNotificationState}
-      />
+      {currentCourseState.mode === InteractionModes.PLACING && (
+        <ChangeControlTypeLowerToolbar />
+      )}
+
+      {currentCourseState.mode !== InteractionModes.PLACING && (
+        <LowerToolbar
+          setShowModal={setShowModal}
+          setNotificationState={setNotificationState}
+        />
+      )}
+
     </SafeAreaView>
   );
 }
@@ -149,5 +176,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     padding: 8,
     backgroundColor: '#e2e2e2',
+    height : 48,
   },
 });

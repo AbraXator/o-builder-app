@@ -1,3 +1,4 @@
+import ToolbarButton from '@/components/ToolbarButton';
 import { Language, Sun } from '@/constants/icons/icons';
 import { router } from 'expo-router';
 import { Dimensions, Image, Pressable, StyleSheet, Text, View } from 'react-native';
@@ -19,12 +20,14 @@ export default function MainMenuPage() {
           <MenuButton label="RECENT COURSES" onPress={() => router.push('/recentCourses')} />
           <MenuButton label="LOAD COURSE" onPress={() => { }} />
           <View style={styles.buttonGroup}>
-            <Pressable>
-              <Sun/>
-            </Pressable>
-            <Pressable>
-              <Language/>
-            </Pressable>
+            <ToolbarButton
+              icon={<Sun />}
+              onPress={() => console.log("Theme changed pressed")}
+            />
+            <ToolbarButton
+              icon={<Language />}
+              onPress={() => console.log("Language changed pressed")}
+            />
           </View>
         </View>
       </View>

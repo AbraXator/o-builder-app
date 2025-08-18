@@ -18,18 +18,17 @@ function UpperToolbar() {
   const currentCourse = appState((s) => s.currentCourse);
   const updateRoute = appState((s) => s.updateRoute);
   const updateCurrentCourseState = appState((s) => s.updateCurrentCourseState);
-  const 
 
   return (
     <View style={styles.toolbarContainer}>
       <ToolbarButton
-        active={currentCourseState.mode === 'selecting'}
+        active={currentCourseState.mode === InteractionModes.INTERACTING}
         icon={<Pointer />}
-        onPress={() => updateCurrentCourseState({ mode: InteractionModes.SELECTING })}
+        onPress={() => updateCurrentCourseState({ mode: InteractionModes.INTERACTING })}
       />
 
       <ToolbarButton
-        active={currentCourseState.mode === 'placing'}
+        active={currentCourseState.mode === InteractionModes.PLACING}
         icon={<GetIcon type={currentCourseState.selectedControlType} />}
         onPress={() => updateCurrentCourseState({ mode: InteractionModes.PLACING })}
       />

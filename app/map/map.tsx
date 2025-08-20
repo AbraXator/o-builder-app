@@ -11,6 +11,7 @@ import { appState } from '@/libs/state/store';
 import { setCourse } from '@/libs/storage/AsyncStorage';
 import { ControlTypes, InteractionModes } from '@/libs/types/enums';
 import { router } from 'expo-router';
+import { runOnJS } from 'react-native-reanimated';
 import ToolbarButton from '../../components/ToolbarButton';
 
 function UpperToolbar() {
@@ -24,13 +25,13 @@ function UpperToolbar() {
       <ToolbarButton
         active={currentCourseState.mode === InteractionModes.INTERACTING}
         icon={<Pointer />}
-        onPress={() => updateCurrentCourseState({ mode: InteractionModes.INTERACTING })}
+        onPress={runOnJS(() => updateCurrentCourseState({ mode: InteractionModes.INTERACTING }))}
       />
 
       <ToolbarButton
         active={currentCourseState.mode === InteractionModes.PLACING}
         icon={<GetIcon type={currentCourseState.selectedControlType} />}
-        onPress={() => updateCurrentCourseState({ mode: InteractionModes.PLACING })}
+        onPress={runOnJS(() => updateCurrentCourseState({ mode: InteractionModes.PLACING }))}
       />
 
       <ToolbarButton
@@ -43,10 +44,7 @@ function UpperToolbar() {
         }}
       />
 
-      <ToolbarButton icon={<Undo />} onPress={() => {
-        const lastAction = 
-
-      }} />
+      <ToolbarButton icon={<Undo />} onPress={() => { }} />
     </View>
   );
 }

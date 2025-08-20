@@ -16,6 +16,7 @@ declare global {
     id: number;
     name: string;
     length: number;
+    climb: number;
     controls: Control[];
   }
 }

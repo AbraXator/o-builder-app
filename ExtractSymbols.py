@@ -23,6 +23,7 @@ for key, value in lang.items():
                 with open(os.path.join(root, file), "r", encoding="utf-8") as svgFile:
                     symbolSvg = svgFile.read()
                 break
+    symbolSvg = symbolSvg.replace('<?xml version="1.0"?>', "")
 
     symbolKind = value.get('kind')
 

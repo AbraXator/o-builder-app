@@ -15,7 +15,7 @@ export const Sun = (props: SvgProps) => (
     {...props}
   >
     <Circle cx={12} cy={12} r={4} />
-    <Path d="M12 2v2" />
+    <Path stroke="#000000" d="M12 2v2" />
     <Path d="M12 20v2" />
     <Path d="m4.93 4.93 1.41 1.41" />
     <Path d="m17.66 17.66 1.41 1.41" />

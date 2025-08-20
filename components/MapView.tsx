@@ -22,11 +22,12 @@ function ControlMarker({ control, index }: { control: Control; index: number }) 
   const updateCurrentCourseState = appState((s) => s.updateCurrentCourseState);
   const interactionMode = appState((s) => s.currentCourseState.mode);
 
-  const handleTap = () => {
-    if (interactionMode === InteractionModes.SELECTING) {
+  const handleTap = runOnJS(() => {
+    console.log("A")
+    if (interactionMode === InteractionModes.INTERACTING) {
       updateCurrentCourseState({ selectedControl: index });
     }
-  }
+  })  
 
   return (
     <TouchableOpacity

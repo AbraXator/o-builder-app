@@ -1,6 +1,8 @@
+import { kindToIndex } from "@/hooks/ControlHooks";
 import { appState } from "@/libs/state/store";
 import { ControlTypes } from "@/libs/types/enums";
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useState } from "react";
+import { FlatList, Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { SvgXml } from "react-native-svg";
 import symbols from "../../assets/data/symbols.json";
@@ -54,7 +56,7 @@ function renderRouteInfo(object: RenderSymbolsPartParams) {
   );
 }
 
-function renderControls(object: RenderSymbolsPartParams, currentRoute: Route) {
+function renderControls(setShowModal: SetState<boolean>, setChosenKind: SetState<string | null>, object: RenderSymbolsPartParams, currentRoute: Route) {
   const SymbolA = ({ item }: { item: Control }) => {
     const isAllControls = currentRoute.id === 0;
     const isStart = item.type === ControlTypes.START;
@@ -72,12 +74,13 @@ function renderControls(object: RenderSymbolsPartParams, currentRoute: Route) {
     }
   }
 
-  const ControlSymbol = ({ index, kind, kindList }: { index: number, kind: string, kindList: any[] }) => {
+  const ControlSymbol = ({ index, kind, kindList, symbolId }: { index: number, kind: string, kindList: any[], symbolId: number }) => {
     return (
       <TouchableOpacity key={index} style={styles.cell} onPress={() => {
-        console.log(`Pressed ${kind} symbol`);
+        setShowModal(true);
+        setChosenKind(kind);
       }}>
-        {kindList[0] && <SvgXml xml={kindList[0].svg} width={24} height={24} />}
+        {kindList[0] && <SvgXml xml={kindList[symbolId].svg} width={24} height={24} />}
       </TouchableOpacity>
     )
   }
@@ -102,8 +105,9 @@ function renderControls(object: RenderSymbolsPartParams, currentRoute: Route) {
           {Array.from({ length: 3 }).map((_, i) => {
             const kind = String.fromCharCode(99 + i).toUpperCase();
             const kindList = (symbols as any[]).filter((s) => s.kind === kind);
+            const symbolId = item.symbols[kindToIndex(kind)].code !== undefined? item.symbols[kindToIndex(kind)].code : 0;
             return (
-              <ControlSymbol key={i} index={i} kind={kind} kindList={kindList} />
+              <ControlSymbol key={i} index={i} kind={kind} kindList={kindList} symbolId={symbolId} />
             );
           })}
 
@@ -115,8 +119,40 @@ function renderControls(object: RenderSymbolsPartParams, currentRoute: Route) {
   );
 }
 
-function chooseSymbolModal({ kind }: { kind: string }) {
-  
+function ChooseSymbolModal({ currentRoute, updateCurrentRoute, control, kind, setShowModal }: { currentRoute: Route, updateCurrentRoute: (data: Partial<Route>) => void, control: Control, kind: string, setShowModal: SetState<boolean> }) {
+  console.log(`ChooseSymbolModal opened for kind: ${kind}`);
+  const symbolsForKind = (symbols as any[]).filter((s) => s.kind === kind.toUpperCase() && s.svg);
+
+  if(!symbolsForKind.length) {
+    console.warn("No symbols found for kind");
+  } 
+
+  return (
+    <View>
+      <Modal>
+        <FlatList
+          data={symbolsForKind}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => {
+              console.log(`Selected symbol: ${item.id}`);
+              const editedControls = currentRoute.controls;
+              const controlIndex = editedControls.findIndex((c) => c === control);
+              const symbolIndex = kindToIndex(kind);
+              const editedSymbols = control.symbols.splice(symbolIndex, 0, item.id);
+              control = { ...control, symbols: [...editedSymbols] };
+
+              editedControls.splice(controlIndex, 0, control);
+              updateCurrentRoute({ controls: editedControls });
+              setShowModal(false);
+            }}>
+              <SvgXml xml={item.svg} width={24} height={24} />
+            </TouchableOpacity>
+          )}
+        />
+      </Modal>
+    </View>
+  )
 }
 
 function renderFinish(object: RenderSymbolsPartParams) {
@@ -141,17 +177,23 @@ export default function ControlSymbolsPage() {
   const currentCourseState = appState((s) => s.currentCourseState);
   const currentRoute = currentCourse.routes[currentCourseState.currentRoute];
   const controls = currentRoute.controls;
+  const updateCurrentRoute = appState((s) => s.updateCurrentRoute);
+  const [showModal, setShowModal] = useState(false);
+  const [chosenKind, setChosenKind] = useState<string | null>(null);
 
   const renderMethod = {
     course_title: (object: any) => renderCourseTitle(object),
     route_info: (object: any) => renderRouteInfo(object),
-    controls: (object: any) => renderControls(object, currentRoute),
+    controls: (object: any) => renderControls(setShowModal, setChosenKind, object, currentRoute),
     finish: (object: any) => renderFinish(object),
   };
 
   return (
     <SafeAreaProvider>
       <SafeAreaView>
+        {showModal && chosenKind && (
+          <ChooseSymbolModal currentRoute={currentRoute} updateCurrentRoute={updateCurrentRoute} control={currentRoute.controls[0]} kind={chosenKind} setShowModal={setShowModal} />
+        )}
         <FlatList
           data={fullSymbolsList(currentCourse, currentRoute, controls)}
           renderItem={({ item }) => (

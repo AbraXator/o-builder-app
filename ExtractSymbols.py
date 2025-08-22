@@ -4,8 +4,8 @@ import os
 import json
 from collections import Counter
 
-symbolsPath = "C:/Users/adamm/Documents/Github/svg-control-descriptions"
-langPath = "C:/Users/adamm/Documents/Github/svg-control-descriptions/symbols/lang.json"
+symbolsPath = "D:/Things/GitHub/svg-control-descriptions"
+langPath = "D:/Things/GitHub/svg-control-descriptions/symbols/lang.json"
 listOfSymbols = []
 
 with open(langPath, "r", encoding="utf-8") as f:
@@ -24,6 +24,7 @@ for key, value in lang.items():
                     symbolSvg = svgFile.read()
                 break
     symbolSvg = symbolSvg.replace('<?xml version="1.0"?>', "")
+    symbolSvg = symbolSvg.replace(r'="null"', '="0"')
 
     symbolKind = value.get('kind')
 
@@ -31,6 +32,11 @@ for key, value in lang.items():
     for lang, name in names.items():
         if lang == "en":
             symbolName = name
+            if(symbolName == "Special item"):
+                if(not listOfSymbols.__contains__(symbolName)):
+                    symbolName = "Special item cross"
+                else: 
+                    symbolName = "Special item circle"
             break
         
     symbolId = symbolName.lower().replace(" ", "-").replace("'", "").replace(":", "").replace(";", "").replace(",", "").replace("(", "").replace(")", "").replace("/", "")

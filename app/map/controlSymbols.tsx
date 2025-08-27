@@ -1,3 +1,4 @@
+import { MapView, MapViewProps, moveMapToCoords } from "@/components/MapView";
 import { kindToIndex } from "@/hooks/ControlHooks";
 import { appState } from "@/libs/state/store";
 import { ControlTypes } from "@/libs/types/enums";
@@ -75,14 +76,18 @@ function renderControls(setShowModal: SetState<boolean>, setChosenKind: SetState
   }
 
   const ControlSymbol = ({ index, kind, kindList, symbolId }: { index: number, kind: string, kindList: any[], symbolId: number }) => {
+    const symbolData = kindList[symbolId];
+    const xml = symbolData ? symbolData.svg : null;
+    const validSvgXml = xml !== null && xml !== undefined && xml.length > 0;
+
     return (
       <TouchableOpacity key={index} style={styles.cell} onPress={() => {
         setShowModal(true);
         setChosenKind(kind);
       }}>
-        {kindList[0] && <SvgXml xml={kindList[symbolId].svg} width={24} height={24} />}
+        {validSvgXml && <SvgXml xml={xml} width={24} height={24} />}
       </TouchableOpacity>
-    )
+    );
   }
 
   return (
@@ -91,28 +96,22 @@ function renderControls(setShowModal: SetState<boolean>, setChosenKind: SetState
       keyExtractor={(_, index) => index.toString()}
       renderItem={({ item }) => (
         <View style={styles.row}>
-          {/* Control number */}
           <View style={styles.cell}>
             <SymbolA item={item} />
           </View>
 
-          {/* Control code */}
           <View style={styles.cell}>
             <Text style={styles.text}>{item.code}</Text>
           </View>
 
-          {/* Symbol columns */}
-          {Array.from({ length: 3 }).map((_, i) => {
+          {Array.from({ length: 6 }).map((_, i) => {
             const kind = String.fromCharCode(99 + i).toUpperCase();
             const kindList = (symbols as any[]).filter((s) => s.kind === kind);
-            const symbolId = item.symbols[kindToIndex(kind)].code !== undefined? item.symbols[kindToIndex(kind)].code : 0;
+            const symbolId = item.symbols[kindToIndex(kind)]?.symbolId ?? -1;
             return (
               <ControlSymbol key={i} index={i} kind={kind} kindList={kindList} symbolId={symbolId} />
             );
           })}
-
-          {/* Extra column */}
-          <View style={styles.cell} />
         </View>
       )}
     />
@@ -122,27 +121,40 @@ function renderControls(setShowModal: SetState<boolean>, setChosenKind: SetState
 function ChooseSymbolModal({ currentRoute, updateCurrentRoute, control, kind, setShowModal }: { currentRoute: Route, updateCurrentRoute: (data: Partial<Route>) => void, control: Control, kind: string, setShowModal: SetState<boolean> }) {
   console.log(`ChooseSymbolModal opened for kind: ${kind}`);
   const symbolsForKind = (symbols as any[]).filter((s) => s.kind === kind.toUpperCase() && s.svg);
+  const mapViewProps: MapViewProps = {
+    imageUri: appState((s) => s.currentCourse.map),
+    scale: 0.5,
+    rotation: 0,
+    translationX: control.coords[0],
+    translationY: control.coords[1],
+  }
+  moveMapToCoords(control.coords, mapViewProps);
 
-  if(!symbolsForKind.length) {
+  if (!symbolsForKind.length) {
     console.warn("No symbols found for kind");
-  } 
+  }
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <Modal>
         <FlatList
           data={symbolsForKind}
           keyExtractor={(item) => item.id}
+          numColumns={5}
           renderItem={({ item }) => (
             <TouchableOpacity onPress={() => {
               console.log(`Selected symbol: ${item.id}`);
               const editedControls = currentRoute.controls;
               const controlIndex = editedControls.findIndex((c) => c === control);
               const symbolIndex = kindToIndex(kind);
-              const editedSymbols = control.symbols.splice(symbolIndex, 0, item.id);
-              control = { ...control, symbols: [...editedSymbols] };
+              console.log("item: ", item);
+              control.symbols[symbolIndex] = {
+                kind: kind,
+                symbolId: item.index
+              };
+              control = { ...control, symbols: [...control.symbols] };
 
-              editedControls.splice(controlIndex, 0, control);
+              editedControls[controlIndex] = control;
               updateCurrentRoute({ controls: editedControls });
               setShowModal(false);
             }}>
@@ -150,6 +162,12 @@ function ChooseSymbolModal({ currentRoute, updateCurrentRoute, control, kind, se
             </TouchableOpacity>
           )}
         />
+        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', maxHeight: 400, maxWidth: 50 }}>
+          <Text>Control preview</Text>
+          <View style={{ flex: 1, backgroundColor: '#ff0000ff', maxHeight: 100, maxWidth: 50 }}>
+            <MapView mapViewProps={mapViewProps} />
+          </View>
+        </View>
       </Modal>
     </View>
   )
@@ -164,10 +182,9 @@ function renderFinish(object: RenderSymbolsPartParams) {
       <View style={styles.cell}>
         <Text style={styles.text}>{object.content}</Text>
       </View>
-      {Array.from({ length: 5 }).map((_, i) => (
+      {Array.from({ length: 6 }).map((_, i) => (
         <View key={i} style={styles.cell} />
       ))}
-      <View style={styles.cell} />
     </View>
   );
 }
@@ -200,6 +217,13 @@ export default function ControlSymbolsPage() {
             <View>{(renderMethod as any)[item.id](item)}</View>
           )}
         />
+        <TouchableOpacity onPress={() => {
+          const controls = currentRoute.controls;
+          console.log("Current route controls:", controls);
+          const symbolsFromControl = controls.flatMap(control => control.symbols);
+          console.log("Symbols from controls:", symbolsFromControl);
+        }}><Text>Print controls</Text>
+        </TouchableOpacity>
       </SafeAreaView>
     </SafeAreaProvider>
   );

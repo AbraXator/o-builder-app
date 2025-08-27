@@ -40,6 +40,7 @@ export const appState = create<AppState>((set) => ({
       id: 0,
       name: "",
       length: 0,
+      climb: 0,
       controls: [],
     };
   },

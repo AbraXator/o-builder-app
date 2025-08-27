@@ -27,7 +27,7 @@ function ControlMarker({ control, index }: { control: Control; index: number }) 
     if (interactionMode === InteractionModes.INTERACTING) {
       updateCurrentCourseState({ selectedControl: index });
     }
-  })  
+  })
 
   return (
     <TouchableOpacity
@@ -41,7 +41,7 @@ function ControlMarker({ control, index }: { control: Control; index: number }) 
         width: 24,
       }}
     >
-      <GetIcon type={control.type} props={{ stroke: currentCourseState.selectedControl === index ? "#6a32ed" : "#ed3288"}} />
+      <GetIcon type={control.type} props={{ stroke: currentCourseState.selectedControl === index ? "#6a32ed" : "#ed3288" }} />
       <Text style={{ color: 'white', fontSize: 12 }}>
         {control.code}
       </Text>
@@ -56,6 +56,35 @@ function addControl(x: number, y: number, type: ControlType, controlsList: Contr
   const currentCourse = state.currentCourse;
   const currentCourseState = state.currentCourseState;
   const addControlToCurrentRoute = state.addControlToCurrentRoute;
+  const currentRoute = state.currentRoute();
+  const initDefaultControl: Control = {
+    type: type,
+    coords: [x, y],
+    code: 0,
+    number: -1,
+    symbols: [
+      {
+        kind: "C",
+        symbolId: -1,
+      },
+      {
+        kind: "D",
+        symbolId: -1,
+      },
+      {
+        kind: "E",
+        symbolId: -1,
+      },
+      {
+        kind: "F",
+        symbolId: -1,
+      },
+      {
+        kind: "G",
+        symbolId: -1,
+      }
+    ],
+  };
 
   const cannotAddControl = (type: ControlType) => {
     return (type === ControlTypes.FINISH || type === ControlTypes.START) && controlsList.some(c => c.type === type);
@@ -71,31 +100,39 @@ function addControl(x: number, y: number, type: ControlType, controlsList: Contr
     return;
   }
 
-  addControlToCurrentRoute({
-    type: type,
-    coords: [x, y],
-    code: 0,
-    number: -1,
-    symbols: [],
-  });
+  console.log("Default control: ", initDefaultControl)
+  addControlToCurrentRoute(initDefaultControl);
 }
 
 function deselectControl(setCurrentCourseState: (data: Partial<CourseState>) => void, currentCourseState: CourseState) {
   console.log("Deselecting control");
-  if( currentCourseState.mode !== InteractionModes.PLACING && currentCourseState.selectedControl !== null ) {
+  if (currentCourseState.mode !== InteractionModes.PLACING && currentCourseState.selectedControl !== null) {
     setCurrentCourseState({ selectedControl: null });
     console.log(currentCourseState.selectedControl);
   }
 }
 
+export function moveMapToCoords(coords: [number, number], mapViewProps: MapViewProps) {
+  mapViewProps.translationX = -coords[0] * mapViewProps.scale + window.width / 2;
+  mapViewProps.translationY = -coords[1] * mapViewProps.scale + window.height / 2;
+}
 
-export function MapView({ imageUri }: { imageUri: string }) {
-  const scale = useSharedValue(1);
+export type MapViewProps = {
+  imageUri: string;
+  scale: number;
+  rotation: number;
+  translationX: number;
+  translationY: number;
+}
+
+export function MapView({ mapViewProps }: { mapViewProps: MapViewProps }) {
+  const imageUri = mapViewProps.imageUri;
+  const scale = useSharedValue(mapViewProps.scale);
   const offsetScale = useSharedValue(1);
-  const rotation = useSharedValue(0);
+  const rotation = useSharedValue(mapViewProps.rotation);
   const offsetRotation = useSharedValue(0);
-  const translateX = useSharedValue(0);
-  const translateY = useSharedValue(0);
+  const translateX = useSharedValue(mapViewProps.translationX);
+  const translateY = useSharedValue(mapViewProps.translationY);
   const offsetX = useSharedValue(0);
   const offsetY = useSharedValue(0);
   const interactionMode = appState((s) => s.currentCourseState.mode);

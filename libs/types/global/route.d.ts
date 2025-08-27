@@ -1,7 +1,7 @@
 declare global {
   interface ControlSymbol {
     kind: string;
-    code: number;
+    symbolId: number;
   }
 
   interface Control {

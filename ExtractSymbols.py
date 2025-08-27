@@ -11,6 +11,8 @@ listOfSymbols = []
 with open(langPath, "r", encoding="utf-8") as f:
     lang = json.load(f)
 
+symbolIndex = 0
+
 for key, value in lang.items():
     symbolId = ""
     symbolName = ""
@@ -40,25 +42,35 @@ for key, value in lang.items():
             break
         
     symbolId = symbolName.lower().replace(" ", "-").replace("'", "").replace(":", "").replace(";", "").replace(",", "").replace("(", "").replace(")", "").replace("/", "")
-    
+
     dictionary = {
+        "index": symbolIndex,
         "id": symbolId,
         "name": symbolName,
         "kind": symbolKind,
         "svg": symbolSvg,
     }
+
     listOfSymbols.append(dictionary)
 
 duplicates = [
     {**item, "kind": "E"} for item in listOfSymbols if item["kind"] == "D"
 ]
+
 listOfSymbols.extend(duplicates)
 
 sortedSymbols = sorted(listOfSymbols, key=lambda d: d["kind"])
 
 kind_counts = Counter(d["kind"] for d in sortedSymbols)
+totalCount = 0
+
 for kind, count in kind_counts.items():
-  print(f"{kind}: {count}")
+    symbolIndex = 0
+    print(count)
+    for i in range(count):
+        sortedSymbols[totalCount + i]["index"] = symbolIndex
+        symbolIndex += 1
+    totalCount += count
 
 with open("output.json", "w", encoding="utf-8") as outputFile:
-    json.dump(listOfSymbols, outputFile, indent=4, ensure_ascii=False)
+    json.dump(sortedSymbols, outputFile, indent=4, ensure_ascii=False)

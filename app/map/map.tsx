@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import ConfirmationModal from '../../components/ConfirmationModal';
-import { MapView } from '../../components/MapView';
+import { MapView, MapViewProps } from '../../components/MapView';
 //import { exportAsImage, ExportDialog } from '../components/ExportCourse';
 import { Notification, NotificationState } from '@/components/Notification';
 import { GetIcon } from '@/constants/icons/controlIcons';
@@ -109,6 +109,13 @@ export default function MapPage() {
   const [showModal, setShowModal] = useState(false);
   const [showExportDialog, setShowExportDialog] = useState(false);
   const currentCourseState = appState((s) => s.currentCourseState);
+  const mapViewProps: MapViewProps = {
+    imageUri: appState((s) => s.currentCourse.map),
+    scale: 1,
+    rotation: 0,
+    translationX: 0,
+    translationY: 0,
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -134,7 +141,7 @@ export default function MapPage() {
       <UpperToolbar />
 
       <View style={styles.mapContainer}>
-        <MapView imageUri={appState((s) => s.currentCourse.map)} />
+        <MapView mapViewProps={mapViewProps} />
       </View>
 
       {currentCourseState.mode === InteractionModes.PLACING && (

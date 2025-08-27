@@ -1,4 +1,5 @@
 import { MapView, MapViewProps, moveMapToCoords } from "@/components/MapView";
+import { Notification, NotificationState } from "@/components/Notification";
 import { kindToIndex } from "@/hooks/ControlHooks";
 import { appState } from "@/libs/state/store";
 import { ControlTypes } from "@/libs/types/enums";
@@ -28,36 +29,39 @@ function fullSymbolsList(currentCourse: Course, currentRoute: Route, controls: C
     },
     {
       id: "finish",
-      content: "Finish"
+      content: 100,
     }
   ];
 }
 
-type RenderSymbolsPartParams = { id: string, content: any };
-
-function renderCourseTitle(object: RenderSymbolsPartParams) {
+function renderCourseTitle(title: string) {
   return (
     <View style={styles.row}>
       <View style={[styles.cell, { flex: 8 }]}>
-        <Text style={styles.text}>{object.content}</Text>
+        <Text style={styles.text}>{title}</Text>
       </View>
     </View>
   );
 }
 
-function renderRouteInfo(object: RenderSymbolsPartParams) {
+type RouteParams = {
+  id: string,
+  content: any
+}[];
+
+function renderRouteInfo(routeParams: { id: string, content: any }[]) {
   return (
     <View style={styles.row}>
-      {object.content.map((item: any, idx: number) => (
-        <View key={idx} style={[styles.cell, { flex: 8 }]}>
-          <Text style={styles.text}>{item.content}</Text>
+      {routeParams.map((routeParameter: any, id: number) => (
+        <View key={id} style={[styles.cell, { flex: 8 }]}>
+          <Text style={styles.text}>{routeParameter.content}</Text>
         </View>
       ))}
     </View>
   );
 }
 
-function renderControls(setShowModal: SetState<boolean>, setChosenKind: SetState<string | null>, object: RenderSymbolsPartParams, currentRoute: Route) {
+function renderControls(setShowModal: SetState<boolean>, setChosenControl: SetState<Control | null>, setChosenKind: SetState<string | null>, controls: Control[], currentRoute: Route) {
   const SymbolA = ({ item }: { item: Control }) => {
     const isAllControls = currentRoute.id === 0;
     const isStart = item.type === ControlTypes.START;
@@ -75,7 +79,7 @@ function renderControls(setShowModal: SetState<boolean>, setChosenKind: SetState
     }
   }
 
-  const ControlSymbol = ({ index, kind, kindList, symbolId }: { index: number, kind: string, kindList: any[], symbolId: number }) => {
+  const ControlSymbol = ({ control, index, kind, kindList, symbolId }: { control: Control, index: number, kind: string, kindList: any[], symbolId: number }) => {
     const symbolData = kindList[symbolId];
     const xml = symbolData ? symbolData.svg : null;
     const validSvgXml = xml !== null && xml !== undefined && xml.length > 0;
@@ -84,6 +88,7 @@ function renderControls(setShowModal: SetState<boolean>, setChosenKind: SetState
       <TouchableOpacity key={index} style={styles.cell} onPress={() => {
         setShowModal(true);
         setChosenKind(kind);
+        setChosenControl(control);
       }}>
         {validSvgXml && <SvgXml xml={xml} width={24} height={24} />}
       </TouchableOpacity>
@@ -92,7 +97,7 @@ function renderControls(setShowModal: SetState<boolean>, setChosenKind: SetState
 
   return (
     <FlatList
-      data={object.content as Control[]}
+      data={controls}
       keyExtractor={(_, index) => index.toString()}
       renderItem={({ item }) => (
         <View style={styles.row}>
@@ -109,7 +114,7 @@ function renderControls(setShowModal: SetState<boolean>, setChosenKind: SetState
             const kindList = (symbols as any[]).filter((s) => s.kind === kind);
             const symbolId = item.symbols[kindToIndex(kind)]?.symbolId ?? -1;
             return (
-              <ControlSymbol key={i} index={i} kind={kind} kindList={kindList} symbolId={symbolId} />
+              <ControlSymbol control={item} key={i} index={i} kind={kind} kindList={kindList} symbolId={symbolId} />
             );
           })}
         </View>
@@ -118,17 +123,37 @@ function renderControls(setShowModal: SetState<boolean>, setChosenKind: SetState
   );
 }
 
-function ChooseSymbolModal({ currentRoute, updateCurrentRoute, control, kind, setShowModal }: { currentRoute: Route, updateCurrentRoute: (data: Partial<Route>) => void, control: Control, kind: string, setShowModal: SetState<boolean> }) {
-  console.log(`ChooseSymbolModal opened for kind: ${kind}`);
+function addEmptySymbolToModal(symbols: any[], kind: string) {
+  symbols.unshift({ index: -1, id: "empty", name: "empty", kind: { kind }, svg: "" });
+}
+
+function ChooseSymbolModal({ currentRoute, updateCurrentRoute, control, kind, setShowModal }: { currentRoute: Route, updateCurrentRoute: (data: Partial<Route>) => void, control: Control | null, kind: string, setShowModal: SetState<boolean> }) {
+  if (control === null) {
+    console.warn("No control found");
+    return null;
+  }
+
+  const safeControl = control!;
+
   const symbolsForKind = (symbols as any[]).filter((s) => s.kind === kind.toUpperCase() && s.svg);
+  addEmptySymbolToModal(symbolsForKind, kind);
+
   const mapViewProps: MapViewProps = {
     imageUri: appState((s) => s.currentCourse.map),
     scale: 0.5,
     rotation: 0,
-    translationX: control.coords[0],
-    translationY: control.coords[1],
+    translationX: safeControl.coords[0],
+    translationY: safeControl.coords[1],
   }
-  moveMapToCoords(control.coords, mapViewProps);
+  moveMapToCoords(safeControl.coords, mapViewProps);
+
+  const IconForSymbol = ({ xml }: { xml: string }) => {
+    if (xml && xml.length > 0) {
+      return <SvgXml xml={xml} width={24} height={24} />;
+    } else {
+      return <Text style={styles.text}>None</Text>;
+    }
+  }
 
   if (!symbolsForKind.length) {
     console.warn("No symbols found for kind");
@@ -143,22 +168,22 @@ function ChooseSymbolModal({ currentRoute, updateCurrentRoute, control, kind, se
           numColumns={5}
           renderItem={({ item }) => (
             <TouchableOpacity onPress={() => {
-              console.log(`Selected symbol: ${item.id}`);
               const editedControls = currentRoute.controls;
-              const controlIndex = editedControls.findIndex((c) => c === control);
+              const controlIndex = editedControls.findIndex((c) => {
+                return c.code === safeControl.code;
+              });
               const symbolIndex = kindToIndex(kind);
-              console.log("item: ", item);
-              control.symbols[symbolIndex] = {
+              safeControl.symbols[symbolIndex] = {
                 kind: kind,
                 symbolId: item.index
               };
-              control = { ...control, symbols: [...control.symbols] };
+              const editedControl = { ...safeControl, symbols: [...safeControl.symbols] };
 
-              editedControls[controlIndex] = control;
+              editedControls[controlIndex] = editedControl;
               updateCurrentRoute({ controls: editedControls });
               setShowModal(false);
             }}>
-              <SvgXml xml={item.svg} width={24} height={24} />
+              <IconForSymbol xml={item.svg} />
             </TouchableOpacity>
           )}
         />
@@ -173,21 +198,34 @@ function ChooseSymbolModal({ currentRoute, updateCurrentRoute, control, kind, se
   )
 }
 
-function renderFinish(object: RenderSymbolsPartParams) {
+function renderFinish(distToFinish: number) {
   return (
     <View style={styles.row}>
-      <View style={styles.cell}>
-        <Text style={styles.text}>◎</Text>
+      <View style={[styles.cell, { flex: 8 }]}>
+        <Text>TODO: FINISH</Text>
       </View>
-      <View style={styles.cell}>
-        <Text style={styles.text}>{object.content}</Text>
-      </View>
-      {Array.from({ length: 6 }).map((_, i) => (
-        <View key={i} style={styles.cell} />
-      ))}
     </View>
   );
 }
+
+function initSymbolsPart<T>(symbolsPartObject: { id: string, content: any }, predicate: (content: any) => content is T, notificationState: NotificationState, setNotificationState: SetState<NotificationState>):
+  symbolsPartObject is { id: string, content: T } {
+  if (predicate(symbolsPartObject.content)) {
+    return true;
+  }
+
+  setNotificationState({
+    ...notificationState,
+    show: true
+  });
+
+  return false;
+}
+
+const isContentForCourseTitle = (content: any): content is string => typeof content === "string";
+const isContentForRouteInfo = (content: any): content is RouteParams => Array.isArray(content);
+const isContentForControls = (content: any): content is Control[] => Array.isArray(content) && content.every(c => typeof c.code === "number" && Array.isArray(c.coords) && c.coords.length === 2);
+const isContentForFinish = (content: any): content is number => typeof content === "number";
 
 export default function ControlSymbolsPage() {
   const currentCourse = appState((s) => s.currentCourse);
@@ -197,19 +235,34 @@ export default function ControlSymbolsPage() {
   const updateCurrentRoute = appState((s) => s.updateCurrentRoute);
   const [showModal, setShowModal] = useState(false);
   const [chosenKind, setChosenKind] = useState<string | null>(null);
+  const [chosenControl, setChosenControl] = useState<Control | null>(null);
+  const [notificationState, setNotificationState] = useState<NotificationState>({
+    show: false,
+    message: 'Unexpected error while loading symbols, please try again',
+    type: 'error',
+  });
+
+
 
   const renderMethod = {
-    course_title: (object: any) => renderCourseTitle(object),
-    route_info: (object: any) => renderRouteInfo(object),
-    controls: (object: any) => renderControls(setShowModal, setChosenKind, object, currentRoute),
-    finish: (object: any) => renderFinish(object),
+    course_title: (object: any) =>
+      initSymbolsPart(object, isContentForCourseTitle, notificationState, setNotificationState) ? renderCourseTitle(object.content) : null,
+    route_info: (object: any) =>
+      initSymbolsPart(object, isContentForRouteInfo, notificationState, setNotificationState) ? renderRouteInfo(object.content) : null,
+    controls: (object: any) =>
+      initSymbolsPart(object, isContentForControls, notificationState, setNotificationState) ? renderControls(setShowModal, setChosenControl, setChosenKind, object.content, currentRoute) : null,
+    finish: (object: any) =>
+      initSymbolsPart(object, isContentForFinish, notificationState, setNotificationState) ? renderFinish(object.content) : null,
   };
 
   return (
     <SafeAreaProvider>
       <SafeAreaView>
         {showModal && chosenKind && (
-          <ChooseSymbolModal currentRoute={currentRoute} updateCurrentRoute={updateCurrentRoute} control={currentRoute.controls[0]} kind={chosenKind} setShowModal={setShowModal} />
+          <ChooseSymbolModal currentRoute={currentRoute} updateCurrentRoute={updateCurrentRoute} control={chosenControl} kind={chosenKind} setShowModal={setShowModal} />
+        )}
+        {notificationState.show && (
+          <Notification message={notificationState.message} type={notificationState.type} onClose={() => setNotificationState({ ...notificationState, show: false })} />
         )}
         <FlatList
           data={fullSymbolsList(currentCourse, currentRoute, controls)}
@@ -217,13 +270,11 @@ export default function ControlSymbolsPage() {
             <View>{(renderMethod as any)[item.id](item)}</View>
           )}
         />
-        <TouchableOpacity onPress={() => {
+        {/*<TouchableOpacity onPress={() => {
           const controls = currentRoute.controls;
-          console.log("Current route controls:", controls);
           const symbolsFromControl = controls.flatMap(control => control.symbols);
-          console.log("Symbols from controls:", symbolsFromControl);
         }}><Text>Print controls</Text>
-        </TouchableOpacity>
+        </TouchableOpacity>*/}
       </SafeAreaView>
     </SafeAreaProvider>
   );

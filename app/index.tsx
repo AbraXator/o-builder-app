@@ -1,9 +1,13 @@
 import ToolbarButton from '@/components/ToolbarButton';
-import { Language, Sun } from '@/constants/icons/icons';
+import { Language, Moon, Sun } from '@/constants/icons/icons';
+import { ThemeType, useTheme } from '@/libs/state/theme';
 import { router } from 'expo-router';
 import { Dimensions, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 export default function MainMenuPage() {
+  const { theme, themeId, toggleTheme } = useTheme();
+  const styles = createStyles(theme);
+
   return (
     <View style={styles.container}>
       <View style={styles.innerContainer}>
@@ -21,8 +25,8 @@ export default function MainMenuPage() {
           <MenuButton label="LOAD COURSE" onPress={() => { }} />
           <View style={styles.buttonGroup}>
             <ToolbarButton
-              icon={<Sun />}
-              onPress={() => console.log("Theme changed pressed")}
+              icon={ themeId === "dark" ? <Moon/> : <Sun/> }
+              onPress={() => toggleTheme()}
             />
             <ToolbarButton
               icon={<Language />}
@@ -42,6 +46,8 @@ function MenuButton({
   label: string;
   onPress: () => void;
 }) {
+  const styles = createStyles(useTheme().theme);
+
   return (
     <Pressable
       onPress={() => {
@@ -60,7 +66,7 @@ function MenuButton({
 
 const { width } = Dimensions.get('window');
 
-const styles = StyleSheet.create({
+const createStyles = (theme: ThemeType) => StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 16,

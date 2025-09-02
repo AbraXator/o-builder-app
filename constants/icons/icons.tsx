@@ -26,6 +26,23 @@ export const Sun = (props: SvgProps) => (
   </Svg>
 );
 
+export const Moon = (props: SvgProps) => (
+  <Svg
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="lucide lucide-moon-icon lucide-moon"
+    {...props}
+  >
+    <Path d="M20.985 12.486a9 9 0 11-9.473-9.472c.405-.022.617.46.402.803a6 6 0 008.268 8.268c.344-.215.825-.004.803.401" />
+  </Svg>
+)
+
 export const Language = (props: SvgProps) => (
   <Svg
     width={24}
@@ -264,5 +281,24 @@ export const Hand = (props: SvgProps) => (
   >
     <Path d="M18 11V6a2 2 0 00-2-2 2 2 0 00-2 2M14 10V4a2 2 0 00-2-2 2 2 0 00-2 2v2M10 10.5V6a2 2 0 00-2-2 2 2 0 00-2 2v8" />
     <Path d="M18 8a2 2 0 114 0v6a8 8 0 01-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 012.83-2.82L7 15" />
+  </Svg>
+)
+
+export const Route = (props: SvgProps) => (
+  <Svg
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="lucide lucide-route-icon lucide-route"
+    {...props}
+  >
+    <Circle cx={6} cy={19} r={3} />
+    <Path d="M9 19h8.5a3.5 3.5 0 000-7h-11a3.5 3.5 0 010-7H15" />
+    <Circle cx={18} cy={5} r={3} />
   </Svg>
 )

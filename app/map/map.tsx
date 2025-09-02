@@ -70,9 +70,10 @@ export function ChangeControlTypeLowerToolbar() {
   )
 }
 
-export function LowerToolbar({ setShowModal, setNotificationState }: {
-  setShowModal: (show: boolean) => void;
+export function LowerToolbar({ setShowConfirmationModal, setNotificationState, setShowRoutesModal }: {
+  setShowConfirmationModal: (show: boolean) => void;
   setNotificationState: SetState<NotificationState>;
+  setShowRoutesModal: (show: boolean) => void;
 }) {
   const currentCourse = appState((s) => s.currentCourse);
   const saveCurrentCourse = () => {
@@ -91,11 +92,11 @@ export function LowerToolbar({ setShowModal, setNotificationState }: {
 
   return (
     <View style={styles.lowerToolbarContainer}>
-      <ToolbarButton icon={<Home />} onPress={() => setShowModal(true)} />
+      <ToolbarButton icon={<Home />} onPress={() => setShowConfirmationModal(true)} />
       <ToolbarButton icon={<Save />} onPress={saveCurrentCourse} />
       <ToolbarButton icon={<Print />} onPress={() => console.log('PRINT')} />
       <ToolbarButton label="Controls" onPress={() => router.push('/map/controlSymbols')} />
-      <ToolbarButton label="Routes" onPress={() => router.push('/map/routes')} />
+      <ToolbarButton label="Routes" onPress={() => setShowRoutesModal(true)} />
     </View>
   );
 }
@@ -106,7 +107,8 @@ export default function MapPage() {
     message: '',
     type: 'info',
   });
-  const [showModal, setShowModal] = useState(false);
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [showRoutesModal, setShowRoutesModal] = useState(false);
   const [showExportDialog, setShowExportDialog] = useState(false);
   const currentCourseState = appState((s) => s.currentCourseState);
   const mapViewProps: MapViewProps = {
@@ -119,14 +121,14 @@ export default function MapPage() {
 
   return (
     <SafeAreaView style={styles.container}>
-      {showModal && (
+      {showConfirmationModal && (
         <ConfirmationModal
           title={'Exit to main page?'}
           message={'Any unsaved changes will be lost'}
           confirmText={'Exit'}
           onConfirm={() => router.push('/')}
-          onCancel={() => setShowModal(false)}
-          showModal={showModal}
+          onCancel={() => setShowConfirmationModal(false)}
+          showModal={showConfirmationModal}
         />
       )}
       {/* {showExportDialog && <ExportDialog />} */}
@@ -150,8 +152,9 @@ export default function MapPage() {
 
       {currentCourseState.mode !== InteractionModes.PLACING && (
         <LowerToolbar
-          setShowModal={setShowModal}
+          setShowConfirmationModal={setShowConfirmationModal}
           setNotificationState={setNotificationState}
+          setShowRoutesModal={setShowRoutesModal}
         />
       )}
 

@@ -1,4 +1,4 @@
-import { lightTheme } from "@/constants/theme";
+import { lightTheme } from "@/libs/state/theme";
 import { Text, TouchableOpacity } from "react-native";
 
 export default function ToolbarButton({ active, icon, label, onPress }: {

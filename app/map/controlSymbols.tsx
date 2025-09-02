@@ -1,6 +1,6 @@
 import { MapView, MapViewProps, moveMapToCoords } from "@/components/MapView";
 import { Notification, NotificationState } from "@/components/Notification";
-import { kindToIndex } from "@/hooks/ControlHooks";
+import { kindToIndex } from "@/hooks/CourseHooks";
 import { appState } from "@/libs/state/store";
 import { ControlTypes } from "@/libs/types/enums";
 import { useState } from "react";

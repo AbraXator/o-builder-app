@@ -2,12 +2,13 @@ import { createContext, ReactNode, useContext, useState } from "react";
 import { useColorScheme } from "react-native";
 
 const colors = {
-  neutral100: "#e4e4e7",
-  neutral200: "#d6d6d8",
-  neutral300: "#9f9fa9",
-  neutral400: "#71717b",
-  neutral500: "#52525c",
-  neutral600: "#27272a",
+  text: "#27272a",
+  neutral100: "#f4f4f5",
+  neutral200: "#e4e4e7",
+  neutral300: "#d6d6d8",
+  neutral400: "#9f9fa9",
+  neutral500: "#71717b",
+  neutral600: "#52525c",
   base100: "#fd2489",
   base200: "#fc51a1",
   base300: "#d24386",
@@ -33,6 +34,7 @@ const colors = {
   info500: "#0025cd",
   info600: "#001bba",
 }
+export type ThemeType = typeof colors;
 
 interface ThemeContextType {
   theme: typeof colors;
@@ -54,12 +56,13 @@ export function ThemeProvider({ children }: {
   if(isDark) {
     theme = {
       ...colors,
-      neutral100: "#18181b",
-      neutral200: "#27272a",
-      neutral300: "#3f3f46",
-      neutral400: "#52525c",
-      neutral500: "#62626b",
-      neutral600: "#e4e4e7",
+      neutral100: "#040405",
+      neutral200: "#18181b",
+      neutral300: "#27272a",
+      neutral400: "#3f3f46",
+      neutral500: "#52525c",
+      neutral600: "#62626b",
+      text: "#e4e4e7",
     }
   }
 

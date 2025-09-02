@@ -1,5 +1,5 @@
-import { lightTheme } from "@/libs/state/theme";
-import { Text, TouchableOpacity } from "react-native";
+import { ThemeType, useTheme } from "@/libs/state/theme";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 export default function ToolbarButton({ active, icon, label, onPress }: {
   active?: boolean;
@@ -7,17 +7,14 @@ export default function ToolbarButton({ active, icon, label, onPress }: {
   label?: string;
   onPress: () => void;
 }) {
+  const { theme } = useTheme();
+  const style = createStyles(theme);
+
   return (
-    <TouchableOpacity style={{
-      backgroundColor: active ? lightTheme.second : lightTheme.third,
-      padding: 4,
-      borderRadius: 999,
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-      maxHeight: 32,
-      maxWidth: 32,
-    }}
+    <TouchableOpacity style={[
+      style.button,
+      { backgroundColor: active ? theme.neutral300 : theme.neutral200 }
+    ]}
       onPress={onPress}
     >
       {icon}
@@ -25,3 +22,15 @@ export default function ToolbarButton({ active, icon, label, onPress }: {
     </TouchableOpacity>
   )
 }
+
+const createStyles = (theme: ThemeType) => StyleSheet.create({
+  button: {
+    padding: 4,
+    borderRadius: 999,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    maxHeight: 32,
+    maxWidth: 32,
+  }
+});

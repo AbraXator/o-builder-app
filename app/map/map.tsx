@@ -6,7 +6,7 @@ import { MapView, MapViewProps } from '../../components/MapView';
 import { Notification, NotificationState } from '@/components/Notification';
 import { GetIcon } from '@/constants/icons/controlIcons';
 import { Home, Pointer, Print, Save, Trashcan, Undo } from '@/constants/icons/icons';
-import { removeControl } from '@/hooks/ControlHooks';
+import { getCurrentRoute, removeControl } from '@/hooks/CourseHooks';
 import { appState } from '@/libs/state/store';
 import { setCourse } from '@/libs/storage/AsyncStorage';
 import { ControlTypes, InteractionModes } from '@/libs/types/enums';
@@ -17,6 +17,7 @@ import ToolbarButton from '../../components/ToolbarButton';
 function UpperToolbar() {
   const currentCourseState = appState((s) => s.currentCourseState);
   const currentCourse = appState((s) => s.currentCourse);
+  const currentRoute = appState((s) => s.currentRoute);
   const updateRoute = appState((s) => s.updateRoute);
   const updateCurrentCourseState = appState((s) => s.updateCurrentCourseState);
 
@@ -37,8 +38,8 @@ function UpperToolbar() {
       <ToolbarButton
         icon={<Trashcan />}
         onPress={() => {
-          if (currentCourseState.selectedControl !== undefined) {
-            removeControl(currentCourseState.selectedControl, currentCourse, updateRoute);
+          if (currentCourseState.selectedControl !== null) {
+            removeControl(currentCourseState.selectedControl, getCurrentRoute(currentCourseState, currentCourse), updateRoute);
             updateCurrentCourseState({ selectedControl: undefined });
           }
         }}
@@ -126,7 +127,7 @@ export default function MapPage() {
           title={'Exit to main page?'}
           message={'Any unsaved changes will be lost'}
           confirmText={'Exit'}
-          onConfirm={() => router.push('/')}
+          onConfirm={() => router.push('/app')}
           onCancel={() => setShowConfirmationModal(false)}
           showModal={showConfirmationModal}
         />

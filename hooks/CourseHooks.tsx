@@ -1,7 +1,11 @@
-export function removeControl(controlId, currentRoute, updateRoute) {
+export function removeControl(controlId: number, currentRoute: Route, updateRoute: (id: number, data: Partial<Route>) => void) {
   const updatedRoute = { ...currentRoute };
   delete updatedRoute.controls[controlId];
-  updateRoute(updatedRoute);
+  updateRoute(currentRoute.id, updatedRoute);
+}
+
+export function getCurrentRoute(currentCourseState: CourseState, currentCourse: Course) {
+  return currentCourse.routes[currentCourseState.currentRoute];
 }
 
 export function kindToIndex(kind: string) {

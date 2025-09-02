@@ -2,7 +2,7 @@ import ToolbarButton from '@/components/ToolbarButton';
 import { Language, Moon, Sun } from '@/constants/icons/icons';
 import { ThemeType, useTheme } from '@/libs/state/theme';
 import { router } from 'expo-router';
-import { Dimensions, Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function MainMenuPage() {
   const { theme, themeId, toggleTheme } = useTheme();
@@ -46,21 +46,20 @@ function MenuButton({
   label: string;
   onPress: () => void;
 }) {
-  const styles = createStyles(useTheme().theme);
+  const { theme } = useTheme();
+  console.log(theme)
+  const styles = createStyles(theme);
 
   return (
-    <Pressable
+    <TouchableOpacity
       onPress={() => {
         onPress();
         console.log("Pressed")
       }}
-      style={({ pressed }) => [
-        styles.button,
-        pressed && styles.buttonPressed,
-      ]}
+      style={ styles.button }
     >
       <Text style={styles.buttonText}>{label}</Text>
-    </Pressable>
+    </TouchableOpacity>
   );
 }
 
@@ -71,7 +70,7 @@ const createStyles = (theme: ThemeType) => StyleSheet.create({
     flex: 1,
     paddingHorizontal: 16,
     paddingTop: 64,
-    backgroundColor: '#ffffff',
+    backgroundColor: theme.neutral100,
     alignItems: 'center',
   },
   innerContainer: {
@@ -82,7 +81,7 @@ const createStyles = (theme: ThemeType) => StyleSheet.create({
   logoWrapper: {
     marginBottom: 32,
     elevation: 6, // Android shadow
-    shadowColor: '#000', // iOS shadow
+    shadowColor: theme.neutral600, // iOS shadow
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 4,
@@ -106,17 +105,17 @@ const createStyles = (theme: ThemeType) => StyleSheet.create({
   },
   button: {
     width: '100%',
-    backgroundColor: '#e5e5e5',
+    backgroundColor: theme.neutral200,
     padding: 16,
     borderRadius: 12,
     alignItems: 'center',
-    elevation: 4,
   },
   buttonPressed: {
-    backgroundColor: '#d4d4d4',
+    backgroundColor: theme.neutral300,
   },
   buttonText: {
     fontSize: 18,
     fontWeight: '600',
+    color: theme.text
   },
 });

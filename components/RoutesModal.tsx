@@ -12,12 +12,16 @@ function SingleRoute({ route, highlighted }: {
   route: Route;
   highlighted: boolean;
 }) {
-  <View style={[
-    styles.route,
-    { backgroundColor: highlighted ? useTheme().theme.second : "transparent" }
-  ]}>
+  const { theme } = useTheme();
 
-  </View>
+  return (
+    <View style={[
+      styles.route,
+      { backgroundColor: highlighted ? theme.base200 : "transparent" }
+    ]}>
+
+    </View>
+  )
 }
 
 export default function RoutesModal({ routesModalProps }: {

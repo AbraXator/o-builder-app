@@ -14,17 +14,26 @@ function SingleRoute({ route, highlighted }: {
   highlighted: boolean;
 }) {
   const { theme } = useTheme();
-  console.log(route)
+  const currentCourse = appState((s) => s.currentCourse);
+  const routes = currentCourse.routes;
+  const updateCurrentCourse = appState((s) => s.updateCurrentCourse)
+  const removeRoute = (id: number) => {
+    
+  }
 
   return (
-    <View style={[
-      styles.route,
-      { backgroundColor: highlighted ? theme.base200 : "transparent" }
-    ]}>
+    <TouchableOpacity
+      onPress={() => {
+        routes.filter
+      }}
+      style={[
+        styles.route,
+        { backgroundColor: highlighted ? theme.base200 : "transparent" }
+      ]}>
       <Text>
         {`Route: ${route.name}`}
       </Text>
-    </View>
+    </TouchableOpacity>
   )
 }
 

@@ -86,11 +86,11 @@ export default function CreateCoursePage() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => router.push('/app')} style={styles.iconButton}>
+        <TouchableOpacity onPress={() => router.push('')} style={styles.iconButton}>
           <Back/>
         </TouchableOpacity>
         <Text style={styles.headerText}>CREATE NEW COURSE</Text>
-        <TouchableOpacity onPress={() => router.push('/app')} style={styles.iconButton}>
+        <TouchableOpacity onPress={() => router.push('/')} style={styles.iconButton}>
           <Settings/>
         </TouchableOpacity>
       </View>

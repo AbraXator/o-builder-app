@@ -47,7 +47,6 @@ function MenuButton({
   onPress: () => void;
 }) {
   const { theme } = useTheme();
-  console.log(theme)
   const styles = createStyles(theme);
 
   return (

@@ -1,7 +1,8 @@
+import { appState } from "@/libs/state/store";
 import { useTheme } from "@/libs/state/theme";
-import { Modal, StyleSheet, Text, View } from "react-native";
+import { FlatList, Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-type RoutesModalProps = {
+export type RoutesModalProps = {
   routes: Route[];
   currentRoute: Route;
   showModal: boolean;
@@ -13,20 +14,26 @@ function SingleRoute({ route, highlighted }: {
   highlighted: boolean;
 }) {
   const { theme } = useTheme();
+  console.log(route)
 
   return (
     <View style={[
       styles.route,
       { backgroundColor: highlighted ? theme.base200 : "transparent" }
     ]}>
-
+      <Text>
+        {`Route: ${route.name}`}
+      </Text>
     </View>
   )
 }
 
-export default function RoutesModal({ routesModalProps }: {
+export function RoutesModal({ routesModalProps }: {
   routesModalProps: RoutesModalProps
 }) {
+  console.log(routesModalProps.routes)
+  const createRoute = appState((s) => s.createRoute);
+
   return (
     <View>
       <Modal
@@ -39,7 +46,26 @@ export default function RoutesModal({ routesModalProps }: {
           <View style={styles.backdrop}>
             <View style={styles.container}>
               <Text style={styles.title}>Routes</Text>
-
+              <FlatList
+                data={routesModalProps.routes}
+                renderItem={({ item }) => <SingleRoute route={item} highlighted={false} />}
+                keyExtractor={(item, index) => item.id.toString()}
+              />
+              <TouchableOpacity
+                onPress={() => {
+                  createRoute({
+                    id: 2,
+                    name: "asaifei",
+                    length: 20,
+                    climb: 20,
+                    controls: [],
+                  })
+                }}
+              >
+                <Text>
+                  NEW ROUTE
+                </Text>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -77,7 +103,7 @@ const styles = StyleSheet.create({
   route: {
     flex: 1,
     flexDirection: "row",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
     alignItems: "center"
   }
 })

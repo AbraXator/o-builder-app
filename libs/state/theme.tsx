@@ -70,7 +70,7 @@ export function ThemeProvider({ children }: {
     <ThemeContext.Provider value={{ theme, themeId: isDark ? "dark" : "light", toggleTheme }}>
       {children}
     </ThemeContext.Provider>
-  )
+  ) 
 }
 
 export function useTheme() {

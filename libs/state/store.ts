@@ -48,7 +48,7 @@ export const appState = create<AppState>((set) => ({
     const lastRouteId = state.currentCourse.routes[state.currentCourse.routes.length - 1].id;
     const newRoute: Route = {
       ...route,
-      id: lastRouteId,
+      id: lastRouteId + 1,
     }
     return {
       currentCourse: {

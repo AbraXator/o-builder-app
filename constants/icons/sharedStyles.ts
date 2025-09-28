@@ -9,7 +9,7 @@ export const createSharedStyles = (theme: ThemeType) => StyleSheet.create({
     alignItems: 'center',
   },
   modalContainer: {
-    backgroundColor: 'white',
+    backgroundColor: theme.neutral100,
     borderRadius: 12,
     padding: 20,
     shadowColor: '#000',

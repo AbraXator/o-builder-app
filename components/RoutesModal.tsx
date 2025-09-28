@@ -1,75 +1,86 @@
+import { Cross } from "@/constants/icons/icons";
+import { createSharedStyles } from "@/constants/icons/sharedStyles";
 import { appState } from "@/libs/state/store";
-import { useTheme } from "@/libs/state/theme";
+import { ThemeType, useTheme } from "@/libs/state/theme";
 import { useState } from "react";
 import { FlatList, Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import ToolbarButton from "./ToolbarButton";
 
 export type RoutesModalProps = {
-  routes: Route[];
-  currentRoute: Route;
-  showModal: boolean;
-  onClose: () => void;
+routes: Route[];
+currentRoute: Route;
+showModal: boolean;
+onClose: () => void;
 }
 
 function SingleRoute({ route, highlighted }: {
-  route: Route;
-  highlighted: boolean;
+route: Route;
+highlighted: boolean;
 }) {
-  const { theme } = useTheme();
-  const currentCourse = appState((s) => s.currentCourse);
-  const routes = currentCourse.routes;
-  const updateCurrentCourse = appState((s) => s.updateCurrentCourse)
-  const removeRoute = (id: number) => {
+const { theme } = useTheme();
+const currentCourse = appState((s) => s.currentCourse);
+const routes = currentCourse.routes;
+const updateCurrentCourse = appState((s) => s.updateCurrentCourse)
+const removeRoute = (id: number) => {
 
-  }
+}
 
-  return (
-    <TouchableOpacity
-      onPress={() => {
-        routes.filter
-      }}
-      style={[
-        styles.route,
-        { backgroundColor: highlighted ? theme.base200 : "transparent" }
-      ]}>
-      <Text>
-        {`Route: ${route.name}`}
-      </Text>
-    </TouchableOpacity>
-  )
+return (
+  <TouchableOpacity
+    onPress={() => {
+      routes.filter
+    }}
+    style={[
+      styles.route,
+      { backgroundColor: highlighted ? theme.base200 : "transparent" }
+    ]}>
+    <Text>
+      {`Route: ${route.name}`}
+    </Text>
+  </TouchableOpacity>
+)
 }
 
 enum ContentTypes {
-  CHOOSE = "choose",
-  CREATE = "create"
+CHOOSE = "choose",
+CREATE = "create"
 }
 
 type ModalContentType = {
-  type: typeof ContentTypes[keyof typeof ContentTypes];
+type: typeof ContentTypes[keyof typeof ContentTypes];
 }
 
 export function RoutesModal({ routesModalProps }: {
-  routesModalProps: RoutesModalProps
+routesModalProps: RoutesModalProps
 }) {
-  console.log(routesModalProps.routes)
-  const createRoute = appState((s) => s.createRoute);
-  const [modalContent, setModalContent] = useState<ModalContentType>({
-    type: ContentTypes.CHOOSE
-  })
+console.log(routesModalProps.routes)
+const createRoute = appState((s) => s.createRoute);
+const [modalContent, setModalContent] = useState<ModalContentType>({
+  type: ContentTypes.CHOOSE
+})
+const styles = createStyle(useTheme().theme)
+const sharedStyles = createSharedStyles(useTheme().theme);
 
-  return (
-    <View>
-      <Modal
-        transparent={true}
-        animationType="fade"
-        visible={routesModalProps.showModal}
-        onRequestClose={routesModalProps.onClose}
-      >
-        <View style={{ flex: 1 }}>
-          <View style={styles.backdrop}>
-            <View style={styles.container}>
+return (
+  <View>
+    <Modal
+      transparent={true}
+      animationType="fade"
+      visible={routesModalProps.showModal}
+      onRequestClose={routesModalProps.onClose}
+    >
+      <View style={{ flex: 1 }}>
+        <View style={sharedStyles.modalBackdrop}>
+            <View style={sharedStyles.modalContainer}>
               {modalContent.type === ContentTypes.CHOOSE &&
                 <View>
-                  <Text style={styles.title}>Routes</Text>
+                  <View style={styles.header}>
+                    <Text style={styles.title}>Routes</Text>
+                    <ToolbarButton 
+                      onPress={routesModalProps.onClose}
+                      icon={<Cross/>}
+                    />
+                  </View>
                   <FlatList
                     data={routesModalProps.routes}
                     renderItem={({ item }) => <SingleRoute route={item} highlighted={false} />}
@@ -100,7 +111,7 @@ export function RoutesModal({ routesModalProps }: {
   )
 }
 
-const styles = StyleSheet.create({
+export const createStyle = (theme: ThemeType) => StyleSheet.create({
   backdrop: {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.5)',
@@ -131,5 +142,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center"
+  },
+  header: {
+    flex: 1, 
+    flexDirection: "row",
+    justifyContent: "space-between"
   }
-})
+})  

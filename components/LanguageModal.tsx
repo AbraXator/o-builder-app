@@ -1,4 +1,3 @@
-import { createSharedStyles } from "@/constants/icons/sharedStyles";
 import { languages } from "@/libs/state/i18n";
 import { useTheme } from "@/libs/state/theme";
 import { useTranslation } from "react-i18next";
@@ -35,7 +34,7 @@ function LanguageRenderer({ langProps }: {
 
 export default function LanguageModal() {
   const { t, i18n } = useTranslation();
-  const sharedStyles = createSharedStyles(useTheme().theme);
+  const sharedStyles = sharedStyles(useTheme().theme);
   const listOfLangs = [];
 
   for (const [key, value] of Object.entries(languages)) {

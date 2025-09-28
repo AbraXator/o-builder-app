@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from "react";
-import { useColorScheme } from "react-native";
+import { NamedStyles, useColorScheme } from "react-native";
 
 const colors = {
   text: "#27272a",
@@ -81,3 +81,7 @@ export function useTheme() {
 
    return context;
 }
+
+export function joinedStyles<
+  T extends NamedStyles<>
+>({  })

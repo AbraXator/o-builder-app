@@ -1,53 +1,31 @@
-import { Add, Cross, Trashcan } from "@/constants/icons/icons";
-import { getCurrentRoute } from "@/hooks/CourseHooks";
 import { appState } from "@/libs/state/store";
 import { useTheme } from "@/libs/state/theme";
-import { setCourse } from "@/libs/storage/AsyncStorage";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { FlatList, Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { TextInput } from "react-native-gesture-handler";
-import ToolbarButton from "./ToolbarButton";
 
 export type RoutesModalProps = {
-  routes: Route[];
-  currentRoute: Route;
-  showModal: boolean;
-  onClose: () => void;
+routes: Route[];
+currentRoute: Route;
+showModal: boolean;
+onClose: () => void;
 }
 
 function SingleRoute({ route, highlighted }: {
-  route: Route;
-  highlighted: boolean;
+route: Route;
+highlighted: boolean;
 }) {
   const { theme } = useTheme();
   const currentCourse = appState((s) => s.currentCourse);
-  const currentCourseState = appState((s) => s.currentCourseState);
   const routes = currentCourse.routes;
   const updateCurrentCourse = appState((s) => s.updateCurrentCourse)
-  const updateCurrentCourseState = appState().updateCurrentCourseState;
-  const removeRoute = useCallback(async () => {
-    console.log("removeRoute called");
+  const removeRoute = (id: number) => {
 
-    if (!currentCourse?.routes) return;
-
-    const editedRoutes = currentCourse.routes.filter(r => r.id !== route.id);
-
-    if (currentCourse.id) {
-      await setCourse(
-        {
-          ...currentCourse,
-          routes: editedRoutes,
-        },
-        currentCourse.id
-      );
-      updateCurrentCourse({ ...currentCourse, routes: editedRoutes })
-    }
-  }, [currentCourse, route, setCourse]);
+  }
 
   return (
     <TouchableOpacity
       onPress={() => {
-        updateCurrentCourseState({ currentRoute: route.id })
+        routes.filter
       }}
       style={[
         styles.route,
@@ -56,20 +34,17 @@ function SingleRoute({ route, highlighted }: {
       <Text>
         {`Route: ${route.name}`}
       </Text>
-      {
-        route.id !== 0 && <ToolbarButton onPress={removeRoute} icon={<Trashcan />} />
-      }
     </TouchableOpacity>
   )
 }
 
 enum ContentTypes {
-  CHOOSE = "choose",
-  CREATE = "create"
+CHOOSE = "choose",
+CREATE = "create"
 }
 
 type ModalContentType = {
-  type: typeof ContentTypes[keyof typeof ContentTypes];
+type: typeof ContentTypes[keyof typeof ContentTypes];
 }
 
 type FormData = {
@@ -200,31 +175,49 @@ function CreateRouteModal({ routesModalProps, setModalContent }: {
 }
 
 export function RoutesModal({ routesModalProps }: {
-  routesModalProps: RoutesModalProps
+routesModalProps: RoutesModalProps
 }) {
-  const selectedRoute = appState((s) => s.currentRoute);
-  const currentCourseState = appState().currentCourseState;
-  const currentCourse = appState().currentCourse;
+  console.log(routesModalProps.routes)
+  const createRoute = appState((s) => s.createRoute);
   const [modalContent, setModalContent] = useState<ModalContentType>({
     type: ContentTypes.CHOOSE
-  });
+  })
 
-  return (
-    <View>
-      <Modal
-        transparent={true}
-        animationType="fade"
-        visible={routesModalProps.showModal}
-        onRequestClose={routesModalProps.onClose}
-      >
-        <View style={{ flex: 1 }}>
-          <View style={styles.backdrop}>
-            <View style={styles.container}>
+return (
+  <View>
+    <Modal
+      transparent={true}
+      animationType="fade"
+      visible={routesModalProps.showModal}
+      onRequestClose={routesModalProps.onClose}
+    >
+      <View style={{ flex: 1 }}>
+        <View style={sharedStyles.modalBackdrop}>
+            <View style={sharedStyles.modalContainer}>
               {modalContent.type === ContentTypes.CHOOSE &&
-                <SelectRouteModal routesModalProps={routesModalProps} setModalContent={setModalContent} />
-              }
-              {modalContent.type === ContentTypes.CREATE &&
-                <CreateRouteModal routesModalProps={routesModalProps} setModalContent={setModalContent} />
+                <View>
+                  <Text style={styles.title}>Routes</Text>
+                  <FlatList
+                    data={routesModalProps.routes}
+                    renderItem={({ item }) => <SingleRoute route={item} highlighted={false} />}
+                    keyExtractor={(item, index) => item.id.toString()}
+                  />
+                  <TouchableOpacity
+                    onPress={() => {
+                      createRoute({
+                        id: 0,
+                        name: "asaifei",
+                        length: 20,
+                        climb: 20,
+                        controls: [],
+                      })
+                    }}
+                  >
+                    <Text>
+                      NEW ROUTE
+                    </Text>
+                  </TouchableOpacity>
+                </View>
               }
             </View>
           </View>
@@ -234,7 +227,7 @@ export function RoutesModal({ routesModalProps }: {
   )
 }
 
-const styles = StyleSheet.create({
+export const createStyle = (theme: ThemeType) => StyleSheet.create({
   backdrop: {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.5)',
@@ -272,12 +265,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     justifyContent: "center",
-    alignItems: "center",
-    padding: 4,
-    borderRadius: 8,
-    margin: 4
-  },
-  lowerToolbar: {
-    flexDirection: "row-reverse",
+    alignItems: "center"
   }
-})
+})  

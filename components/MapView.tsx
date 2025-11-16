@@ -61,6 +61,10 @@ function ControlMarker({ control, index, helperControl }: { control: Control; in
   )
 }
 
+function intersectRayWithTriangle(direction: Vec) {
+  let minT = 
+}
+
 function ControlLine({ sortedControls }: {
   sortedControls: Control[]
 }) {

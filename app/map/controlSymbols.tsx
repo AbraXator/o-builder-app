@@ -142,8 +142,8 @@ function ChooseSymbolModal({ currentRoute, updateCurrentRoute, control, kind, se
     imageUri: appState((s) => s.currentCourse.map),
     scale: 0.5,
     rotation: 0,
-    translationX: safeControl.coords[0],
-    translationY: safeControl.coords[1],
+    translationX: safeControl.coords.x,
+    translationY: safeControl.coords.y,
   }
   moveMapToCoords(safeControl.coords, mapViewProps);
 

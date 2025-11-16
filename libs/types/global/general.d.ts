@@ -19,6 +19,8 @@ declare global {
     previousCoords?: [number, number];
     controlIndex?: number;
   }
+
+  type Vec = { x: number; y: number }
 }
 
 export { };

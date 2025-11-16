@@ -12,22 +12,30 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue
 } from 'react-native-reanimated';
+import Svg, { Polyline } from 'react-native-svg';
 import { Notification, NotificationState } from './Notification';
 
 
 const window = Dimensions.get('window');
 
-function ControlMarker({ control, index }: { control: Control; index: number }) {
+function ControlMarker({ control, index, helperControl }: { control: Control; index: number, helperControl: boolean }) {
   const currentCourseState = appState((s) => s.currentCourseState);
   const updateCurrentCourseState = appState((s) => s.updateCurrentCourseState);
   const interactionMode = appState((s) => s.currentCourseState.mode);
 
   const handleTap = runOnJS(() => {
-    console.log("A")
     if (interactionMode === InteractionModes.INTERACTING) {
       updateCurrentCourseState({ selectedControl: index });
     }
   })
+
+  const getControlColor = () => {
+    if (currentCourseState.selectedControl === index) {
+      return "#6a32ed";
+    }
+
+    return "#ed3288";
+  }
 
   return (
     <TouchableOpacity
@@ -35,13 +43,16 @@ function ControlMarker({ control, index }: { control: Control; index: number }) 
       onPress={handleTap}
       style={{
         position: 'absolute',
-        left: control.coords[0],
-        top: control.coords[1],
+        left: control.coords.x - 12,
+        top: control.coords.y - 12,
         height: 24,
         width: 24,
       }}
     >
-      <GetIcon type={control.type} props={{ stroke: currentCourseState.selectedControl === index ? "#6a32ed" : "#ed3288" }} />
+      <GetIcon type={control.type} props={{
+        stroke: getControlColor(),
+        strokeOpacity: helperControl ? 0.2 : 1,
+      }} />
       <Text style={{ color: 'white', fontSize: 12 }}>
         {control.code}
       </Text>
@@ -50,16 +61,62 @@ function ControlMarker({ control, index }: { control: Control; index: number }) 
   )
 }
 
+function ControlLine({ sortedControls }: {
+  sortedControls: Control[]
+}) {
+  let lines = [];
+
+  for (let i = 0; i < sortedControls.length - 1; i++) {
+    let coords: Vec[] = [];
+    const currentControl = sortedControls[i];
+    const nextControl = sortedControls[i + 1];
+
+    if (currentControl.coords.x === nextControl.coords.x &&
+      currentControl.coords.y === nextControl.coords.y
+    ) {
+      continue;
+    }
+
+    const trimRad = nextControl.type === ControlTypes.START ? 15.4 : 12;
+
+    if (nextControl !== null) {
+      let dx = nextControl.coords.x - currentControl.coords.x;
+      let dy = nextControl.coords.y - currentControl.coords.y;
+      let lenght = Math.sqrt(dx * dx + dy * dy);
+      if (lenght < 24) continue; //avoid drawing lines between close controls
+      let unitX = dx / lenght;
+      let unitY = dy / lenght;
+      let newAx = currentControl.coords.x + unitX * trimRad;
+      let newAy = currentControl.coords.y + unitY * trimRad;
+      let newBx = nextControl.coords.x - unitX * trimRad;
+      let newBy = nextControl.coords.y - unitY * trimRad;
+      coords.push({x: newAx, y: newAy});
+      coords.push({x: newBx, y: newBy});
+    }
+
+    lines.push(<Polyline
+      points={`${coords[0]},${coords[1]}`}
+      key={`${i}-${coords[i]}`}
+      stroke="#ed3288"
+      strokeWidth="2"
+      fill="none"
+    />)
+  }
+
+  return lines;
+}
+
 function addControl(x: number, y: number, type: ControlType, controlsList: Control[], setNotification: SetState<NotificationState>) {
   console.log("Tap detected at:", x, y);
   const state = appState.getState();
   const currentCourse = state.currentCourse;
   const currentCourseState = state.currentCourseState;
   const addControlToCurrentRoute = state.addControlToCurrentRoute;
+  const addControlToAllControls = state.addControlToAllControls;
   const currentRoute = state.currentRoute();
   const initDefaultControl: Control = {
     type: type,
-    coords: [x, y],
+    coords: {x, y},
     code: 0,
     number: -1,
     symbols: [
@@ -100,8 +157,8 @@ function addControl(x: number, y: number, type: ControlType, controlsList: Contr
     return;
   }
 
-  console.log("Default control: ", initDefaultControl)
   addControlToCurrentRoute(initDefaultControl);
+  //addControlToAllControls(initDefaultControl);
 }
 
 function deselectControl(setCurrentCourseState: (data: Partial<CourseState>) => void, currentCourseState: CourseState) {
@@ -112,9 +169,9 @@ function deselectControl(setCurrentCourseState: (data: Partial<CourseState>) => 
   }
 }
 
-export function moveMapToCoords(coords: [number, number], mapViewProps: MapViewProps) {
-  mapViewProps.translationX = -coords[0] * mapViewProps.scale + window.width / 2;
-  mapViewProps.translationY = -coords[1] * mapViewProps.scale + window.height / 2;
+export function moveMapToCoords(coords: Vec, mapViewProps: MapViewProps) {
+  mapViewProps.translationX = -coords.x * mapViewProps.scale + window.width / 2;
+  mapViewProps.translationY = -coords.y * mapViewProps.scale + window.height / 2;
 }
 
 export type MapViewProps = {
@@ -140,6 +197,7 @@ export function MapView({ mapViewProps }: { mapViewProps: MapViewProps }) {
   const [currentNotificationState, setNotificationState] = useState<NotificationState>({ show: false, message: '', type: 'info' });
   const setCurrentCourseState = appState((s) => s.updateCurrentCourseState);
   const currentCourseState = appState((s) => s.currentCourseState);
+  const currentCourse = appState((s) => s.currentCourse);
 
   const panGesture = Gesture.Pan()
     .onUpdate((event) => {
@@ -191,6 +249,16 @@ export function MapView({ mapViewProps }: { mapViewProps: MapViewProps }) {
   }));
 
   const controls = appState((s) => s.currentRoute()).controls;
+  const sortedControls: Control[] = [
+    ...controls.filter((c: Control) => c.type === 'start'),
+    ...controls.filter((c: Control) => c.type === 'control'),
+    ...controls.filter((c: Control) => c.type === 'finish')
+  ]
+  const shouldRenderHelperControls = () => {
+    return interactionMode === InteractionModes.PLACING && currentCourseState.currentRoute !== 0;
+  }
+
+  console.log(shouldRenderHelperControls());
 
   return (
     <GestureDetector gesture={interactionMode !== InteractionModes.PLACING ? composed : tapGesture}>
@@ -217,9 +285,22 @@ export function MapView({ mapViewProps }: { mapViewProps: MapViewProps }) {
           resizeMode="contain"
         />
 
+        <Svg
+          height={window.height}
+          width={window.width}
+          style={{ position: 'absolute', top: 0, left: 0 }}
+        >
+          <ControlLine sortedControls={sortedControls}/>
+        </Svg>
+
         {controls.map((control, index) => (
-          <ControlMarker key={index} control={control} index={index} />
+          <ControlMarker key={index} control={control} index={index} helperControl={false} />
         ))}
+
+        {shouldRenderHelperControls() && currentCourse.routes[0].controls.map((control, index) => (
+          <ControlMarker key={index} control={control} index={index} helperControl={true} />
+        ))}
+
       </Animated.View>
 
     </GestureDetector>

@@ -6,7 +6,7 @@ declare global {
 
   interface Control {
     type: ControlType;
-    coords: [number, number];
+    coords: Vec;
     code: number;
     number: number;
     symbols: ControlSymbol[];

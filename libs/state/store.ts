@@ -4,12 +4,13 @@ interface AppState {
   currentCourse: Course;
   currentCourseState: CourseState;
   theme: String;
-  
+
   currentRoute: () => Route;
   createRoute: (route: Route) => void;
   updateRoute: (id: number, data: Partial<Route>) => void;
   updateCurrentRoute: (data: Partial<Route>) => void;
   addControlToCurrentRoute: (control: Control) => void;
+  addControlToAllControls: (control: Control) => void;
   removeRoute: (id: number) => void;
   updateCurrentCourse: (data: Partial<Course>) => void;
   setCurrentCourse: (course: Course) => void;
@@ -65,41 +66,63 @@ export const appState = create<AppState>((set) => ({
 
     return {
       currentCourse: {
-      ...state.currentCourse,
-      routes: state.currentCourse.routes.map((originalRoute) => originalRoute.id === id ? { ...originalRoute, ...newValues } : originalRoute)
+        ...state.currentCourse,
+        routes: state.currentCourse.routes.map((originalRoute) => originalRoute.id === id ? { ...originalRoute, ...newValues } : originalRoute)
       }
     }
-    }),
-    updateCurrentRoute: (newValues) => set((state) => ({
+  }),
+  updateCurrentRoute: (newValues) => set((state) => ({
     currentCourse: {
       ...state.currentCourse,
       routes: state.currentCourse.routes.map((originalRoute) =>
-      originalRoute.id === state.currentCourseState.currentRoute
-        ? { ...originalRoute, ...newValues }
-        : originalRoute
+        originalRoute.id === state.currentCourseState.currentRoute
+          ? { ...originalRoute, ...newValues }
+          : originalRoute
       ),
     },
-    })),
-    addControlToCurrentRoute: (control) => set((state) => {
+  })),
+  addControlToCurrentRoute: (control) => set((state) => {
     const currentRoute = state.currentCourse.routes.find((r) => r.id === state.currentCourseState.currentRoute);
     if (!currentRoute) return state;
 
     const controls = currentRoute.controls || [];
+    const lastControlCode = controls.length > 0 ? (controls[controls.length - 1]?.code ?? 0) : 0;
+    const newControl = { ...control, code: lastControlCode + 1 };
+
+    console.log("Controls: " + controls);
+    console.log("Last control code: " + lastControlCode);
+
+    return {
+      currentCourse: {
+        ...state.currentCourse,
+        routes: state.currentCourse.routes.map((r) =>
+          r.id === currentRoute.id
+            ? { ...r, controls: [...controls, newControl] }
+            : r
+        ),
+      },
+    };
+  }),
+  addControlToAllControls: (control) => set((state) => {
+    const allControlsRoute = state.currentCourse.routes.find((r) => r.id === 0);
+    if (!allControlsRoute) return state;
+
+    const controls = allControlsRoute.controls || [];
     const lastControlCode = controls.length > 0 ? controls[controls.length - 1].code : 0;
     const newControl = { ...control, code: lastControlCode + 1 };
 
     return {
       currentCourse: {
-      ...state.currentCourse,
-      routes: state.currentCourse.routes.map((r) =>
-        r.id === currentRoute.id
-        ? { ...r, controls: [...controls, newControl] }
-        : r
-      ),
+        ...state.currentCourse,
+        routes: state.currentCourse.routes.map((r) =>
+          r.id === allControlsRoute.id
+            ? { ...r, controls: [...controls, newControl] }
+            : r
+        ),
       },
     };
-    }),
-    removeRoute: (id) => set((state) => {
+  }),
+  removeRoute: (id) => set((state) => {
     return {
       currentCourse: {
         ...state.currentCourse,

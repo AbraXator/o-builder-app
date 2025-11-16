@@ -1,6 +1,18 @@
-export function removeControl(controlId: number, currentRoute: Route, updateRoute: (id: number, data: Partial<Route>) => void) {
+
+export function removeControl(
+  controlId: number,
+  currentRoute: Route,
+  updateRoute: (id: number, data: Partial<Route>) => void,
+) {
   const updatedRoute = { ...currentRoute };
-  delete updatedRoute.controls[controlId];
+  updatedRoute.controls = updatedRoute.controls.filter((_, i) => i !== controlId);
+
+  updatedRoute.controls.forEach((c, i) => {
+    if (c.code >= controlId + 1) {
+      c.code = c.code - 1;
+    }
+  });
+
   updateRoute(currentRoute.id, updatedRoute);
 }
 

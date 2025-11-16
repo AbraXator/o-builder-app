@@ -302,3 +302,37 @@ export const Route = (props: SvgProps) => (
     <Circle cx={18} cy={5} r={3} />
   </Svg>
 )
+
+export const Cross = (props: SvgProps) => (
+  <Svg
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="lucide lucide-x-icon lucide-x"
+    {...props}
+  >
+    <Path d="M18 6L6 18M6 6l12 12" />
+  </Svg>
+)
+
+export const Add = (props: SvgProps) => (
+  <Svg
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="lucide lucide-plus-icon lucide-plus"
+    {...props}
+  >
+    <Path d="M5 12h14M12 5v14" />
+  </Svg>
+)

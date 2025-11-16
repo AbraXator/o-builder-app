@@ -1,4 +1,4 @@
-import { createSharedStyles } from "@/constants/icons/sharedStyles";
+import { createSharedStyles } from "@/constants/sharedStyles";
 import { languages } from "@/libs/state/i18n";
 import { useTheme } from "@/libs/state/theme";
 import { useTranslation } from "react-i18next";

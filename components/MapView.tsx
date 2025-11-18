@@ -62,7 +62,32 @@ function ControlMarker({ control, index, helperControl }: { control: Control; in
 }
 
 function intersectRayWithTriangle(direction: Vec) {
-  let minT = 
+  const TRIANGLE_VERTICES = [
+    { x: -10.19, y: 8.825 },
+    { x: 0.00, y: -8.825 },
+    { x: 10.19, y: 8.825 }
+  ];
+  let minT = Number.POSITIVE_INFINITY;
+  
+  for(let i = 0; i < 3; i++) {
+    const A = TRIANGLE_VERTICES[i];
+    const B = TRIANGLE_VERTICES[(i + 1) % 3];
+    const edge = { x: B.x - A.x, y: B.y - A.y };
+    const denom = (edge.x * direction.y - edge.y * direction.x) 
+    
+    if(Math.abs(denom) < 1e-6) continue;
+
+    const u = (direction.x * A.y - direction.y * A.x) / denom;
+
+    if(u < 0 || u > 1) continue;
+    
+    const ix = A.x + edge.x * u;
+    const iy = A.y + edge.y * u;
+    const t = Math.sqrt(ix * ix + iy * iy);
+    if(t > 0 && t < minT) minT = t;
+  }
+
+  return minT;
 }
 
 function ControlLine({ sortedControls }: {
@@ -94,8 +119,8 @@ function ControlLine({ sortedControls }: {
       let newAy = currentControl.coords.y + unitY * trimRad;
       let newBx = nextControl.coords.x - unitX * trimRad;
       let newBy = nextControl.coords.y - unitY * trimRad;
-      coords.push({x: newAx, y: newAy});
-      coords.push({x: newBx, y: newBy});
+      coords.push({ x: newAx, y: newAy });
+      coords.push({ x: newBx, y: newBy });
     }
 
     lines.push(<Polyline
@@ -120,7 +145,7 @@ function addControl(x: number, y: number, type: ControlType, controlsList: Contr
   const currentRoute = state.currentRoute();
   const initDefaultControl: Control = {
     type: type,
-    coords: {x, y},
+    coords: { x, y },
     code: 0,
     number: -1,
     symbols: [
@@ -294,7 +319,7 @@ export function MapView({ mapViewProps }: { mapViewProps: MapViewProps }) {
           width={window.width}
           style={{ position: 'absolute', top: 0, left: 0 }}
         >
-          <ControlLine sortedControls={sortedControls}/>
+          <ControlLine sortedControls={sortedControls} />
         </Svg>
 
         {controls.map((control, index) => (

@@ -68,26 +68,37 @@ function intersectRayWithTriangle(direction: Vec) {
     { x: 10.19, y: 8.825 }
   ];
   let minT = Number.POSITIVE_INFINITY;
-  
-  for(let i = 0; i < 3; i++) {
-    const A = TRIANGLE_VERTICES[i];
-    const B = TRIANGLE_VERTICES[(i + 1) % 3];
+
+  for (let vertex = 0; vertex < TRIANGLE_VERTICES.length; vertex++) {
+    const A = TRIANGLE_VERTICES[vertex];
+    const B = TRIANGLE_VERTICES[(vertex + 1) % 3];
     const edge = { x: B.x - A.x, y: B.y - A.y };
-    const denom = (edge.x * direction.y - edge.y * direction.x) 
-    
+
+    const denom = (edge.x * direction.y - edge.y * direction.x);
     if(Math.abs(denom) < 1e-6) continue;
 
-    const u = (direction.x * A.y - direction.y * A.x) / denom;
-
+    const u = (direction.x * (A.y) - direction.y * (A.x)) / denom;
     if(u < 0 || u > 1) continue;
-    
+
     const ix = A.x + edge.x * u;
     const iy = A.y + edge.y * u;
+
     const t = Math.sqrt(ix * ix + iy * iy);
     if(t > 0 && t < minT) minT = t;
   }
 
   return minT;
+} 
+
+function getTrimRadiusForControl(control: Control, nextControl: Control) {
+  if(control.type !== ControlTypes.START) return 12;
+
+  const dx = nextControl.coords.x - control.coords.x;
+  const dy = nextControl.coords.y - control.coords.y;
+  const len = Math.sqrt(dx * dx + dy * dy);
+  const dir = { x: dx / len, y: dy / len };
+
+  return intersectRayWithTriangle(dir);
 }
 
 function ControlLine({ sortedControls }: {
@@ -106,7 +117,8 @@ function ControlLine({ sortedControls }: {
       continue;
     }
 
-    const trimRad = nextControl.type === ControlTypes.START ? 15.4 : 12;
+    const trimRadA = getTrimRadiusForControl(currentControl, nextControl);
+    const trimRadB = getTrimRadiusForControl(nextControl, currentControl);
 
     if (nextControl !== null) {
       let dx = nextControl.coords.x - currentControl.coords.x;
@@ -115,10 +127,10 @@ function ControlLine({ sortedControls }: {
       if (lenght < 24) continue; //avoid drawing lines between close controls
       let unitX = dx / lenght;
       let unitY = dy / lenght;
-      let newAx = currentControl.coords.x + unitX * trimRad;
-      let newAy = currentControl.coords.y + unitY * trimRad;
-      let newBx = nextControl.coords.x - unitX * trimRad;
-      let newBy = nextControl.coords.y - unitY * trimRad;
+      let newAx = currentControl.coords.x + unitX * trimRadA;
+      let newAy = currentControl.coords.y + unitY * trimRadA;
+      let newBx = nextControl.coords.x - unitX * trimRadB;
+      let newBy = nextControl.coords.y - unitY * trimRadB;
       coords.push({ x: newAx, y: newAy });
       coords.push({ x: newBx, y: newBy });
     }

@@ -1,7 +1,7 @@
-import ToolbarButton from '@/components/ToolbarButton';
 import { Language, Moon, Sun } from '@/constants/icons/icons';
 import { ThemeType, useTheme } from '@/libs/state/theme';
 import { router } from 'expo-router';
+import React from 'react';
 import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function MainMenuPage() {
@@ -24,11 +24,11 @@ export default function MainMenuPage() {
           <MenuButton label="RECENT COURSES" onPress={() => router.push('/recentCourses')} />
           <MenuButton label="LOAD COURSE" onPress={() => { }} />
           <View style={styles.buttonGroup}>
-            <ToolbarButton
-              icon={ themeId === "dark" ? <Moon/> : <Sun/> }
+            <UtilButton
+              icon={themeId === "dark" ? <Moon /> : <Sun />}
               onPress={() => toggleTheme()}
             />
-            <ToolbarButton
+            <UtilButton
               icon={<Language />}
               onPress={() => console.log("Language changed pressed")}
             />
@@ -37,6 +37,27 @@ export default function MainMenuPage() {
       </View>
     </View>
   );
+}
+
+function UtilButton({ icon, onPress }: {
+  icon?: React.JSX.Element,
+  onPress: () => void,
+}) {
+  const theme = useTheme().theme;
+  const style = createStyles(theme);
+  const coloredIcon = 
+    icon && theme.neutral500
+      ? React.cloneElement(icon, { color: theme.control300 })
+      : icon;
+
+  return (
+    <TouchableOpacity
+      style={style.utilButton}
+      onPress={onPress}
+    >
+      {coloredIcon}
+    </TouchableOpacity>
+  )
 }
 
 function MenuButton({
@@ -55,7 +76,7 @@ function MenuButton({
         onPress();
         console.log("Pressed")
       }}
-      style={ styles.button }
+      style={styles.button}
     >
       <Text style={styles.buttonText}>{label}</Text>
     </TouchableOpacity>
@@ -80,7 +101,7 @@ const createStyles = (theme: ThemeType) => StyleSheet.create({
   logoWrapper: {
     marginBottom: 32,
     elevation: 6, // Android shadow
-    shadowColor: theme.neutral600, // iOS shadow
+    shadowColor: theme.neutral100, // iOS shadow
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 4,
@@ -104,7 +125,9 @@ const createStyles = (theme: ThemeType) => StyleSheet.create({
   },
   button: {
     width: '100%',
-    backgroundColor: theme.neutral200,
+    backgroundColor: theme.control100,
+    borderColor: theme.control200,
+    borderWidth: 4,
     padding: 16,
     borderRadius: 12,
     alignItems: 'center',
@@ -115,6 +138,16 @@ const createStyles = (theme: ThemeType) => StyleSheet.create({
   buttonText: {
     fontSize: 18,
     fontWeight: '600',
-    color: theme.text
+    color: theme.neutral700
   },
+  utilButton: {
+    backgroundColor: theme.control200,
+    padding: 4,
+    borderRadius: 999,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    maxHeight: 32,
+    maxWidth: 32,
+  }
 });

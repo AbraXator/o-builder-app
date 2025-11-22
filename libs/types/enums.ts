@@ -1,7 +1,7 @@
 export enum InteractionModes {
-  INTERACTING = "interacting",
+  NORMAL = "interacting",
   PLACING = "placing",
-  MOVING = "moving",
+  EDITING = "editing",
 } 
 
 export enum ControlTypes {

@@ -19,33 +19,39 @@ export const GetIcon = (
 
 export const Start = (props: SvgProps) => (
   <Svg
+    width={24}
+    height={24}
     viewBox="0 0 23.84 20.65"
     fill="none"
     pointerEvents="none"
     {...props}
   >
-    <Path stroke="#ed3288" d="M1.73 19.65L11.92 2 22.11 19.65 1.73 19.65z" />
+    <Path stroke={props.stroke ?? "#ed3288"} d="M1.73 19.65L11.92 2 22.11 19.65 1.73 19.65z" />
   </Svg>
 )
 
 export const Control = (props: SvgProps) => (
   <Svg
+    width={24}
+    height={24}
     viewBox="0 0 24 24"
     pointerEvents="none"
     {...props}
   >
-    <Circle cx={12} cy={12} r={11} fill="none" />
+    <Circle stroke={props.stroke ?? "#ed3288"} cx={12} cy={12} r={11} fill="none" />
   </Svg>
 )
 
 export const Finish = (props: SvgProps) => (
   <Svg
+    width={24}
+    height={24}
     viewBox="0 0 24 24"
     fill="none"
     pointerEvents="none"
     {...props}
   >
-    <Circle cx={12} cy={12} r={11} stroke="#ed3288" />
-    <Circle cx={12} cy={12} r={7} stroke="#ed3288" />
+    <Circle cx={12} cy={12} r={11} stroke={props.stroke ?? "#ed3288"} />
+    <Circle cx={12} cy={12} r={7} stroke={props.stroke ?? "#ed3288"} />
   </Svg>
 )

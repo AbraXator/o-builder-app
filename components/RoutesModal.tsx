@@ -1,26 +1,29 @@
+import { Add, Cross } from "@/constants/icons/icons";
+import { createSharedStyles } from "@/constants/sharedStyles";
+import { getCurrentRoute } from "@/hooks/CourseHooks";
 import { appState } from "@/libs/state/store";
-import { useTheme } from "@/libs/state/theme";
+import { ThemeType, useTheme } from "@/libs/state/theme";
+import { setCourse } from "@/libs/storage/AsyncStorage";
 import { useState } from "react";
 import { FlatList, Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { TextInput } from "react-native-gesture-handler";
+import ToolbarButton from "./ToolbarButton";
 
 export type RoutesModalProps = {
-routes: Route[];
-currentRoute: Route;
-showModal: boolean;
-onClose: () => void;
+  routes: Route[];
+  currentRoute: Route;
+  showModal: boolean;
+  onClose: () => void;
 }
 
 function SingleRoute({ route, highlighted }: {
-route: Route;
-highlighted: boolean;
+  route: Route;
+  highlighted: boolean;
 }) {
   const { theme } = useTheme();
   const currentCourse = appState((s) => s.currentCourse);
   const routes = currentCourse.routes;
-  const updateCurrentCourse = appState((s) => s.updateCurrentCourse)
-  const removeRoute = (id: number) => {
-
-  }
+  const styles = createStyles(useTheme().theme);
 
   return (
     <TouchableOpacity
@@ -39,12 +42,12 @@ highlighted: boolean;
 }
 
 enum ContentTypes {
-CHOOSE = "choose",
-CREATE = "create"
+  CHOOSE = "choose",
+  CREATE = "create"
 }
 
 type ModalContentType = {
-type: typeof ContentTypes[keyof typeof ContentTypes];
+  type: typeof ContentTypes[keyof typeof ContentTypes];
 }
 
 type FormData = {
@@ -63,6 +66,7 @@ function SelectRouteModal({ routesModalProps, setModalContent }: {
     return route.id === getCurrentRoute(currentCourseState, currentCourse).id;
   }
   const createRoute = appState((s) => s.createRoute);
+  const styles = createStyles(useTheme().theme);
 
   return (
     <View>
@@ -76,7 +80,7 @@ function SelectRouteModal({ routesModalProps, setModalContent }: {
         renderItem={({ item }) => <SingleRoute route={item} highlighted={isRouteSelected(item)} />}
         keyExtractor={(item, index) => item.id.toString()}
       />
-      <View style={styles.lowerToolbar}>
+      <View style={styles.LowerToolbar}>
         <ToolbarButton
           onPress={() => setModalContent({ type: ContentTypes.CREATE })}
           icon={<Add />}
@@ -92,6 +96,7 @@ function CreateRouteModal({ routesModalProps, setModalContent }: {
 }) {
   const currentCourse = appState().currentCourse;
   const currentCourseState = appState().currentCourseState;
+  const styles = createStyles(useTheme().theme);
   const [formData, setFormData] = useState<FormData>({
     routeName: "",
     routeLength: -1,
@@ -175,24 +180,26 @@ function CreateRouteModal({ routesModalProps, setModalContent }: {
 }
 
 export function RoutesModal({ routesModalProps }: {
-routesModalProps: RoutesModalProps
+  routesModalProps: RoutesModalProps
 }) {
   console.log(routesModalProps.routes)
   const createRoute = appState((s) => s.createRoute);
   const [modalContent, setModalContent] = useState<ModalContentType>({
     type: ContentTypes.CHOOSE
   })
+  const sharedStyles = createSharedStyles(useTheme().theme);
+  const styles = createStyles(useTheme().theme);
 
-return (
-  <View>
-    <Modal
-      transparent={true}
-      animationType="fade"
-      visible={routesModalProps.showModal}
-      onRequestClose={routesModalProps.onClose}
-    >
-      <View style={{ flex: 1 }}>
-        <View style={sharedStyles.modalBackdrop}>
+  return (
+    <View>
+      <Modal
+        transparent={true}
+        animationType="fade"
+        visible={routesModalProps.showModal}
+        onRequestClose={routesModalProps.onClose}
+      >
+        <View style={{ flex: 1 }}>
+          <View style={sharedStyles.modalBackdrop}>
             <View style={sharedStyles.modalContainer}>
               {modalContent.type === ContentTypes.CHOOSE &&
                 <View>
@@ -227,7 +234,7 @@ return (
   )
 }
 
-export const createStyle = (theme: ThemeType) => StyleSheet.create({
+const createStyles = (theme: ThemeType) => StyleSheet.create({
   backdrop: {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.5)',
@@ -249,6 +256,13 @@ export const createStyle = (theme: ThemeType) => StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-start",
+    marginBottom: 16,
+    paddingHorizontal: 16
+  },
+  LowerToolbar: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-end",
     marginBottom: 16,
     paddingHorizontal: 16
   },

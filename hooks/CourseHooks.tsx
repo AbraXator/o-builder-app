@@ -20,6 +20,28 @@ export function getCurrentRoute(currentCourseState: CourseState, currentCourse: 
   return currentCourse.routes[currentCourseState.currentRoute];
 }
 
+export function getCurrentControls(currentCourseState: CourseState, currentCourse: Course) {
+  return getCurrentRoute(currentCourseState, currentCourse).controls;
+}
+
+export function getSelectedControl(currentCourseState: CourseState, currentCourse: Course) {
+  const selectedControl = currentCourseState.selectedControl;
+
+  if (selectedControl !== null) {
+    return getCurrentControls(currentCourseState, currentCourse).at(selectedControl);
+  }
+
+  return undefined;
+}
+
+export function sortControls(controls: Control[]) {
+    return [
+    ...controls.filter((c: Control) => c.type === 'start'),
+    ...controls.filter((c: Control) => c.type === 'control'),
+    ...controls.filter((c: Control) => c.type === 'finish')
+  ]
+}
+
 export function kindToIndex(kind: string) {
   switch (kind) {
     case "C":

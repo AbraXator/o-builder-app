@@ -15,7 +15,7 @@ export const Sun = (props: SvgProps) => (
     {...props}
   >
     <Circle cx={12} cy={12} r={4} />
-    <Path stroke="#000000" d="M12 2v2" />
+    <Path stroke="currentColor" d="M12 2v2" />
     <Path d="M12 20v2" />
     <Path d="m4.93 4.93 1.41 1.41" />
     <Path d="m17.66 17.66 1.41 1.41" />
@@ -334,5 +334,22 @@ export const Add = (props: SvgProps) => (
     {...props}
   >
     <Path d="M5 12h14M12 5v14" />
+  </Svg>
+)
+
+export const Menu = (props: SvgProps) => (
+  <Svg
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="lucide lucide-menu-icon lucide-menu"
+    {...props}
+  >
+    <Path d="M4 5h16M4 12h16M4 19h16" />
   </Svg>
 )

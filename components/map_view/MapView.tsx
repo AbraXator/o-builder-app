@@ -1,36 +1,60 @@
 import { GetIcon } from '@/constants/icons/controlIcons';
+import { sortControls } from '@/hooks/CourseHooks';
 import { appState } from '@/libs/state/store';
 import { ControlTypes, InteractionModes } from '@/libs/types/enums';
 import { useState } from 'react';
 import { Dimensions, Text, TouchableOpacity } from 'react-native';
 import {
   Gesture,
-  GestureDetector,
+  GestureDetector
 } from 'react-native-gesture-handler';
 import Animated, {
   runOnJS,
+  SharedValue,
   useAnimatedStyle,
   useSharedValue
 } from 'react-native-reanimated';
 import Svg, { Polyline } from 'react-native-svg';
-import { Notification, NotificationState } from './Notification';
+import { Notification, NotificationState } from '../Notification';
+import { EditGestures, MapGestures, PlaceGestures } from './Gestures';
+import { addControl, deselectControl } from './MapViewHelpers';
 
 
 const window = Dimensions.get('window');
 
-function ControlMarker({ control, index, helperControl }: { control: Control; index: number, helperControl: boolean }) {
+function ControlMarker({ control, index, helperControl, controlOffset }: { control: Control; index: number; helperControl: boolean; controlOffset?: SharedValue<Vec> }) {
   const currentCourseState = appState((s) => s.currentCourseState);
   const updateCurrentCourseState = appState((s) => s.updateCurrentCourseState);
   const interactionMode = appState((s) => s.currentCourseState.mode);
+  const isControlSelected = index === currentCourseState.selectedControl;
+  const animatedStyle = useAnimatedStyle(() => {
+    const baseLeft = control.coords.x - 12;
+    const baseTop = control.coords.y - 12;
+
+    if (!isControlSelected || !controlOffset) {
+      return {
+        position: 'absolute',
+        left: baseLeft,
+        top: baseTop,
+      };
+    }
+
+    return {
+      position: 'absolute',
+      left: baseLeft + controlOffset.value.x,
+      top: baseTop + controlOffset.value.y,
+    };
+  });
 
   const handleTap = runOnJS(() => {
-    if (interactionMode === InteractionModes.INTERACTING) {
-      updateCurrentCourseState({ selectedControl: index });
+    if (interactionMode !== InteractionModes.PLACING) {
+      updateCurrentCourseState({ selectedControl: index, mode: InteractionModes.EDITING });
+
     }
   })
 
   const getControlColor = () => {
-    if (currentCourseState.selectedControl === index) {
+    if (isControlSelected) {
       return "#6a32ed";
     }
 
@@ -38,35 +62,33 @@ function ControlMarker({ control, index, helperControl }: { control: Control; in
   }
 
   return (
-    <TouchableOpacity
-      key={index}
-      onPress={handleTap}
-      style={{
-        position: 'absolute',
-        left: control.coords.x - 12,
-        top: control.coords.y - 12,
-        height: 24,
-        width: 24,
-      }}
-    >
-      <GetIcon type={control.type} props={{
-        stroke: getControlColor(),
-        strokeOpacity: helperControl ? 0.2 : 1,
-      }} />
-      <Text style={{ color: 'white', fontSize: 12 }}>
-        {control.code}
-      </Text>
-    </TouchableOpacity>
-
+    <Animated.View style={[animatedStyle]}>
+      <TouchableOpacity
+        key={index}
+        onPress={handleTap}
+        style={{
+          height: 24,
+          width: 24,
+        }}
+      >
+        <GetIcon type={control.type} props={{
+          stroke: getControlColor(),
+          strokeOpacity: helperControl ? 0.2 : 1,
+        }} />
+        <Text style={{ color: 'white', fontSize: 12 }}>
+          {control.code}
+        </Text>
+      </TouchableOpacity>
+    </Animated.View>
   )
 }
 
 function intersectRayWithTriangle(direction: Vec) {
   const TRIANGLE_VERTICES = [
-    { x: -10.19, y: 8.825 },
-    { x: 0.00, y: -8.825 },
-    { x: 10.19, y: 8.825 }
-  ];
+    { x: -10.2584, y: 10.8378 }, // left base
+    { x: 0.0000, y: -9.6755 }, // top
+    { x: 10.2584, y: 10.8378 }, // right base
+  ] as const;
   let minT = Number.POSITIVE_INFINITY;
 
   for (let vertex = 0; vertex < TRIANGLE_VERTICES.length; vertex++) {
@@ -75,23 +97,23 @@ function intersectRayWithTriangle(direction: Vec) {
     const edge = { x: B.x - A.x, y: B.y - A.y };
 
     const denom = (edge.x * direction.y - edge.y * direction.x);
-    if(Math.abs(denom) < 1e-6) continue;
+    if (Math.abs(denom) < 1e-6) continue;
 
     const u = (direction.x * (A.y) - direction.y * (A.x)) / denom;
-    if(u < 0 || u > 1) continue;
+    if (u < 0 || u > 1) continue;
 
     const ix = A.x + edge.x * u;
     const iy = A.y + edge.y * u;
 
     const t = Math.sqrt(ix * ix + iy * iy);
-    if(t > 0 && t < minT) minT = t;
+    if (t > 0 && t < minT) minT = t;
   }
 
-  return minT;
-} 
+  return minT + 1;
+}
 
 function getTrimRadiusForControl(control: Control, nextControl: Control) {
-  if(control.type !== ControlTypes.START) return 12;
+  if (control.type !== ControlTypes.START) return 12;
 
   const dx = nextControl.coords.x - control.coords.x;
   const dy = nextControl.coords.y - control.coords.y;
@@ -136,7 +158,7 @@ function ControlLine({ sortedControls }: {
     }
 
     lines.push(<Polyline
-      points={`${coords[0]},${coords[1]}`}
+      points={`${coords[0].x},${coords[0].y} ${coords[1].x},${coords[1].y}`}
       key={`${i}-${coords[i]}`}
       stroke="#ed3288"
       strokeWidth="2"
@@ -145,69 +167,6 @@ function ControlLine({ sortedControls }: {
   }
 
   return lines;
-}
-
-function addControl(x: number, y: number, type: ControlType, controlsList: Control[], setNotification: SetState<NotificationState>) {
-  console.log("Tap detected at:", x, y);
-  const state = appState.getState();
-  const currentCourse = state.currentCourse;
-  const currentCourseState = state.currentCourseState;
-  const addControlToCurrentRoute = state.addControlToCurrentRoute;
-  const addControlToAllControls = state.addControlToAllControls;
-  const currentRoute = state.currentRoute();
-  const initDefaultControl: Control = {
-    type: type,
-    coords: { x, y },
-    code: 0,
-    number: -1,
-    symbols: [
-      {
-        kind: "C",
-        symbolId: -1,
-      },
-      {
-        kind: "D",
-        symbolId: -1,
-      },
-      {
-        kind: "E",
-        symbolId: -1,
-      },
-      {
-        kind: "F",
-        symbolId: -1,
-      },
-      {
-        kind: "G",
-        symbolId: -1,
-      }
-    ],
-  };
-
-  const cannotAddControl = (type: ControlType) => {
-    return (type === ControlTypes.FINISH || type === ControlTypes.START) && controlsList.some(c => c.type === type);
-  }
-
-  if (cannotAddControl(type)) {
-    setNotification({
-      show: true,
-      message: `Cannot add ${type} control more than once.`,
-      type: 'error',
-    });
-
-    return;
-  }
-
-  addControlToCurrentRoute(initDefaultControl);
-  //addControlToAllControls(initDefaultControl);
-}
-
-function deselectControl(setCurrentCourseState: (data: Partial<CourseState>) => void, currentCourseState: CourseState) {
-  console.log("Deselecting control");
-  if (currentCourseState.mode !== InteractionModes.PLACING && currentCourseState.selectedControl !== null) {
-    setCurrentCourseState({ selectedControl: null });
-    console.log(currentCourseState.selectedControl);
-  }
 }
 
 export function moveMapToCoords(coords: Vec, mapViewProps: MapViewProps) {
@@ -239,46 +198,38 @@ export function MapView({ mapViewProps }: { mapViewProps: MapViewProps }) {
   const setCurrentCourseState = appState((s) => s.updateCurrentCourseState);
   const currentCourseState = appState((s) => s.currentCourseState);
   const currentCourse = appState((s) => s.currentCourse);
+  const controlOffset = useSharedValue({ x: 0, y: 0 });
+  const controls = appState((s) => s.currentRoute()).controls;
 
-  const panGesture = Gesture.Pan()
-    .onUpdate((event) => {
-      translateX.value = offsetX.value + event.translationX;
-      translateY.value = offsetY.value + event.translationY;
-    })
-    .onEnd(() => {
-      offsetX.value = translateX.value;
-      offsetY.value = translateY.value;
-    });
+  const mapGestures = MapGestures({
+    translateX,
+    translateY,
+    offsetX,
+    offsetY,
+    scale,
+    offsetScale,
+    rotation,
+    offsetRotation,
+    deselectControl,
+  });
+  const placeGestures = PlaceGestures({
+    deselectControl,
+    addControl,
+    setNotificationState
+  });
+  const editGestures = EditGestures({
+    setNotificationState,
+    controlOffset,
+  })
+  const getCurrentGestures = () => {
+    switch (interactionMode) {
+      case InteractionModes.NORMAL: return mapGestures;
+      case InteractionModes.PLACING: return placeGestures;
+      case InteractionModes.EDITING: return editGestures;
+    }
 
-  const pinchGesture = Gesture.Pinch()
-    .onUpdate((event) => {
-      scale.value = offsetScale.value * event.scale;
-    })
-    .onEnd(() => {
-      offsetScale.value = scale.value;
-    });
-
-  const rotationGesture = Gesture.Rotation()
-    .onUpdate((event) => {
-      rotation.value = offsetRotation.value + event.rotation;
-    })
-    .onEnd(() => {
-      offsetRotation.value = rotation.value;
-    });
-
-  const tapGesture = Gesture.Tap()
-    .onStart(runOnJS((event) => {
-      try {
-        deselectControl(setCurrentCourseState, currentCourseState);
-        addControl(event.x, event.y, selectedControlType, appState.getState().currentRoute().controls, setNotificationState);
-      } catch (error) {
-        console.error("Error handling tap gesture:", error);
-      }
-    }));
-
-  const composed = Gesture.Exclusive(
-    panGesture, pinchGesture, rotationGesture
-  );
+    return Gesture.Exclusive();
+  }
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [
@@ -289,20 +240,13 @@ export function MapView({ mapViewProps }: { mapViewProps: MapViewProps }) {
     ],
   }));
 
-  const controls = appState((s) => s.currentRoute()).controls;
-  const sortedControls: Control[] = [
-    ...controls.filter((c: Control) => c.type === 'start'),
-    ...controls.filter((c: Control) => c.type === 'control'),
-    ...controls.filter((c: Control) => c.type === 'finish')
-  ]
+  const sortedControls = sortControls(controls);
   const shouldRenderHelperControls = () => {
     return interactionMode === InteractionModes.PLACING && currentCourseState.currentRoute !== 0;
   }
 
-  console.log(shouldRenderHelperControls());
-
   return (
-    <GestureDetector gesture={interactionMode !== InteractionModes.PLACING ? composed : tapGesture}>
+    <GestureDetector gesture={getCurrentGestures()}>
       <Animated.View
         style={[
           {
@@ -335,7 +279,7 @@ export function MapView({ mapViewProps }: { mapViewProps: MapViewProps }) {
         </Svg>
 
         {controls.map((control, index) => (
-          <ControlMarker key={index} control={control} index={index} helperControl={false} />
+          <ControlMarker key={index} control={control} index={index} helperControl={false} controlOffset={controlOffset} />
         ))}
 
         {shouldRenderHelperControls() && currentCourse.routes[0].controls.map((control, index) => (

@@ -12,8 +12,11 @@ export default function ToolbarButton({ active, icon, label, onPress }: {
 
   return (
     <TouchableOpacity style={[
-      style.button,
-      { backgroundColor: active ? theme.neutral300 : theme.neutral200 }
+      style.button, { 
+        backgroundColor: active ? theme.control200 : theme.neutral300,
+        aspectRatio: label ? 0 : 1,
+        padding: label ? 8 : 4
+      }
     ]}
       onPress={onPress}
     >
@@ -30,7 +33,5 @@ const createStyles = (theme: ThemeType) => StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    maxHeight: 32,
-    maxWidth: 32,
   }
 });

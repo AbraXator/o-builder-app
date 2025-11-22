@@ -1,4 +1,6 @@
+import { sortControls } from '@/hooks/CourseHooks';
 import { create } from 'zustand';
+import { ControlTypes, InteractionModes } from '../types/enums';
 
 interface AppState {
   currentCourse: Course;
@@ -31,7 +33,7 @@ export const appState = create<AppState>((set) => ({
   currentCourseState: {
     selectedControlType: "control" as CourseState["selectedControlType"],
     selectedControl: null,
-    mode: null,
+    mode: InteractionModes.NORMAL,
     currentRoute: 0
   },
   theme: "light",
@@ -85,19 +87,30 @@ export const appState = create<AppState>((set) => ({
     const currentRoute = state.currentCourse.routes.find((r) => r.id === state.currentCourseState.currentRoute);
     if (!currentRoute) return state;
 
-    const controls = currentRoute.controls || [];
-    const lastControlCode = controls.length > 0 ? (controls[controls.length - 1]?.code ?? 0) : 0;
-    const newControl = { ...control, code: lastControlCode + 1 };
+    const codeForType = (type: ControlType, code: number) => {
+      switch(type) {
+        case ControlTypes.START: return -1;
+        case ControlTypes.CONTROL: return code + 1;
+        case ControlTypes.FINISH: return -2;
+      }
+    }
 
-    console.log("Controls: " + controls);
-    console.log("Last control code: " + lastControlCode);
+    const controls = sortControls(currentRoute.controls) || [];
+    const controlsToCheck = controls.filter((c) => c.type === ControlTypes.CONTROL);
+    const lastControlCode = controlsToCheck.length > 0 ? (controlsToCheck[controlsToCheck.length - 1]?.code ?? 0) : 0;
+    const newControlCode = codeForType(control.type, lastControlCode);
+    const newControl = { ...control, code: newControlCode };
+
+    controls.push(newControl);
+
+    const sortedControls = sortControls(controls);
 
     return {
       currentCourse: {
         ...state.currentCourse,
         routes: state.currentCourse.routes.map((r) =>
           r.id === currentRoute.id
-            ? { ...r, controls: [...controls, newControl] }
+            ? { ...r, controls: sortedControls }
             : r
         ),
       },

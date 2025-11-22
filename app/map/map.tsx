@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View } from 'react-native';
 import ConfirmationModal from '../../components/ConfirmationModal';
-import { MapView, MapViewProps } from '../../components/MapView';
+import { MapView, MapViewProps } from '../../components/map_view/MapView';
 //import { exportAsImage, ExportDialog } from '../components/ExportCourse';
+import { LowBar } from '@/components/map_view/LowBar';
 import { Notification, NotificationState } from '@/components/Notification';
 import { RoutesModal, RoutesModalProps } from '@/components/RoutesModal';
 import { GetIcon } from '@/constants/icons/controlIcons';
-import { Home, Pointer, Print, Save, Trashcan, Undo } from '@/constants/icons/icons';
-import { getCurrentRoute, removeControl } from '@/hooks/CourseHooks';
+import { Home, Print, Save } from '@/constants/icons/icons';
+import { getCurrentRoute } from '@/hooks/CourseHooks';
 import { appState } from '@/libs/state/store';
 import { ThemeType, useTheme } from '@/libs/state/theme';
 import { setCourse } from '@/libs/storage/AsyncStorage';
@@ -23,32 +24,42 @@ function UpperToolbar() {
   const updateRoute = appState((s) => s.updateRoute);
   const updateCurrentCourseState = appState((s) => s.updateCurrentCourseState);
   const styles = createStyles(useTheme().theme);
-  
+
   return (
     <View style={styles.toolbarContainer}>
       <ToolbarButton
-        active={currentCourseState.mode === InteractionModes.INTERACTING}
-        icon={<Pointer />}
-        onPress={() => updateCurrentCourseState({ mode: InteractionModes.INTERACTING })}
+        active={currentCourseState.mode === InteractionModes.NORMAL}
+        label='NORMAL'
+        onPress={() => updateCurrentCourseState({ mode: InteractionModes.NORMAL })}
       />
+
+      <View style={styles.separator} />
 
       <ToolbarButton
         active={currentCourseState.mode === InteractionModes.PLACING}
-        icon={<GetIcon type={currentCourseState.selectedControlType} />}
-        onPress={() => updateCurrentCourseState({ mode: InteractionModes.PLACING })}
+        label='PLACING'
+        onPress={() => {
+          updateCurrentCourseState({ mode: InteractionModes.PLACING })
+        }}
       />
 
+      <View style={styles.separator} />
+
       <ToolbarButton
+        active={currentCourseState.mode === InteractionModes.EDITING}
+        label='EDITING'
+        onPress={() => updateCurrentCourseState({ mode: InteractionModes.EDITING })}
+      />
+
+      {/*<ToolbarButton
         icon={<Trashcan />}
         onPress={() => {
-         if (currentCourseState.selectedControl !== null) {
+          if (currentCourseState.selectedControl !== null) {
             removeControl(currentCourseState.selectedControl, getCurrentRoute(currentCourseState, currentCourse), updateRoute);
             updateCurrentCourseState({ selectedControl: undefined });
           }
         }}
-      />
-
-      <ToolbarButton icon={<Undo />} onPress={() => { }} />
+      />*/}
     </View>
   );
 }
@@ -56,8 +67,8 @@ function UpperToolbar() {
 export function ChangeControlTypeLowerToolbar() {
   const setCurrentCourseState = appState((s) => s.updateCurrentCourseState);
   const currentCourseState = appState((s) => s.currentCourseState);
-  const styles = createStyles(useTheme().theme); 
-  
+  const styles = createStyles(useTheme().theme);
+
   const ControlTypeButton: React.FC<{ type: ControlTypes }> = ({ type }) => (
     <ToolbarButton
       active={currentCourseState.selectedControlType === type}
@@ -81,9 +92,9 @@ export function LowerToolbar({ setShowConfirmationModal, setNotificationState, s
   setShowRoutesModal: (show: boolean) => void;
 }) {
   const currentCourse = appState((s) => s.currentCourse);
-  const styles = createStyles(useTheme().theme); 
+  const styles = createStyles(useTheme().theme);
   const saveCurrentCourse = () => {
-  
+
     const id = currentCourse.id;
     if (!id) {
       setNotificationState({
@@ -129,11 +140,11 @@ export default function MapPage() {
   };
 
   const routesModalProps: RoutesModalProps = {
-    routes:  currentCourse.routes,
+    routes: currentCourse.routes,
     currentRoute: getCurrentRoute(currentCourseState, currentCourse),
     showModal: showRoutesModal,
-    onClose: () => setShowRoutesModal(false), 
-  } 
+    onClose: () => setShowRoutesModal(false),
+  }
   return (
     <SafeAreaView style={styles.container}>
       {showConfirmationModal && (
@@ -147,7 +158,7 @@ export default function MapPage() {
         />
       )}
       {showRoutesModal && (
-        <RoutesModal 
+        <RoutesModal
           routesModalProps={routesModalProps}
         />
       )}
@@ -178,6 +189,10 @@ export default function MapPage() {
         />
       )}
 
+      <View style={styles.horizontalSeparator}/>
+
+      <LowBar/>
+
     </SafeAreaView>
   );
 }
@@ -185,10 +200,11 @@ export default function MapPage() {
 const createStyles = (theme: ThemeType) => StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.neutral100,
+    backgroundColor: theme.neutral200,
   },
   mapContainer: {
     flex: 1,
+    backgroundColor: theme.neutral100,
   },
   toolbarContainer: {
     flexDirection: 'row',
@@ -196,13 +212,27 @@ const createStyles = (theme: ThemeType) => StyleSheet.create({
     marginTop: 32,
     padding: 8,
     backgroundColor: theme.neutral200,
-    maxHeight: 48,
+    borderBottomColor: theme.neutral300,
+    borderBottomWidth: 2,
+    zIndex: 100
   },
   lowerToolbarContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     padding: 8,
     backgroundColor: theme.neutral200,
-    height : 48,
+    borderTopColor: theme.neutral300,
+    borderTopWidth: 2
   },
+  separator: {
+    borderWidth: 1,
+    borderColor: theme.control200
+  },
+  horizontalSeparator: {
+    borderTopColor: theme.control200,
+    borderBottomColor: theme.control200,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    marginHorizontal: 16
+  }
 });

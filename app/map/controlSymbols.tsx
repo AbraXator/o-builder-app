@@ -1,4 +1,4 @@
-import { MapView, MapViewProps, moveMapToCoords } from "@/components/MapView";
+import { MapView, MapViewProps, moveMapToCoords } from "@/components/map_view/MapView";
 import { Notification, NotificationState } from "@/components/Notification";
 import { kindToIndex } from "@/hooks/CourseHooks";
 import { appState } from "@/libs/state/store";
@@ -74,7 +74,7 @@ function renderControls(setShowModal: SetState<boolean>, setChosenControl: SetSt
       return;
     } else {
       return (
-        <Text style={styles.text}>{item.number}</Text>
+        <Text style={styles.text}>{item.number.number}</Text>
       );
     }
   }

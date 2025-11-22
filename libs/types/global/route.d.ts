@@ -4,11 +4,16 @@ declare global {
     symbolId: number;
   }
 
+  interface ControlNumber {
+    number: number;
+    coords: Vec;
+  }
+
   interface Control {
     type: ControlType;
     coords: Vec;
     code: number;
-    number: number;
+    number: ControlNumber;
     symbols: ControlSymbol[];
   }
 

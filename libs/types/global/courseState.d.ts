@@ -6,9 +6,10 @@ declare global {
   interface CourseState {
     selectedControlType: ControlType;
     selectedControl: number | null;
-    mode: InteractionMode | null;
+    mode: InteractionMode;
     currentRoute: number
   }
 }
 
 export { };
+

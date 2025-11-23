@@ -1,4 +1,4 @@
-import { getCurrentControls, getCurrentRoute } from "@/hooks/CourseHooks";
+import { getCurrentControls } from "@/hooks/CourseHooks";
 import { appState } from "@/libs/state/store";
 import { ControlTypes, InteractionModes } from "@/libs/types/enums";
 import { NotificationState } from "../Notification";
@@ -14,11 +14,21 @@ export function addControl(x: number, y: number, setNotification: SetState<Notif
   const currentCourse = state.currentCourse;
   const currentCourseState = state.currentCourseState;
   const addControlToCurrentRoute = state.addControlToCurrentRoute;
-  const addControlToAllControls = state.addControlToAllControls;
+  const addExistingControlToCurrentRoute = state.addExistingControlToCurrentRoute;
   const currentRoute = state.currentRoute();
+  const allControls = currentCourse.routes.find((r) => r.id === 0) as Route;
   const type = currentCourseState.selectedControlType;
 
+  const controlOnSpot = allControls.controls.find((c) => {
+    const dx = c.coords.x - x;
+    const dy = c.coords.y - y;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+
+    return dist <= 24;
+  })
+
   const initDefaultControl: Control = {
+    index: 0,
     type: currentCourseState.selectedControlType,
     coords: { x, y },
     code: -1,
@@ -48,7 +58,7 @@ export function addControl(x: number, y: number, setNotification: SetState<Notif
   };
 
   const cannotAddControl = (type: ControlType) => {
-    return (type === ControlTypes.FINISH || type === ControlTypes.START) && getCurrentControls(currentCourseState, currentCourse).some(c => c.type === type);
+    return (currentRoute.id !== 0) && (type === ControlTypes.FINISH || type === ControlTypes.START) && getCurrentControls(currentCourseState, currentCourse).some(c => c.type === type);
   }
 
   if (cannotAddControl(type)) {
@@ -61,19 +71,10 @@ export function addControl(x: number, y: number, setNotification: SetState<Notif
     return;
   }
 
-  currentRoute.controls.forEach((c) => {
-    console.log(`Control code: ${c.code}`)
-    console.log(`Control type: ${c.type}`)
-  })
-  console.log(`------------------------`)
-  addControlToCurrentRoute(initDefaultControl);
-  //addControlToAllControls(initDefaultControl);
-  getCurrentRoute(appState.getState().currentCourseState, appState.getState().currentCourse).controls.forEach((c) => {
-    console.log(`Control code: ${c.code}`)
-    console.log(`Control type: ${c.type}`)
-
-  })
-  console.log(`------------------------`)
-  console.log(`------------------------`)
-  console.log(`------------------------`)
+  if (controlOnSpot) {
+    addExistingControlToCurrentRoute(controlOnSpot);
+  } else {
+    addControlToCurrentRoute(initDefaultControl);
+  }
+  //if(currentRoute.id !== 0) addControlToAllControls(initDefaultControl);
 }

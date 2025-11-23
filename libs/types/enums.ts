@@ -1,5 +1,5 @@
 export enum InteractionModes {
-  NORMAL = "interacting",
+  NORMAL = "normal",
   PLACING = "placing",
   EDITING = "editing",
 } 
@@ -14,4 +14,10 @@ export enum ActionTypes {
   ADD_CONTROL = "add_control",
   REMOVE_CONTROL = "remove_control",
   MOVE_CONTROL = "move_control",
+}
+
+export enum MoveTypes {
+  CONTROL = "control",
+  NUMBER = "number",
+  NONE = "none"
 }

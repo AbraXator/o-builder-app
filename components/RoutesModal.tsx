@@ -1,10 +1,9 @@
-import { Add, Cross } from "@/constants/icons/icons";
-import { createSharedStyles } from "@/constants/sharedStyles";
+import { Add, Cross, Trashcan } from "@/constants/icons/icons";
 import { getCurrentRoute } from "@/hooks/CourseHooks";
 import { appState } from "@/libs/state/store";
-import { ThemeType, useTheme } from "@/libs/state/theme";
+import { useTheme } from "@/libs/state/theme";
 import { setCourse } from "@/libs/storage/AsyncStorage";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FlatList, Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import ToolbarButton from "./ToolbarButton";
@@ -22,21 +21,44 @@ function SingleRoute({ route, highlighted }: {
 }) {
   const { theme } = useTheme();
   const currentCourse = appState((s) => s.currentCourse);
+  const currentCourseState = appState((s) => s.currentCourseState);
   const routes = currentCourse.routes;
-  const styles = createStyles(useTheme().theme);
+  const updateCurrentCourse = appState((s) => s.updateCurrentCourse)
+  const updateCurrentCourseState = appState().updateCurrentCourseState;
+  const removeRoute = useCallback(async () => {
+    console.log("removeRoute called");
+
+    if (!currentCourse?.routes) return;
+
+    const editedRoutes = currentCourse.routes.filter(r => r.id !== route.id);
+
+    if (currentCourse.id) {
+      await setCourse(
+        {
+          ...currentCourse,
+          routes: editedRoutes,
+        },
+        currentCourse.id
+      );
+      updateCurrentCourse({ ...currentCourse, routes: editedRoutes })
+    }
+  }, [currentCourse, route, setCourse]);
 
   return (
     <TouchableOpacity
       onPress={() => {
-        routes.filter
+        updateCurrentCourseState({ currentRoute: route.id })
       }}
       style={[
         styles.route,
-        { backgroundColor: highlighted ? theme.base200 : "transparent" }
+        { backgroundColor: highlighted ? theme.control200 : "transparent" }
       ]}>
       <Text>
         {`Route: ${route.name}`}
       </Text>
+      {
+        route.id !== 0 && <ToolbarButton onPress={removeRoute} icon={<Trashcan />} />
+      }
     </TouchableOpacity>
   )
 }
@@ -66,7 +88,6 @@ function SelectRouteModal({ routesModalProps, setModalContent }: {
     return route.id === getCurrentRoute(currentCourseState, currentCourse).id;
   }
   const createRoute = appState((s) => s.createRoute);
-  const styles = createStyles(useTheme().theme);
 
   return (
     <View>
@@ -80,7 +101,7 @@ function SelectRouteModal({ routesModalProps, setModalContent }: {
         renderItem={({ item }) => <SingleRoute route={item} highlighted={isRouteSelected(item)} />}
         keyExtractor={(item, index) => item.id.toString()}
       />
-      <View style={styles.LowerToolbar}>
+      <View style={styles.lowerToolbar}>
         <ToolbarButton
           onPress={() => setModalContent({ type: ContentTypes.CREATE })}
           icon={<Add />}
@@ -96,7 +117,6 @@ function CreateRouteModal({ routesModalProps, setModalContent }: {
 }) {
   const currentCourse = appState().currentCourse;
   const currentCourseState = appState().currentCourseState;
-  const styles = createStyles(useTheme().theme);
   const [formData, setFormData] = useState<FormData>({
     routeName: "",
     routeLength: -1,
@@ -182,13 +202,12 @@ function CreateRouteModal({ routesModalProps, setModalContent }: {
 export function RoutesModal({ routesModalProps }: {
   routesModalProps: RoutesModalProps
 }) {
-  console.log(routesModalProps.routes)
-  const createRoute = appState((s) => s.createRoute);
+  const selectedRoute = appState((s) => s.currentRoute);
+  const currentCourseState = appState().currentCourseState;
+  const currentCourse = appState().currentCourse;
   const [modalContent, setModalContent] = useState<ModalContentType>({
     type: ContentTypes.CHOOSE
-  })
-  const sharedStyles = createSharedStyles(useTheme().theme);
-  const styles = createStyles(useTheme().theme);
+  });
 
   return (
     <View>
@@ -199,32 +218,13 @@ export function RoutesModal({ routesModalProps }: {
         onRequestClose={routesModalProps.onClose}
       >
         <View style={{ flex: 1 }}>
-          <View style={sharedStyles.modalBackdrop}>
-            <View style={sharedStyles.modalContainer}>
+          <View style={styles.backdrop}>
+            <View style={styles.container}>
               {modalContent.type === ContentTypes.CHOOSE &&
-                <View>
-                  <Text style={styles.title}>Routes</Text>
-                  <FlatList
-                    data={routesModalProps.routes}
-                    renderItem={({ item }) => <SingleRoute route={item} highlighted={false} />}
-                    keyExtractor={(item, index) => item.id.toString()}
-                  />
-                  <TouchableOpacity
-                    onPress={() => {
-                      createRoute({
-                        id: 0,
-                        name: "asaifei",
-                        length: 20,
-                        climb: 20,
-                        controls: [],
-                      })
-                    }}
-                  >
-                    <Text>
-                      NEW ROUTE
-                    </Text>
-                  </TouchableOpacity>
-                </View>
+                <SelectRouteModal routesModalProps={routesModalProps} setModalContent={setModalContent} />
+              }
+              {modalContent.type === ContentTypes.CREATE &&
+                <CreateRouteModal routesModalProps={routesModalProps} setModalContent={setModalContent} />
               }
             </View>
           </View>
@@ -234,7 +234,7 @@ export function RoutesModal({ routesModalProps }: {
   )
 }
 
-const createStyles = (theme: ThemeType) => StyleSheet.create({
+const styles = StyleSheet.create({
   backdrop: {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.5)',
@@ -259,13 +259,6 @@ const createStyles = (theme: ThemeType) => StyleSheet.create({
     marginBottom: 16,
     paddingHorizontal: 16
   },
-  LowerToolbar: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "flex-end",
-    marginBottom: 16,
-    paddingHorizontal: 16
-  },
   title: {
     fontSize: 18,
     fontWeight: '600',
@@ -279,6 +272,12 @@ const createStyles = (theme: ThemeType) => StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    padding: 4,
+    borderRadius: 8,
+    margin: 4
+  },
+  lowerToolbar: {
+    flexDirection: "row-reverse",
   }
-})  
+})

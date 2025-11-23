@@ -74,7 +74,6 @@ function MenuButton({
     <TouchableOpacity
       onPress={() => {
         onPress();
-        console.log("Pressed")
       }}
       style={styles.button}
     >

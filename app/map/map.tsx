@@ -4,18 +4,19 @@ import ConfirmationModal from '../../components/ConfirmationModal';
 import { MapView, MapViewProps } from '../../components/map_view/MapView';
 //import { exportAsImage, ExportDialog } from '../components/ExportCourse';
 import { LowBar } from '@/components/map_view/LowBar';
+import EditingLowerToolbar from '@/components/map_view/lower_toolbar/EditingLowerToolbar';
+import NormalLowerToolbar from '@/components/map_view/lower_toolbar/NormalLowerToolbar';
+import PlacingLowerToolbar from '@/components/map_view/lower_toolbar/PlacingLowerToolbar';
+import { VerticalSeparator } from '@/components/map_view/Separator';
+import SwitchModeButton from '@/components/map_view/SwitchModeButton';
 import { Notification, NotificationState } from '@/components/Notification';
 import { RoutesModal, RoutesModalProps } from '@/components/RoutesModal';
-import { GetIcon } from '@/constants/icons/controlIcons';
-import { Home, Print, Save } from '@/constants/icons/icons';
 import { getCurrentRoute } from '@/hooks/CourseHooks';
 import { appState } from '@/libs/state/store';
 import { ThemeType, useTheme } from '@/libs/state/theme';
-import { setCourse } from '@/libs/storage/AsyncStorage';
-import { ControlTypes, InteractionModes } from '@/libs/types/enums';
+import { InteractionModes } from '@/libs/types/enums';
 import { router } from 'expo-router';
 import { StyleSheet } from 'react-native';
-import ToolbarButton from '../../components/ToolbarButton';
 
 function UpperToolbar() {
   const currentCourseState = appState((s) => s.currentCourseState);
@@ -24,100 +25,25 @@ function UpperToolbar() {
   const updateRoute = appState((s) => s.updateRoute);
   const updateCurrentCourseState = appState((s) => s.updateCurrentCourseState);
   const styles = createStyles(useTheme().theme);
+  const buttonActive = (mode: InteractionMode) => {
+    return currentCourseState.mode === mode;
+  }
 
   return (
     <View style={styles.toolbarContainer}>
-      <ToolbarButton
-        active={currentCourseState.mode === InteractionModes.NORMAL}
-        label='NORMAL'
-        onPress={() => updateCurrentCourseState({ mode: InteractionModes.NORMAL })}
-      />
+      <SwitchModeButton interactionMode={InteractionModes.NORMAL} />
 
-      <View style={styles.separator} />
+      <VerticalSeparator />
 
-      <ToolbarButton
-        active={currentCourseState.mode === InteractionModes.PLACING}
-        label='PLACING'
-        onPress={() => {
-          updateCurrentCourseState({ mode: InteractionModes.PLACING })
-        }}
-      />
+      <SwitchModeButton interactionMode={InteractionModes.PLACING} />
 
-      <View style={styles.separator} />
+      <VerticalSeparator />
 
-      <ToolbarButton
-        active={currentCourseState.mode === InteractionModes.EDITING}
-        label='EDITING'
-        onPress={() => updateCurrentCourseState({ mode: InteractionModes.EDITING })}
-      />
-
-      {/*<ToolbarButton
-        icon={<Trashcan />}
-        onPress={() => {
-          if (currentCourseState.selectedControl !== null) {
-            removeControl(currentCourseState.selectedControl, getCurrentRoute(currentCourseState, currentCourse), updateRoute);
-            updateCurrentCourseState({ selectedControl: undefined });
-          }
-        }}
-      />*/}
+      <SwitchModeButton interactionMode={InteractionModes.EDITING} />
     </View>
   );
 }
 
-export function ChangeControlTypeLowerToolbar() {
-  const setCurrentCourseState = appState((s) => s.updateCurrentCourseState);
-  const currentCourseState = appState((s) => s.currentCourseState);
-  const styles = createStyles(useTheme().theme);
-
-  const ControlTypeButton: React.FC<{ type: ControlTypes }> = ({ type }) => (
-    <ToolbarButton
-      active={currentCourseState.selectedControlType === type}
-      icon={<GetIcon type={type} />}
-      onPress={() => setCurrentCourseState({ selectedControlType: type })}
-    />
-  );
-
-  return (
-    <View style={styles.lowerToolbarContainer}>
-      <ControlTypeButton type={ControlTypes.START} />
-      <ControlTypeButton type={ControlTypes.CONTROL} />
-      <ControlTypeButton type={ControlTypes.FINISH} />
-    </View>
-  )
-}
-
-export function LowerToolbar({ setShowConfirmationModal, setNotificationState, setShowRoutesModal }: {
-  setShowConfirmationModal: (show: boolean) => void;
-  setNotificationState: SetState<NotificationState>;
-  setShowRoutesModal: (show: boolean) => void;
-}) {
-  const currentCourse = appState((s) => s.currentCourse);
-  const styles = createStyles(useTheme().theme);
-  const saveCurrentCourse = () => {
-
-    const id = currentCourse.id;
-    if (!id) {
-      setNotificationState({
-        show: true,
-        message: 'Unable to save current course, please try again.',
-        type: 'error',
-      });
-      return;
-    }
-    setCourse(currentCourse, id);
-    setNotificationState({ show: true, message: 'Course saved successfully', type: 'success' });
-  };
-
-  return (
-    <View style={styles.lowerToolbarContainer}>
-      <ToolbarButton icon={<Home />} onPress={() => setShowConfirmationModal(true)} />
-      <ToolbarButton icon={<Save />} onPress={saveCurrentCourse} />
-      <ToolbarButton icon={<Print />} onPress={() => console.log('PRINT')} />
-      <ToolbarButton label="Controls" onPress={() => router.push('/map/controlSymbols')} />
-      <ToolbarButton label="Routes" onPress={() => setShowRoutesModal(true)} />
-    </View>
-  );
-}
 
 export default function MapPage() {
   const [notificationState, setNotificationState] = useState<NotificationState>({
@@ -125,7 +51,9 @@ export default function MapPage() {
     message: '',
     type: 'info',
   });
-  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [showLeaveModal, setShowLeaveModal] = useState(false);
+  const [showDeleteControlModal, setShowDeleteControlModal] = useState(false);
+  const [deleteControlEverywhere, setDeleteControlEverywhere] = useState(false);
   const [showRoutesModal, setShowRoutesModal] = useState(false);
   const [showExportDialog, setShowExportDialog] = useState(false);
   const currentCourseState = appState((s) => s.currentCourseState);
@@ -147,14 +75,24 @@ export default function MapPage() {
   }
   return (
     <SafeAreaView style={styles.container}>
-      {showConfirmationModal && (
+      {showLeaveModal && (
         <ConfirmationModal
           title={'Exit to main page?'}
           message={'Any unsaved changes will be lost'}
           confirmText={'Exit'}
           onConfirm={() => router.push('/')}
-          onCancel={() => setShowConfirmationModal(false)}
-          showModal={showConfirmationModal}
+          onCancel={() => setShowLeaveModal(false)}
+          showModal={showLeaveModal}
+        />
+      )}
+      {showLeaveModal && (
+        <ConfirmationModal
+          title={'Exit to main page?'}
+          message={'Any unsaved changes will be lost'}
+          confirmText={'Exit'}
+          onConfirm={() => router.push('/')}
+          onCancel={() => setShowLeaveModal(false)}
+          showModal={showLeaveModal}
         />
       )}
       {showRoutesModal && (
@@ -177,21 +115,28 @@ export default function MapPage() {
         <MapView mapViewProps={mapViewProps} />
       </View>
 
-      {currentCourseState.mode === InteractionModes.PLACING && (
-        <ChangeControlTypeLowerToolbar />
-      )}
-
-      {currentCourseState.mode !== InteractionModes.PLACING && (
-        <LowerToolbar
-          setShowConfirmationModal={setShowConfirmationModal}
+      {currentCourseState.mode === InteractionModes.NORMAL && (
+        <NormalLowerToolbar
+          setShowConfirmationModal={setShowLeaveModal}
           setNotificationState={setNotificationState}
           setShowRoutesModal={setShowRoutesModal}
         />
       )}
 
-      <View style={styles.horizontalSeparator}/>
+      {currentCourseState.mode === InteractionModes.PLACING && (
+        <PlacingLowerToolbar />
+      )}
 
-      <LowBar/>
+      {currentCourseState.mode === InteractionModes.EDITING && (
+        <EditingLowerToolbar
+          setNotificationState={setNotificationState}
+          setShowDeleteControlModal={setShowDeleteControlModal}
+        />
+      )}
+
+      <View style={styles.horizontalSeparator} />
+
+      <LowBar />
 
     </SafeAreaView>
   );

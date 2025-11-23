@@ -1,4 +1,5 @@
 import { Alert, Checkmark, Info } from '@/constants/icons/icons';
+import { useTheme } from '@/libs/state/theme';
 import { useEffect, useState } from 'react';
 import { Animated, StyleSheet, Text } from 'react-native';
 
@@ -19,6 +20,7 @@ interface NotificationProps {
 
 export function Notification({ message, type, onClose, duration = 1000 }: NotificationProps) {
   const [opacity] = useState(new Animated.Value(0));
+  const theme = useTheme().theme;
 
   useEffect(() => {
     // Fade in
@@ -43,9 +45,21 @@ export function Notification({ message, type, onClose, duration = 1000 }: Notifi
   }, [duration, onClose]);
 
   const backgroundColor = {
-    error: '#ef4444',   // red-500
-    success: '#22c55e', // green-500
-    info: '#3b82f6',    // blue-500
+    error: theme.error200,   // red-500
+    success: theme.succes200, // green-500
+    info: theme.info200,    // blue-500
+  }[type];
+
+  const iconColor = {
+    error: theme.error300,   // red-500
+    success: theme.succes300, // green-500
+    info: theme.info300,    // blue-500
+  }[type];
+
+  const textColor = {
+    error: theme.error100,   // red-500
+    success: theme.succes100, // green-500
+    info: theme.info100,    // blue-500
   }[type];
 
   const Icon = {
@@ -56,7 +70,7 @@ export function Notification({ message, type, onClose, duration = 1000 }: Notifi
 
   return (
     <Animated.View style={[styles.container, { backgroundColor, opacity }]}>
-      <Icon />
+      <Icon color={iconColor} />
       <Text style={styles.text}>{message}</Text>
     </Animated.View>
   );
@@ -80,7 +94,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   text: {
-    color: 'white',
+    color: "#FFFFFF",
     marginLeft: 8,
     fontSize: 16,
   },

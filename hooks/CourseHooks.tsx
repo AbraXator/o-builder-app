@@ -1,23 +1,38 @@
-
 export function removeControl(
-  controlId: number,
+  controlIndex: number,
   currentRoute: Route,
+  currentCourse: Course,
   updateRoute: (id: number, data: Partial<Route>) => void,
 ) {
-  const updatedRoute = { ...currentRoute };
-  updatedRoute.controls = updatedRoute.controls.filter((_, i) => i !== controlId);
+  const allRoutesForControl = getAllRoutesForControl(currentCourse, controlIndex);
+  const routeIdsForControl = new Set(allRoutesForControl.map((r) => r.id));
 
-  updatedRoute.controls.forEach((c, i) => {
-    if (c.code >= controlId + 1) {
-      c.code = c.code - 1;
-    }
-  });
+  //const updatedRoutes = currentCourse.routes.map((route) =>)
+
+  const filteredControls = currentRoute.controls
+    .filter((c) => c.index !== controlIndex)
+    .map((c, i) => ({
+      ...c,
+      index: i,
+    }));
+  const updatedRoute: Route = {
+    ...currentRoute,
+    controls: filteredControls,
+  }
 
   updateRoute(currentRoute.id, updatedRoute);
 }
 
 export function getCurrentRoute(currentCourseState: CourseState, currentCourse: Course) {
-  return currentCourse.routes[currentCourseState.currentRoute];
+  return (
+    currentCourse.routes.find((r) => r.id === currentCourseState.currentRoute) || {
+      id: 0,
+      name: "",
+      length: 0,
+      climb: 0,
+      controls: [],
+    }
+  );
 }
 
 export function getCurrentControls(currentCourseState: CourseState, currentCourse: Course) {
@@ -25,17 +40,21 @@ export function getCurrentControls(currentCourseState: CourseState, currentCours
 }
 
 export function getSelectedControl(currentCourseState: CourseState, currentCourse: Course) {
-  const selectedControl = currentCourseState.selectedControl;
+  const selectedIndex = currentCourseState.selectedControl;
 
-  if (selectedControl !== null) {
-    return getCurrentControls(currentCourseState, currentCourse).at(selectedControl);
+  if (selectedIndex !== null) {
+    return getCurrentControls(currentCourseState, currentCourse).find((c) => c.index === selectedIndex);
   }
 
   return undefined;
 }
 
+export function getAllRoutesForControl(currentCourse: Course, control: number) {
+  return currentCourse.routes.filter((r) => r.controls.some((c) => c.index === control));
+}
+
 export function sortControls(controls: Control[]) {
-    return [
+  return [
     ...controls.filter((c: Control) => c.type === 'start'),
     ...controls.filter((c: Control) => c.type === 'control'),
     ...controls.filter((c: Control) => c.type === 'finish')

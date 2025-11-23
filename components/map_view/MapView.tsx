@@ -3,9 +3,8 @@ import { sortControls } from '@/hooks/CourseHooks';
 import { appState } from '@/libs/state/store';
 import { ControlTypes, InteractionModes } from '@/libs/types/enums';
 import { useState } from 'react';
-import { Dimensions, Text, TouchableOpacity } from 'react-native';
+import { Dimensions, Text, TouchableOpacity, View } from 'react-native';
 import {
-  Gesture,
   GestureDetector
 } from 'react-native-gesture-handler';
 import Animated, {
@@ -22,15 +21,21 @@ import { addControl, deselectControl } from './MapViewHelpers';
 
 const window = Dimensions.get('window');
 
-function ControlMarker({ control, index, helperControl, controlOffset }: { control: Control; index: number; helperControl: boolean; controlOffset?: SharedValue<Vec> }) {
+function ControlMarker({ control, index, helperControl, controlOffset, numberOffset }: {
+  control: Control;
+  index: number;
+  helperControl: boolean;
+  controlOffset?: SharedValue<Vec>;
+  numberOffset?: SharedValue<Vec>;
+}) {
   const currentCourseState = appState((s) => s.currentCourseState);
   const updateCurrentCourseState = appState((s) => s.updateCurrentCourseState);
   const interactionMode = appState((s) => s.currentCourseState.mode);
-  const isControlSelected = index === currentCourseState.selectedControl;
-  const animatedStyle = useAnimatedStyle(() => {
-    const baseLeft = control.coords.x - 12;
-    const baseTop = control.coords.y - 12;
+  const isControlSelected = control.index === currentCourseState.selectedControl;
+  const baseLeft = control.coords.x - 12;
+  const baseTop = control.coords.y - 12;
 
+  const animatedStyle = useAnimatedStyle(() => {
     if (!isControlSelected || !controlOffset) {
       return {
         position: 'absolute',
@@ -48,8 +53,7 @@ function ControlMarker({ control, index, helperControl, controlOffset }: { contr
 
   const handleTap = runOnJS(() => {
     if (interactionMode !== InteractionModes.PLACING) {
-      updateCurrentCourseState({ selectedControl: index, mode: InteractionModes.EDITING });
-
+      updateCurrentCourseState({ selectedControl: control.index, mode: InteractionModes.EDITING });
     }
   })
 
@@ -75,9 +79,23 @@ function ControlMarker({ control, index, helperControl, controlOffset }: { contr
           stroke: getControlColor(),
           strokeOpacity: helperControl ? 0.2 : 1,
         }} />
-        <Text style={{ color: 'white', fontSize: 12 }}>
-          {control.code}
-        </Text>
+        {!helperControl && (
+          <View
+            style={{
+              position: "absolute",
+              left: 20,
+              top: 20,
+              minWidth: 16,
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "transparent",
+            }}
+          >
+            <Text style={{ color: "#ed3288", fontSize: 16 }}>
+              {control.index}
+            </Text>
+          </View>
+        )}
       </TouchableOpacity>
     </Animated.View>
   )
@@ -199,7 +217,9 @@ export function MapView({ mapViewProps }: { mapViewProps: MapViewProps }) {
   const currentCourseState = appState((s) => s.currentCourseState);
   const currentCourse = appState((s) => s.currentCourse);
   const controlOffset = useSharedValue({ x: 0, y: 0 });
+  const numberOffset = useSharedValue({ x: 0, y: 0 });
   const controls = appState((s) => s.currentRoute()).controls;
+  const currentRoute = currentCourseState.currentRoute;
 
   const mapGestures = MapGestures({
     translateX,
@@ -220,6 +240,7 @@ export function MapView({ mapViewProps }: { mapViewProps: MapViewProps }) {
   const editGestures = EditGestures({
     setNotificationState,
     controlOffset,
+    numberOffset
   })
   const getCurrentGestures = () => {
     switch (interactionMode) {
@@ -228,7 +249,6 @@ export function MapView({ mapViewProps }: { mapViewProps: MapViewProps }) {
       case InteractionModes.EDITING: return editGestures;
     }
 
-    return Gesture.Exclusive();
   }
 
   const animatedStyle = useAnimatedStyle(() => ({
@@ -270,16 +290,17 @@ export function MapView({ mapViewProps }: { mapViewProps: MapViewProps }) {
           resizeMode="contain"
         />
 
-        <Svg
-          height={window.height}
-          width={window.width}
-          style={{ position: 'absolute', top: 0, left: 0 }}
-        >
-          <ControlLine sortedControls={sortedControls} />
-        </Svg>
+        {currentRoute !== 0 &&
+          <Svg
+            height={window.height}
+            width={window.width}
+            style={{ position: 'absolute', top: 0, left: 0 }}
+          >
+            <ControlLine sortedControls={sortedControls} />
+          </Svg>}
 
         {controls.map((control, index) => (
-          <ControlMarker key={index} control={control} index={index} helperControl={false} controlOffset={controlOffset} />
+          <ControlMarker key={index} control={control} index={index} helperControl={false} controlOffset={controlOffset} numberOffset={numberOffset} />
         ))}
 
         {shouldRenderHelperControls() && currentCourse.routes[0].controls.map((control, index) => (

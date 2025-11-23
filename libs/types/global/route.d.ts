@@ -10,6 +10,7 @@ declare global {
   }
 
   interface Control {
+    index: number;
     type: ControlType;
     coords: Vec;
     code: number;

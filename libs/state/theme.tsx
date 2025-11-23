@@ -32,6 +32,8 @@ const colors = {
   info100: "#bddeff",
   info200: "#3d8aff",
   info300: "#0025cd",
+
+  disabled: "#bababa",
 }
 export type ThemeType = typeof colors;
 
@@ -55,7 +57,7 @@ export function ThemeProvider({ children }: {
   if (isDark) {
     theme = {
       ...colors,
-      
+
       neutral100: "#0D0208", // main background
       neutral200: "#160411", // elevated background
       neutral300: "#26071D", // cards / panels

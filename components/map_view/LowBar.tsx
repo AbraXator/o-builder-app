@@ -5,26 +5,27 @@ import { InteractionModes } from "@/libs/types/enums";
 import { StyleSheet, Text, View } from "react-native";
 import ToolbarButton from "../ToolbarButton";
 
+export function colorForMode(theme: ThemeType, mode: InteractionMode) {
+  switch (mode) {
+    case InteractionModes.NORMAL: return { container: theme.control200, text: theme.control500 }
+    case InteractionModes.PLACING: return { container: theme.accent100, text: theme.accent300 }
+    case InteractionModes.EDITING: return { container: theme.info100, text: theme.info300 }
+  }
+}
+
 export function LowBar() {
   const currentCourseState = appState((s) => s.currentCourseState);
   const interactionMode = currentCourseState.mode;
   const theme = useTheme().theme;
   const styles = createStyles(theme);
-  const colorForMode = (mode: InteractionMode) => {
-    switch (mode) {
-      case InteractionModes.NORMAL: return { container: theme.control200, text: theme.control500 }
-      case InteractionModes.PLACING: return { container: theme.accent100, text: theme.accent300 }
-      case InteractionModes.EDITING: return { container: theme.info100, text: theme.info300 }
-    }
-  }
 
   return (
     <View style={styles.lowerToolbarContainer}>
       <View style={[styles.modeDisplay, {
-        backgroundColor: colorForMode(interactionMode).container
+        backgroundColor: colorForMode(theme, interactionMode).container
       }]}>
         <Text style={[styles.modeText, {
-          color: colorForMode(interactionMode).text
+          color: colorForMode(theme, interactionMode).text
 
         }]}>
           {`MODE: ${interactionMode}`}

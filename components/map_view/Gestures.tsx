@@ -1,5 +1,6 @@
-import { getCurrentControls, getCurrentRoute, getSelectedControl } from "@/hooks/CourseHooks";
+import { getAllRoutesForControl, getCurrentControls, getCurrentRoute, getSelectedControl } from "@/hooks/CourseHooks";
 import { appState } from "@/libs/state/store";
+import { MoveTypes } from "@/libs/types/enums";
 import { Gesture } from "react-native-gesture-handler";
 import { runOnJS, SharedValue, useSharedValue } from "react-native-reanimated";
 import { NotificationState } from "../Notification";
@@ -25,7 +26,8 @@ type PlaceGestureArgs = {
 
 type MoveGestureArgs = {
   setNotificationState: SetState<NotificationState>;
-  controlOffset: SharedValue<Vec>
+  controlOffset: SharedValue<Vec>;
+  numberOffset: SharedValue<Vec>;
 }
 
 type PanContext = {
@@ -115,12 +117,14 @@ export function PlaceGestures({
   );
 }
 
-export function EditGestures({ controlOffset }: MoveGestureArgs) {
+export function EditGestures({ controlOffset, numberOffset }: MoveGestureArgs) {
   const currentCourseState = appState((s) => s.currentCourseState);
   const currentCourse = appState((s) => s.currentCourse);
   const updateCurrentCourse = appState((s) => s.updateCurrentCourse);
   const updateCurrentCourseState = appState((s) => s.updateCurrentCourseState);
-  const canMove = useSharedValue(false);
+  const canMoveControl = useSharedValue(false);
+  const canMoveNumber = useSharedValue(false);
+  const moveType = appState((s) => s.moveType);
 
   const currentRoute = getCurrentRoute(currentCourseState, currentCourse);
   const currentControls = getCurrentControls(currentCourseState, currentCourse);
@@ -132,40 +136,91 @@ export function EditGestures({ controlOffset }: MoveGestureArgs) {
   }
 
   const control = selected as Control;
-  const controlCode = control.code;
+  const controlIndex = control.index;
   const originalCoords = { ...control.coords } as Vec;
+  const allRoutesForControl = getAllRoutesForControl(currentCourse, controlIndex);
 
-  const canStart = (x: number, y: number) => {
+
+  const canStartMovingControl = (x: number, y: number) => {
     'worklet';
     const dx = control.coords.x - x;
     const dy = control.coords.y - y;
     const dist = Math.sqrt(dx * dx + dy * dy);
-    console.log(`distance: ${dist}`)
-    return dist <= 48;
+    return dist <= 48 && moveType === MoveTypes.CONTROL;
+  }
+
+  const canStartMovingNumber = (x: number, y: number) => {
+    'worklet';
+    /*const dx = control.number.coords.x - x;
+    const dy = control.number.coords.y - y;
+    const dist = Math.sqrt(dx * dx + dy * dy);*/
+    //return dist <= 48 && moveType === MoveTypes.CONTROL;
+    return moveType === MoveTypes.NUMBER;
   }
 
   const moveControl = (offset: Vec) => {
     const dx = offset.x;
     const dy = offset.y;
 
-    const updatedControls = currentControls.map((c) =>
-      c.code === controlCode ? {
-        ...c,
-        coords: {
-          x: originalCoords.x + dx,
-          y: originalCoords.y + dy,
-        },
-      } : c,
-    );
+    const routeIdsForControl = new Set(allRoutesForControl.map((r) => r.id));
 
-    const updatedRoutes = currentCourse.routes.map((r) =>
-      r.id === currentRoute.id
-        ? {
-          ...r,
-          controls: updatedControls,
-        }
-        : r,
-    );
+    const updatedRoutes = currentCourse.routes.map((route) => {
+      if (!routeIdsForControl.has(route.id)) {
+        return route;
+      }
+
+      const editedControls = route.controls.map((control) =>
+        control.index === controlIndex
+          ? {
+            ...control,
+            coords: {
+              x: originalCoords.x + dx,
+              y: originalCoords.y + dy,
+            },
+          }
+          : control,
+      );
+
+      return {
+        ...route,
+        controls: editedControls,
+      };
+    });
+
+    updateCurrentCourse({ routes: updatedRoutes });
+  };
+
+  const moveNumber = (offset: Vec) => {
+    const dx = offset.x;
+    const dy = offset.y;
+
+    const routeIdsForControl = new Set(allRoutesForControl.map((r) => r.id));
+
+    const updatedRoutes = currentCourse.routes.map((route) => {
+      if (!routeIdsForControl.has(route.id)) {
+        return route;
+      }
+
+      const editedControls = route.controls.map((control) =>
+        control.index === controlIndex
+          ? {
+            ...control,
+            number: {
+              number: control.number.number,
+              coords: {
+                x: originalCoords.x + dx,
+                y: originalCoords.y + dy,
+              }
+            }
+          }
+          : control,
+      );
+
+      return {
+        ...route,
+        controls: editedControls,
+      };
+    });
 
     updateCurrentCourse({ routes: updatedRoutes });
   };
@@ -173,23 +228,30 @@ export function EditGestures({ controlOffset }: MoveGestureArgs) {
   const panGesture = Gesture.Pan()
     .onStart((event) => {
       'worklet';
-      canMove.value = canStart(event.x, event.y);
+      canMoveControl.value = canStartMovingControl(event.x, event.y);
+      canMoveNumber.value = canStartMovingNumber(event.x, event.y);
     })
     .onUpdate((event) => {
       'worklet';
-      if (!canMove.value) return;
-
-      controlOffset.value = {
-        x: event.translationX,
-        y: event.translationY,
-      };
+      if (canMoveControl.value) {
+        controlOffset.value = {
+          x: event.translationX,
+          y: event.translationY,
+        };
+      }
+      if (canMoveNumber.value) {
+        numberOffset.value = {
+          x: event.translationX,
+          y: event.translationY,
+        };
+      }
     })
     .onEnd(() => {
       'worklet';
       const finalOffset = controlOffset.value;
       runOnJS(moveControl)(finalOffset);
       controlOffset.value = { x: 0, y: 0 };
-      canMove.value = false;
+      canMoveControl.value = false;
     });
 
   const tapGesture = Gesture.Tap().onStart((event) => {

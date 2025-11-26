@@ -32,7 +32,7 @@ export function addControl(x: number, y: number, setNotification: SetState<Notif
     type: currentCourseState.selectedControlType,
     coords: { x, y },
     code: -1,
-    number: { number: -1, coords: { x, y } },
+    number: { number: -1, coords: { x: 5, y: 5 } },
     symbols: [
       {
         kind: "C",

@@ -3,7 +3,7 @@ import { sortControls } from '@/hooks/CourseHooks';
 import { appState } from '@/libs/state/store';
 import { ControlTypes, InteractionModes } from '@/libs/types/enums';
 import { useState } from 'react';
-import { Dimensions, Text, TouchableOpacity, View } from 'react-native';
+import { Dimensions, TouchableOpacity, View } from 'react-native';
 import {
   GestureDetector
 } from 'react-native-gesture-handler';
@@ -35,8 +35,8 @@ function ControlMarker({ control, index, helperControl, controlOffset, numberOff
   const baseLeft = control.coords.x - 12;
   const baseTop = control.coords.y - 12;
 
-  const animatedStyle = useAnimatedStyle(() => {
-    if (!isControlSelected || !controlOffset) {
+  const animatedControlStyle = useAnimatedStyle(() => {
+    if (!isControlSelected || !controlOffset || controlOffset.value === { x: 0, y: 0} as Vec) {
       return {
         position: 'absolute',
         left: baseLeft,
@@ -48,6 +48,24 @@ function ControlMarker({ control, index, helperControl, controlOffset, numberOff
       position: 'absolute',
       left: baseLeft + controlOffset.value.x,
       top: baseTop + controlOffset.value.y,
+    };
+  });
+
+  const animatedNumberStyle = useAnimatedStyle(() => {
+    console.log(`Control: ${control.number.coords.x} ${control.number.coords.y}`)
+
+    if (!isControlSelected || !numberOffset) {
+      return {
+        position: 'absolute',
+        left: control.number.coords.x,
+        top: control.number.coords.y,
+      };
+    }
+
+    return {
+      position: 'absolute',
+      left: control.number.coords.x + numberOffset.value.x,
+      top: control.number.coords.y + numberOffset.value.y,
     };
   });
 
@@ -66,7 +84,7 @@ function ControlMarker({ control, index, helperControl, controlOffset, numberOff
   }
 
   return (
-    <Animated.View style={[animatedStyle]}>
+    <Animated.View style={[animatedControlStyle]}>
       <TouchableOpacity
         key={index}
         onPress={handleTap}
@@ -77,7 +95,7 @@ function ControlMarker({ control, index, helperControl, controlOffset, numberOff
       >
         <GetIcon type={control.type} props={{
           stroke: getControlColor(),
-          strokeOpacity: helperControl ? 0.2 : 1,
+          strokeOpacity: helperControl ? 0.3 : 1,
         }} />
         {!helperControl && (
           <View
@@ -91,9 +109,13 @@ function ControlMarker({ control, index, helperControl, controlOffset, numberOff
               backgroundColor: "transparent",
             }}
           >
-            <Text style={{ color: "#ed3288", fontSize: 16 }}>
+            <Animated.Text style={[{
+              color: "#ed3288",
+              fontSize: 16,
+            }, animatedNumberStyle]}
+            >
               {control.index}
-            </Text>
+            </Animated.Text>
           </View>
         )}
       </TouchableOpacity>

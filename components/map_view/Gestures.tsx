@@ -137,7 +137,8 @@ export function EditGestures({ controlOffset, numberOffset }: MoveGestureArgs) {
 
   const control = selected as Control;
   const controlIndex = control.index;
-  const originalCoords = { ...control.coords } as Vec;
+  const originalControlCoords = { ...control.coords } as Vec;
+  const originalNumberCoords = { ...control.number.coords } as Vec;
   const allRoutesForControl = getAllRoutesForControl(currentCourse, controlIndex);
 
 
@@ -174,8 +175,8 @@ export function EditGestures({ controlOffset, numberOffset }: MoveGestureArgs) {
           ? {
             ...control,
             coords: {
-              x: originalCoords.x + dx,
-              y: originalCoords.y + dy,
+              x: originalControlCoords.x + dx,
+              y: originalControlCoords.y + dy,
             },
           }
           : control,
@@ -201,6 +202,25 @@ export function EditGestures({ controlOffset, numberOffset }: MoveGestureArgs) {
         return route;
       }
 
+      console.log(`Number: ${originalNumberCoords.x + dx} ${originalNumberCoords.y + dy}`)
+
+      const newCoords = { x: originalNumberCoords.x + dx, y: originalNumberCoords.y + dy };
+
+      const numberGlobalX = control.coords.x - 12 + newCoords.x;
+      const numberGlobalY = control.coords.y - 12 + newCoords.y;
+
+      const dx2 = numberGlobalX - control.coords.x;
+      const dy2 = numberGlobalY - control.coords.y;
+
+      const angle = Math.atan2(dy2, dx2);
+      const r = 24;
+
+      const snappedGlobalX = control.coords.x + Math.cos(angle) * r;
+      const snappedGlobalY = control.coords.y + Math.sin(angle) * r;
+
+      const snappedbackRelativeX = snappedGlobalX - (control.coords.x - 12);
+      const snappedbackRelativeY = snappedGlobalY - (control.coords.y - 12);
+
       const editedControls = route.controls.map((control) =>
         control.index === controlIndex
           ? {
@@ -208,8 +228,8 @@ export function EditGestures({ controlOffset, numberOffset }: MoveGestureArgs) {
             number: {
               number: control.number.number,
               coords: {
-                x: originalCoords.x + dx,
-                y: originalCoords.y + dy,
+                x: snappedbackRelativeX - 12,
+                y: snappedbackRelativeY - 12,
               }
             }
           }
@@ -248,10 +268,18 @@ export function EditGestures({ controlOffset, numberOffset }: MoveGestureArgs) {
     })
     .onEnd(() => {
       'worklet';
-      const finalOffset = controlOffset.value;
-      runOnJS(moveControl)(finalOffset);
-      controlOffset.value = { x: 0, y: 0 };
-      canMoveControl.value = false;
+      if (canMoveControl.value) {
+        const finalOffset = controlOffset.value;
+        runOnJS(moveControl)(finalOffset);
+        controlOffset.value = { x: 0, y: 0 };
+        canMoveControl.value = false;
+      }
+      if (canMoveNumber.value) {
+        const finalOffset = numberOffset.value;
+        runOnJS(moveNumber)(finalOffset);
+        numberOffset.value = { x: 0, y: 0 };
+        canMoveNumber.value = false;
+      }
     });
 
   const tapGesture = Gesture.Tap().onStart((event) => {

@@ -159,6 +159,29 @@ function ChooseSymbolModal({ currentRoute, updateCurrentRoute, control, kind, se
     console.warn("No symbols found for kind");
   }
 
+  const handleSelectSymbol = (symbol: any) => {
+    const editedControls = currentRoute.controls;
+    const controlIndex = editedControls.findIndex((c) => {
+      return c.code === safeControl.code;
+    });
+    const symbolIndex = kindToIndex(kind);
+
+    const editedSymbols = safeControl.symbols.map((s) => {
+      if (s.symbolId !== symbolIndex) return s;
+
+      return {
+        kind: kind,
+        symbolId: symbol.symbolId,
+      };
+    })
+
+    const editedControl = { ...safeControl, symbols: editedSymbols };
+
+    editedControls[controlIndex] = editedControl;
+    updateCurrentRoute({ controls: editedControls });
+    setShowModal(false);
+  }
+
   return (
     <View style={{ flex: 1 }}>
       <Modal>
@@ -167,22 +190,7 @@ function ChooseSymbolModal({ currentRoute, updateCurrentRoute, control, kind, se
           keyExtractor={(item) => item.id}
           numColumns={5}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => {
-              const editedControls = currentRoute.controls;
-              const controlIndex = editedControls.findIndex((c) => {
-                return c.code === safeControl.code;
-              });
-              const symbolIndex = kindToIndex(kind);
-              safeControl.symbols[symbolIndex] = {
-                kind: kind,
-                symbolId: item.index
-              };
-              const editedControl = { ...safeControl, symbols: [...safeControl.symbols] };
-
-              editedControls[controlIndex] = editedControl;
-              updateCurrentRoute({ controls: editedControls });
-              setShowModal(false);
-            }}>
+            <TouchableOpacity onPress={() => handleSelectSymbol(item)}>
               <IconForSymbol xml={item.svg} />
             </TouchableOpacity>
           )}

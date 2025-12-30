@@ -1,1794 +1,1787 @@
 [
     {
         "index": 0,
-        "id": "start",
-        "name": "Start",
-        "kind": "A",
-        "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -56 -65 L -56 65 L 57 0 Z\"/></svg>"
-    },
-    {
-        "index": 0,
         "id": "northern",
         "name": "Northern",
-        "kind": "C",
+        "kind": 0,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 65 L 0 -65\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -30 -35 L 0 -65 L 30 -35\"/></svg>"
     },
     {
         "index": 1,
         "id": "north-eastern",
         "name": "North-eastern",
-        "kind": "C",
+        "kind": 0,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -55 55 L 55 -55\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 55 -15 L 55 -55 L 15 -55\"/></svg>"
     },
     {
         "index": 2,
         "id": "eastern",
         "name": "Eastern",
-        "kind": "C",
+        "kind": 0,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -65 0 L 65 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 35 30 L 65 0 L 35 -30\"/></svg>"
     },
     {
         "index": 3,
         "id": "south-eastern",
         "name": "South-eastern",
-        "kind": "C",
+        "kind": 0,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -55 -55 L 55 55\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 55 15 L 55 55 L 15 55\"/></svg>"
     },
     {
         "index": 4,
         "id": "southern",
         "name": "Southern",
-        "kind": "C",
+        "kind": 0,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 65 L 0 -65\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -30 35 L 0 65 L 30 35\"/></svg>"
     },
     {
         "index": 5,
         "id": "south-western",
         "name": "South-western",
-        "kind": "C",
+        "kind": 0,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 55 -55 L -55 55\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -55 15 L -55 55 L -15 55\"/></svg>"
     },
     {
         "index": 6,
         "id": "western",
         "name": "Western",
-        "kind": "C",
+        "kind": 0,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -65 0 L 65 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -35 30 L -65 0 L -35 -30\"/></svg>"
     },
     {
         "index": 7,
         "id": "north-western",
         "name": "North-western",
-        "kind": "C",
+        "kind": 0,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 55 55 L -55 -55\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -55 -15 L -55 -55 L -15 -55\"/></svg>"
     },
     {
         "index": 8,
         "id": "upper",
         "name": "Upper",
-        "kind": "C",
+        "kind": 0,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -60 -40 L 60 -40\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -60 40 L 60 40\"/><circle cx=\"0\" cy=\"-40\" r=\"20\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 9,
         "id": "lower",
         "name": "Lower",
-        "kind": "C",
+        "kind": 0,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -60 -40 L 60 -40\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -60 40 L 60 40\"/><circle cx=\"0\" cy=\"40\" r=\"20\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 10,
         "id": "middle",
         "name": "Middle",
-        "kind": "C",
+        "kind": 0,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -50 -60 L -50 60\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 50 -60 L 50 60\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 -60 L 0 60\"/><circle cx=\"0\" cy=\"0\" r=\"20\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 0,
         "id": "terrace",
         "name": "Terrace",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -60 70 C  -50 30,  -50 -30,  -60 -70 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -32 70 C  -30 60,  -30 48,  0 46 C  30 44,  50 47,  50 0 C  50 -47,  30 -44,  0 -46 C  -30 -48,  -30 -60,  -32 -70 \"/></svg>"
     },
     {
         "index": 1,
         "id": "spur",
         "name": "Spur",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -70 70 C  -60 30,  -60 -30,  -70 -70 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -42 70 C  -37 42,  -40 23,  -10 21 C  20 19,  70 27,  70 0 C  70 -27,  20 -19,  -10 -21 C  -40 -23,  -37 -42,  -42 -70 \"/></svg>"
     },
     {
         "index": 2,
         "id": "reentrant",
         "name": "Reentrant",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -70 70 C  -42 73,  -38 40,  -36 10 C  -34 -20,  -27 -70,  0 -70 C  27 -70,  34 -20,  36 10 C  38 40,  42 73,  70 70 \"/></svg>"
     },
     {
         "index": 3,
         "id": "earth-bank",
         "name": "Earth bank",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 20 5 L 25 29\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -20 5 L -25 29\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 55 -9 L 65 13\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -55 -9 L -65 13\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -70 -20 C  -30 10,  30 10,  70 -20 \"/></svg>"
     },
     {
         "index": 4,
         "id": "quarry",
         "name": "Quarry",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 40 -48 L 20 -23\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -40 -48 L -20 -23\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 66 25 L 40 17.5\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -66 25 L -40 17.5\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M 54 60 C  93 -5,  52 -64,  0 -64 C  -52 -64,  -93 -5,  -54 60 \"/></svg>"
     },
     {
         "index": 5,
         "id": "earth-wall",
         "name": "Earth wall",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -70 0 L 70 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -48 -17 L -48 17\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -16 25 L -16 -25\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 16 25 L 16 -25\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 48 -17 L 48 17\"/></svg>"
     },
     {
         "index": 6,
         "id": "erosion-gully",
         "name": "Erosion gully",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 40 70 L 0 -70 L -40 70\"/></svg>"
     },
     {
         "index": 7,
         "id": "small-erosion-gully",
         "name": "Small erosion gully",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -21 -61 L 61 21\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -61 -21 L 21 61\"/><circle cx=\"-40\" cy=\"-40\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-20\" cy=\"-20\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"20\" cy=\"20\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"40\" cy=\"40\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 8,
         "id": "hill",
         "name": "Hill",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M 0 -48.21 C  40.71 -48.21,  75 -26.79,  75 0 C  75 26.79,  40.71 48.21,  0 48.21 C  -40.71 48.21,  -75 26.79,  -75 0 C  -75 -26.79,  -40.71 -48.21,  0 -48.21 \"/></svg>"
     },
     {
         "index": 9,
         "id": "knoll",
         "name": "Knoll",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"0\" r=\"30\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 10,
         "id": "saddle",
         "name": "Saddle",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -40 70 C  -10 30,  -10 -30,  -40 -70 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M 40 70 C  10 30,  10 -30,  40 -70 \"/></svg>"
     },
     {
         "index": 11,
         "id": "depression",
         "name": "Depression",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 72 0 L 30 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -72 0 L -30 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M 0 -48.21 C  40.71 -48.21,  75 -26.79,  75 0 C  75 26.79,  40.71 48.21,  0 48.21 C  -40.71 48.21,  -75 26.79,  -75 0 C  -75 -26.79,  -40.71 -48.21,  0 -48.21 \"/></svg>"
     },
     {
         "index": 12,
         "id": "small-depression",
         "name": "Small depression",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -50 -50 C  -75 0,  -40 45,  0 45 C  40 45,  75 0,  50 -50 \"/></svg>"
     },
     {
         "index": 13,
         "id": "pit",
         "name": "Pit",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -50 -50 L 0 50 L 50 -50\"/></svg>"
     },
     {
         "index": 14,
         "id": "broken-ground",
         "name": "Broken ground",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -65 -50 C  -75 -30,  -61 -13,  -45 -13 C  -29 -13,  -15 -30,  -25 -50 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M 65 -50 C  75 -30,  61 -13,  45 -13 C  29 -13,  15 -30,  25 -50 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M 20 20 C  30 40,  16 57,  0 57 C  -16 57,  -30 40,  -20 20 \"/></svg>"
     },
     {
         "index": 15,
         "id": "ant-hill-termite-mound",
         "name": "Ant hill (termite mound)",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -70 0 L 70 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 70 L 0 -70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -49.5 49.5 L 49.5 -49.5\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -49.5 -49.5 L 49.5 49.5\"/></svg>"
     },
     {
         "index": 16,
         "id": "cliff",
         "name": "Cliff",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -70 20 L -70 -20 L 70 -20 L 70 20\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -23.33 20 L -23.33 -15\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 23.33 20 L 23.33 -15\"/></svg>"
     },
     {
         "index": 17,
         "id": "rock-pillar",
         "name": "Rock pillar",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 0 -70 L 37 70 L -37 70 Z\"/></svg>"
     },
     {
         "index": 18,
         "id": "cave",
         "name": "Cave",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 50 -30 L -50 0 L 50 30\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -25 -70 C  -10.4 -55.4,  -1.4 -35.6,  0 -15 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -25 70 C  -10.4 55.4,  -1.4 35.6,  0 15 \"/></svg>"
     },
     {
         "index": 19,
         "id": "boulder",
         "name": "Boulder",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 0 -50 L 57.73 50 L -57.73 50 Z\"/></svg>"
     },
     {
         "index": 20,
         "id": "boulder-field",
         "name": "Boulder field",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M -72 72 L -44.25 24 L -16.5 72 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 72 72 L 44.25 24 L 16.5 72 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M -72 -24 L -44.25 -72 L -16.5 -24 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 72 -24 L 44.25 -72 L 16.5 -24 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M -27.75 24 L 0 -24 L 27.75 24 Z\"/></svg>"
     },
     {
         "index": 21,
         "id": "boulder-cluster",
         "name": "Boulder cluster",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 25.1 -30 L 69.3 50 L -25.1 50 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M -25.1 -50 L 25.1 30 L -69.3 30 Z\"/></svg>"
     },
     {
         "index": 22,
         "id": "stony-ground",
         "name": "Stony ground",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"-60\" cy=\"60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-60\" cy=\"30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-60\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-60\" cy=\"-30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-60\" cy=\"-60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-30\" cy=\"60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-30\" cy=\"30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-30\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-30\" cy=\"-30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-30\" cy=\"-60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"-30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"-60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"30\" cy=\"60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"30\" cy=\"30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"30\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"30\" cy=\"-30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"30\" cy=\"-60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"60\" cy=\"60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"60\" cy=\"30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"60\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"60\" cy=\"-30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"60\" cy=\"-60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 23,
         "id": "bare-rock",
         "name": "Bare rock",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -70 0 L -25 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 70 L 0 25\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 70 0 L 25 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 -70 L 0 -25\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -49.5 49.5 L -17.68 17.68\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -49.5 -49.5 L -17.68 -17.68\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 49.5 49.5 L 17.68 17.68\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 49.5 -49.5 L 17.68 -17.68\"/></svg>"
     },
     {
         "index": 24,
         "id": "narrow-passage",
         "name": "Narrow passage",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -45 70 L -20 70 L -20 -70 L -45 -70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 45 70 L 20 70 L 20 -70 L 45 -70\"/></svg>"
     },
     {
         "index": 25,
         "id": "trench",
         "name": "Trench",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -65 -50 L -35 -50 L -35 50 L 35 50 L 35 -50 L 65 -50\"/></svg>"
     },
     {
         "index": 26,
         "id": "lake",
         "name": "Lake",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" d=\"M -39 10 C  -39 5,  -39 5,  -39 0 C  -39 -20,  -13 -20,  -13 0 C  -13 20,  13 20,  13 0 C  13 -20,  39 -20,  39 0 C  39 5,  39 5,  39 10 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M 0 -48.21 C  40.71 -48.21,  75 -26.79,  75 0 C  75 26.79,  40.71 48.21,  0 48.21 C  -40.71 48.21,  -75 26.79,  -75 0 C  -75 -26.79,  -40.71 -48.21,  0 -48.21 \"/></svg>"
     },
     {
         "index": 27,
         "id": "pond",
         "name": "Pond",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" d=\"M -65 -45 C  -65 -50,  -65 -50,  -65 -55 C  -65 -75,  -39 -75,  -39 -55 C  -39 -35,  -13 -35,  -13 -55 C  -13 -75,  13 -75,  13 -55 C  13 -35,  39 -35,  39 -55 C  39 -75,  65 -75,  65 -55 C  65 -50,  65 -50,  65 -45 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -40 -10 C  -60 30,  -32 66,  0 66 C  32 66,  60 30,  40 -10 \"/></svg>"
     },
     {
         "index": 28,
         "id": "water-hole",
         "name": "Water hole",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -40 -10 L 0 70 L 40 -10\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" d=\"M -65 -45 C  -65 -50,  -65 -50,  -65 -55 C  -65 -75,  -39 -75,  -39 -55 C  -39 -35,  -13 -35,  -13 -55 C  -13 -75,  13 -75,  13 -55 C  13 -35,  39 -35,  39 -55 C  39 -75,  65 -75,  65 -55 C  65 -50,  65 -50,  65 -45 \"/></svg>"
     },
     {
         "index": 29,
         "id": "river-stream-water-course",
         "name": "River, stream, water course",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -60 -80 C  -65 -75,  -65 -75,  -70 -70 C  -90 -50,  -70 -30,  -50 -50 C  -30 -70,  -10 -50,  -30 -30 C  -50 -10,  -30 10,  -10 -10 C  10 -30,  30 -10,  10 10 C  -10 30,  10 50,  30 30 C  50 10,  70 30,  50 50 C  30 70,  50 90,  70 70 C  75 65,  75 65,  80 60 \"/></svg>"
     },
     {
         "index": 30,
         "id": "minor-water-channel-ditch",
         "name": "Minor water channel, ditch",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -32 -80 L -5 -53\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 10 -38 L 38 -10\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 53 5 L 80 32\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -80 -32 L -53 -5\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -38 10 L -10 38\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 5 53 L 32 80\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" d=\"M -48 -64 C  -52 -60,  -52 -60,  -56 -56 C  -72 -40,  -56 -24,  -40 -40 C  -24 -56,  -8 -40,  -24 -24 C  -40 -8,  -24 8,  -8 -8 C  8 -24,  24 -8,  8 8 C  -8 24,  8 40,  24 24 C  40 8,  56 24,  40 40 C  24 56,  40 72,  56 56 C  60 52,  60 52,  64 48 \"/></svg>"
     },
     {
         "index": 31,
         "id": "narrow-marsh",
         "name": "Narrow marsh",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"-50\" cy=\"-50\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-25\" cy=\"-25\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"25\" cy=\"25\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"50\" cy=\"50\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 32,
         "id": "marsh",
         "name": "Marsh",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -64 0 L 64 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -48 -32 L 48 -32\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -48 32 L 48 32\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -32 -64 L 32 -64\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -32 64 L 32 64\"/></svg>"
     },
     {
         "index": 33,
         "id": "firm-ground-in-marsh",
         "name": "Firm ground in marsh",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 70 -70 L 70 -57.5 L -70 -57.5 L -70 -70 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 70 -38.125 L 70 -25.625 L 36.991 -25.625 L 31.765 -31.875 L 23.906 -38.125 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M -70 -38.125 L -70 -25.625 L -36.991 -25.625 L -31.765 -31.875 L -23.906 -38.125 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M -70 -6.25 L -70 6.25 L -44.564 6.25 L -45 0 L -44.564 -6.25 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 70 -6.25 L 70 6.25 L 44.564 6.25 L 45 0 L 44.564 -6.25 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 70 38.125 L 70 25.625 L 36.991 25.625 L 31.765 31.875 L 23.906 38.125 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M -70 38.125 L -70 25.625 L -36.991 25.625 L -31.765 31.875 L -23.906 38.125 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 70 70 L 70 57.5 L -70 57.5 L -70 70 Z\"/></svg>"
     },
     {
         "index": 34,
         "id": "well",
         "name": "Well",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"-25\" r=\"44\" stroke=\"black\" fill=\"none\" stroke-width=\"12.5\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" d=\"M -39 60 C  -39 55,  -39 55,  -39 50 C  -39 30,  -13 30,  -13 50 C  -13 70,  13 70,  13 50 C  13 30,  39 30,  39 50 C  39 55,  39 55,  39 60 \"/></svg>"
     },
     {
         "index": 35,
         "id": "spring",
         "name": "Spring",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -35 -35 C  -28 -26,  -10 -5,  1 -7 C  26 -10,  40 0,  20 20 C  0 40,  20 60,  40 40 C  60 20,  80 40,  60 60 C  55 66,  55 69,  55 75 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -10 -50 C  -40 -103,  -103 -40,  -50 -10 \"/></svg>"
     },
     {
         "index": 36,
         "id": "water-tank-trough",
         "name": "Water tank, trough",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -50 -10 L -50 50 L 50 50 L 50 -10 Z\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" d=\"M -65 -45 C  -65 -50,  -65 -50,  -65 -55 C  -65 -75,  -39 -75,  -39 -55 C  -39 -35,  -13 -35,  -13 -55 C  -13 -75,  13 -75,  13 -55 C  13 -35,  39 -35,  39 -55 C  39 -75,  65 -75,  65 -55 C  65 -50,  65 -50,  65 -45 \"/></svg>"
     },
     {
         "index": 37,
         "id": "open-land",
         "name": "Open land",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"round\" d=\"M 0 -66 L 66 0 L 0 66 L -66 0 Z\"/></svg>"
     },
     {
         "index": 38,
         "id": "semi-open-land",
         "name": "Semi-open land",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"-66\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"22\" cy=\"-44\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"44\" cy=\"-22\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"66\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"44\" cy=\"22\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"22\" cy=\"44\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"66\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-22\" cy=\"44\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-44\" cy=\"22\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-66\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-44\" cy=\"-22\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-22\" cy=\"-44\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 39,
         "id": "forest-corner",
         "name": "Forest corner",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"round\" d=\"M 0 0 L 0 -66 L -66 0 L 0 66 L 66 0 Z\"/></svg>"
     },
     {
         "index": 40,
         "id": "clearing",
         "name": "Clearing",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"-66\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"33\" cy=\"-57.16\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"57.16\" cy=\"-33\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"66\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"57.16\" cy=\"33\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"33\" cy=\"57.16\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"66\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-33\" cy=\"57.16\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-57.16\" cy=\"33\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-66\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-57.16\" cy=\"-33\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-33\" cy=\"-57.16\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 41,
         "id": "thicket",
         "name": "Thicket",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 21 -71 L -71 21\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 47 -47 L -47 47\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 71 -21 L -21 71\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -21 -71 L 71 21\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -47 -47 L 47 47\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -71 -21 L 21 71\"/></svg>"
     },
     {
         "index": 42,
         "id": "hedge-linear-thicket",
         "name": "Hedge, Linear thicket",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -75 75 L -63 63\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 75 -75 L 63 -63\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 35 -35 L 12 -12\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -35 35 L -12 12\"/><circle cx=\"0\" cy=\"0\" r=\"17.5\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"47.5\" cy=\"-47.5\" r=\"17.5\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"-47.5\" cy=\"47.5\" r=\"17.5\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 43,
         "id": "vegetation-boundary",
         "name": "Vegetation boundary",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"-50\" cy=\"-60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-25\" cy=\"-45\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"-30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"25\" cy=\"-15\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"50\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"25\" cy=\"15\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-25\" cy=\"45\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-50\" cy=\"60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 44,
         "id": "copse",
         "name": "Copse",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -23 40 L -23 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 23 40 L 23 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -60 35 L -23 -70 L 0 -4.73 L 23 -70 L 60 35 Z\"/></svg>"
     },
     {
         "index": 45,
         "id": "distinctive-tree",
         "name": "Distinctive tree",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 40 L 0 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 -70 L -37 35 L 37 35 Z\"/></svg>"
     },
     {
         "index": 46,
         "id": "tree-stump-root-stock",
         "name": "Tree stump, Root stock",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 42 -42 L -42 42\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 42 42 L -42 -42\"/><circle cx=\"0\" cy=\"0\" r=\"60\" stroke=\"black\" fill=\"none\" stroke-width=\"12.5\"/></svg>"
     },
     {
         "index": 47,
         "id": "road",
         "name": "Road",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"15\" stroke-linejoin=\"miter\" d=\"M -73 73 L 73 -73\"/></svg>"
     },
     {
         "index": 48,
         "id": "track-path",
         "name": "Track, Path",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -75 75 L -39 39\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 18 -18 L -18 18\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 75 -75 L 39 -39\"/></svg>"
     },
     {
         "index": 49,
         "id": "ride",
         "name": "Ride",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"48\" cy=\"-72\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"24\" cy=\"-48\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"-24\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-24\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-48\" cy=\"24\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-72\" cy=\"48\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"72\" cy=\"-48\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"48\" cy=\"-24\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"24\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"24\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-24\" cy=\"48\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-48\" cy=\"72\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 50,
         "id": "bridge",
         "name": "Bridge",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 20 -70 L 20 -40 L -40 20 L -70 20\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 70 -20 L 40 -20 L -20 40 L -20 70\"/></svg>"
     },
     {
         "index": 51,
         "id": "power-line",
         "name": "Power line",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -75 75 L 75 -75\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 17.5 -57.5 L 57.5 -17.5\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -17.5 57.5 L -57.5 17.5\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -20 -20 L 20 20\"/></svg>"
     },
     {
         "index": 52,
         "id": "power-line-pylon",
         "name": "Power line pylon",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -75 75 L 75 -75\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 25 -55 L 55 -25\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -25 55 L -55 25\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -15 -15 L 15 15\"/><circle cx=\"0\" cy=\"0\" r=\"40\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 53,
         "id": "tunnel",
         "name": "Tunnel",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -65 30 L 65 30\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -65 -30 L 65 -30\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -25 -65 L 0 -30 L 25 -65\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -25 65 L 0 30 L 25 65\"/></svg>"
     },
     {
         "index": 54,
         "id": "stone-wall",
         "name": "Stone wall",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -75 75 L 75 -75\"/><circle cx=\"0\" cy=\"0\" r=\"20\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"45\" cy=\"-45\" r=\"20\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-45\" cy=\"45\" r=\"20\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 55,
         "id": "fence",
         "name": "Fence",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 50 -70 L -50 30\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 50 -70 L 50 -30\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 16.67 -36.67 L 16.67 3.33\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -16.67 -3.33 L -16.67 36.67\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -50 30 L -50 70\"/></svg>"
     },
     {
         "index": 56,
         "id": "crossing-point",
         "name": "Crossing point",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -65 0 L -20 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 65 0 L 20 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -20 -70 L -20 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 20 -70 L 20 70\"/></svg>"
     },
     {
         "index": 57,
         "id": "building",
         "name": "Building",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M -50 50 L -50 -50 L 50 -50 L 50 50 Z\"/></svg>"
     },
     {
         "index": 58,
         "id": "paved-area",
         "name": "Paved area",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -12 -60 L -60 -12\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 36 -60 L -60 36\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -36 60 L 60 -36\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 12 60 L 60 12\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -60 60 L -60 -60 L 60 -60 L 60 60 Z\"/></svg>"
     },
     {
         "index": 59,
         "id": "ruin",
         "name": "Ruin",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -60 -15 L -60 -60 L -15 -60\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -60 15 L -60 60 L -15 60\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 60 -15 L 60 -60 L 15 -60\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 60 15 L 60 60 L 15 60\"/></svg>"
     },
     {
         "index": 60,
         "id": "pipeline",
         "name": "Pipeline",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 70 -70 L -57.5 57.5\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -70 30 L -30 30 L -30 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -30 -10 L 10 -10 L 10 30\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 10 -50 L 50 -50 L 50 -10\"/></svg>"
     },
     {
         "index": 61,
         "id": "tower",
         "name": "Tower",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -50 -60 L 50 -60\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 -60 L 0 60\"/></svg>"
     },
     {
         "index": 62,
         "id": "shooting-platform",
         "name": "Shooting platform",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 30 -60 L -30 -60 L -30 60\"/></svg>"
     },
     {
         "index": 63,
         "id": "boundary-stone-cairn",
         "name": "Boundary stone, Cairn",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"0\" r=\"60\" stroke=\"black\" fill=\"none\" stroke-width=\"12.5\"/><circle cx=\"0\" cy=\"0\" r=\"20\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 64,
         "id": "fodder-rack",
         "name": "Fodder rack",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 65 L 0 -65\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -30 -35 L 0 -65 L 30 -35\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -30 65 L 30 65\"/></svg>"
     },
     {
         "index": 65,
         "id": "charcoal-burning-ground",
         "name": "Charcoal burning ground",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 0 -68 L 58.9 34 L -58.9 34 Z\"/><circle cx=\"0\" cy=\"0\" r=\"68\" stroke=\"black\" fill=\"none\" stroke-width=\"12.5\"/></svg>"
     },
     {
         "index": 66,
         "id": "monument-or-statue",
         "name": "Monument or statue",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -55 60 L 55 60\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -35 60 L 0 -60 L 35 60\"/></svg>"
     },
     {
         "index": 67,
         "id": "building-pass-through",
         "name": "Building pass-through",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -60 -60 L 60 -60\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -40 -60 L -40 60\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 40 -60 L 40 60\"/></svg>"
     },
     {
         "index": 68,
         "id": "stairway",
         "name": "Stairway",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -70 45 L -35 45 L -35 15 L 0 15 L 0 -15 L 35 -15 L 35 -45 L 70 -45\"/></svg>"
     },
     {
         "index": 69,
         "id": "flower-bed--out-of-bounds-area",
         "name": "Flower bed / Out of bounds area",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -70 70 L -70 -70 L 70 -70 L 70 70 Z\"/><circle cx=\"0\" cy=\"2\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" d=\"M 0 37 C  -7.660444 43.42788,  -19.01736 53.69468,  -31.15262 44.8779 C  -43.28787 36.06112,  -37.03304 22.08743,  -33.28698 12.81559 C  -41.76746 7.516402,  -55.04125 -0.1120522,  -50.40599 -14.3779 C  -45.77074 -28.64375,  -30.54812 -27.01316,  -20.57248 -26.3156 C  -18.15326 -36.01855,  -15 -51,  9.301504e-7 -51 C  15 -51,  18.15326 -36.01855,  20.57248 -26.3156 C  30.54812 -27.01316,  45.77074 -28.64375,  50.40599 -14.3779 C  55.04125 -0.1120543,  41.76746 7.516402,  33.28698 12.81559 C  37.03304 22.08743,  43.28787 36.06112,  31.15262 44.8779 C  19.01736 53.69468,  7.660444 43.42788,  0 37 \"/></svg>"
     },
     {
         "index": 70,
         "id": "railway",
         "name": "Railway",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -44.97 67.76 L 74.54 -32.52\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -74.54 32.52 L 44.97 -67.76\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 14.47 37.47 L -34.38 -20.75\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -5.45 54.18 L -54.3 -4.04\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -25.37 70.89 L -74.22 12.67\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 34.38 20.75 L -14.47 -37.47\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 54.3 4.04 L 5.45 -54.18\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 74.22 -12.67 L 25.37 -70.89\"/></svg>"
     },
     {
         "index": 71,
         "id": "special-item-cross",
         "name": "Special item cross",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 45 -45 L -45 45\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -45 -45 L 45 45\"/></svg>"
     },
     {
         "index": 72,
         "id": "special-item-cross",
         "name": "Special item cross",
-        "kind": "D",
+        "kind": 1,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"0\" r=\"55\" stroke=\"black\" fill=\"none\" stroke-width=\"12.5\"/></svg>"
     },
     {
         "index": 0,
         "id": "low",
         "name": "Low",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -70 10 C  -30 -20,  30 -20,  70 10 \"/></svg>"
     },
     {
         "index": 1,
         "id": "shallow",
         "name": "Shallow",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -70 -10 C  -30 20,  30 20,  70 -10 \"/></svg>"
     },
     {
         "index": 2,
         "id": "deep",
         "name": "Deep",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -70 -70 C  -35 -72,  -30 -50,  -30 -10 C  -30 30,  -30 70,  0 70 C  30 70,  30 30,  30 -10 C  30 -50,  35 -72,  70 -70 \"/></svg>"
     },
     {
         "index": 3,
         "id": "overgrown",
         "name": "Overgrown",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 42 -64 L 42 64\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 14 -64 L 14 64\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -14 -64 L -14 64\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -42 -64 L -42 64\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 64 -42 L -64 -42\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 64 -14 L -64 -14\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 64 14 L -64 14\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 64 42 L -64 42\"/></svg>"
     },
     {
         "index": 4,
         "id": "open",
         "name": "Open",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"-60\" cy=\"-60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-20\" cy=\"-60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"20\" cy=\"-60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"60\" cy=\"-60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-60\" cy=\"-20\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-60\" cy=\"20\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-60\" cy=\"60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-20\" cy=\"60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"20\" cy=\"60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"60\" cy=\"60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"60\" cy=\"20\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"60\" cy=\"-20\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 5,
         "id": "rocky-stony",
         "name": "Rocky, stony",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M -72 0 L -44.25 -48 L -16.5 0 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 72 0 L 44.25 -48 L 16.5 0 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M -27.75 48 L 0 0 L 27.75 48 Z\"/></svg>"
     },
     {
         "index": 6,
         "id": "marshy",
         "name": "Marshy",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 30 -35 L -30 -35\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 30 0 L -30 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 30 35 L -30 35\"/></svg>"
     },
     {
         "index": 7,
         "id": "sandy",
         "name": "Sandy",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"-15\" cy=\"31\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"48\" cy=\"-2\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-70\" cy=\"31\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"17\" cy=\"46\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-34\" cy=\"-13\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-24\" cy=\"-30\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"28\" cy=\"-44\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-4\" cy=\"-26\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"47\" cy=\"45\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"38\" cy=\"-19\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"33\" cy=\"64\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"62\" cy=\"-41\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-64\" cy=\"-20\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-65\" cy=\"-62\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"56\" cy=\"25\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"69\" cy=\"67\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-41\" cy=\"-42\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-70\" cy=\"65\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"20\" cy=\"7\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-39\" cy=\"65\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"56\" cy=\"-63\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-52\" cy=\"48\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-34\" cy=\"6\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-6\" cy=\"-65\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-21\" cy=\"69\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"67\" cy=\"49\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-51\" cy=\"30\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-2\" cy=\"0\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-61\" cy=\"8\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"19\" cy=\"-69\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"6\" cy=\"-46\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"56\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"6\" cy=\"25\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-25\" cy=\"50\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"19\" cy=\"-28\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"69\" cy=\"12\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"66\" cy=\"-19\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-66\" cy=\"-38\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-24\" cy=\"-65\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"35\" cy=\"21\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-33\" cy=\"33\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"51\" cy=\"63\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"38\" cy=\"-67\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"14\" cy=\"70\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-44\" cy=\"-66\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"13\" cy=\"-10\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-14\" cy=\"-47\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-17\" cy=\"12\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-16\" cy=\"-12\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-51\" cy=\"-7\" r=\"5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 8,
         "id": "needle-leaved",
         "name": "Needle-leaved",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -17 -10 L -40 35 L 40 35 L 17 -10\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 40 L 0 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 -70 L -35 -15 L 35 -15 Z\"/></svg>"
     },
     {
         "index": 9,
         "id": "broad-leaved",
         "name": "Broad-leaved",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M 0 20 C  15 70,  71.45 28.99,  28.53 -0.73 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M 28.53 -0.73 C  80.72 0.46,  59.16 -65.9,  17.63 -34.27 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M 17.63 -34.27 C  34.89 -83.54,  -34.89 -83.54,  -17.63 -34.27 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -17.63 -34.27 C  -59.16 -65.9,  -80.72 0.46,  -28.53 -0.73 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -28.53 -0.73 C  -71.45 28.99,  -15 70,  0 20 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M 0 20 C  0 40,  0 60,  7 70 \"/></svg>"
     },
     {
         "index": 10,
         "id": "ruined",
         "name": "Ruined",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 20 30 L 60 30 L 60 -10\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -60 60 C  -58 -8,  -67 -44,  -45 -58 C  -25 -70,  18 -20,  60 30 \"/></svg>"
     },
     {
         "index": 11,
         "id": "terrace",
         "name": "Terrace",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -60 70 C  -50 30,  -50 -30,  -60 -70 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -32 70 C  -30 60,  -30 48,  0 46 C  30 44,  50 47,  50 0 C  50 -47,  30 -44,  0 -46 C  -30 -48,  -30 -60,  -32 -70 \"/></svg>"
     },
     {
         "index": 12,
         "id": "spur",
         "name": "Spur",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -70 70 C  -60 30,  -60 -30,  -70 -70 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -42 70 C  -37 42,  -40 23,  -10 21 C  20 19,  70 27,  70 0 C  70 -27,  20 -19,  -10 -21 C  -40 -23,  -37 -42,  -42 -70 \"/></svg>"
     },
     {
         "index": 13,
         "id": "reentrant",
         "name": "Reentrant",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -70 70 C  -42 73,  -38 40,  -36 10 C  -34 -20,  -27 -70,  0 -70 C  27 -70,  34 -20,  36 10 C  38 40,  42 73,  70 70 \"/></svg>"
     },
     {
         "index": 14,
         "id": "earth-bank",
         "name": "Earth bank",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 20 5 L 25 29\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -20 5 L -25 29\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 55 -9 L 65 13\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -55 -9 L -65 13\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -70 -20 C  -30 10,  30 10,  70 -20 \"/></svg>"
     },
     {
         "index": 15,
         "id": "quarry",
         "name": "Quarry",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 40 -48 L 20 -23\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -40 -48 L -20 -23\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 66 25 L 40 17.5\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -66 25 L -40 17.5\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M 54 60 C  93 -5,  52 -64,  0 -64 C  -52 -64,  -93 -5,  -54 60 \"/></svg>"
     },
     {
         "index": 16,
         "id": "earth-wall",
         "name": "Earth wall",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -70 0 L 70 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -48 -17 L -48 17\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -16 25 L -16 -25\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 16 25 L 16 -25\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 48 -17 L 48 17\"/></svg>"
     },
     {
         "index": 17,
         "id": "erosion-gully",
         "name": "Erosion gully",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 40 70 L 0 -70 L -40 70\"/></svg>"
     },
     {
         "index": 18,
         "id": "small-erosion-gully",
         "name": "Small erosion gully",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -21 -61 L 61 21\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -61 -21 L 21 61\"/><circle cx=\"-40\" cy=\"-40\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-20\" cy=\"-20\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"20\" cy=\"20\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"40\" cy=\"40\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 19,
         "id": "hill",
         "name": "Hill",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M 0 -48.21 C  40.71 -48.21,  75 -26.79,  75 0 C  75 26.79,  40.71 48.21,  0 48.21 C  -40.71 48.21,  -75 26.79,  -75 0 C  -75 -26.79,  -40.71 -48.21,  0 -48.21 \"/></svg>"
     },
     {
         "index": 20,
         "id": "knoll",
         "name": "Knoll",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"0\" r=\"30\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 21,
         "id": "saddle",
         "name": "Saddle",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -40 70 C  -10 30,  -10 -30,  -40 -70 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M 40 70 C  10 30,  10 -30,  40 -70 \"/></svg>"
     },
     {
         "index": 22,
         "id": "depression",
         "name": "Depression",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 72 0 L 30 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -72 0 L -30 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M 0 -48.21 C  40.71 -48.21,  75 -26.79,  75 0 C  75 26.79,  40.71 48.21,  0 48.21 C  -40.71 48.21,  -75 26.79,  -75 0 C  -75 -26.79,  -40.71 -48.21,  0 -48.21 \"/></svg>"
     },
     {
         "index": 23,
         "id": "small-depression",
         "name": "Small depression",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -50 -50 C  -75 0,  -40 45,  0 45 C  40 45,  75 0,  50 -50 \"/></svg>"
     },
     {
         "index": 24,
         "id": "pit",
         "name": "Pit",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -50 -50 L 0 50 L 50 -50\"/></svg>"
     },
     {
         "index": 25,
         "id": "broken-ground",
         "name": "Broken ground",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -65 -50 C  -75 -30,  -61 -13,  -45 -13 C  -29 -13,  -15 -30,  -25 -50 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M 65 -50 C  75 -30,  61 -13,  45 -13 C  29 -13,  15 -30,  25 -50 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M 20 20 C  30 40,  16 57,  0 57 C  -16 57,  -30 40,  -20 20 \"/></svg>"
     },
     {
         "index": 26,
         "id": "ant-hill-termite-mound",
         "name": "Ant hill (termite mound)",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -70 0 L 70 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 70 L 0 -70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -49.5 49.5 L 49.5 -49.5\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -49.5 -49.5 L 49.5 49.5\"/></svg>"
     },
     {
         "index": 27,
         "id": "cliff",
         "name": "Cliff",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -70 20 L -70 -20 L 70 -20 L 70 20\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -23.33 20 L -23.33 -15\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 23.33 20 L 23.33 -15\"/></svg>"
     },
     {
         "index": 28,
         "id": "rock-pillar",
         "name": "Rock pillar",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 0 -70 L 37 70 L -37 70 Z\"/></svg>"
     },
     {
         "index": 29,
         "id": "cave",
         "name": "Cave",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 50 -30 L -50 0 L 50 30\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -25 -70 C  -10.4 -55.4,  -1.4 -35.6,  0 -15 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -25 70 C  -10.4 55.4,  -1.4 35.6,  0 15 \"/></svg>"
     },
     {
         "index": 30,
         "id": "boulder",
         "name": "Boulder",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 0 -50 L 57.73 50 L -57.73 50 Z\"/></svg>"
     },
     {
         "index": 31,
         "id": "boulder-field",
         "name": "Boulder field",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M -72 72 L -44.25 24 L -16.5 72 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 72 72 L 44.25 24 L 16.5 72 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M -72 -24 L -44.25 -72 L -16.5 -24 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 72 -24 L 44.25 -72 L 16.5 -24 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M -27.75 24 L 0 -24 L 27.75 24 Z\"/></svg>"
     },
     {
         "index": 32,
         "id": "boulder-cluster",
         "name": "Boulder cluster",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 25.1 -30 L 69.3 50 L -25.1 50 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M -25.1 -50 L 25.1 30 L -69.3 30 Z\"/></svg>"
     },
     {
         "index": 33,
         "id": "stony-ground",
         "name": "Stony ground",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"-60\" cy=\"60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-60\" cy=\"30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-60\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-60\" cy=\"-30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-60\" cy=\"-60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-30\" cy=\"60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-30\" cy=\"30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-30\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-30\" cy=\"-30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-30\" cy=\"-60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"-30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"-60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"30\" cy=\"60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"30\" cy=\"30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"30\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"30\" cy=\"-30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"30\" cy=\"-60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"60\" cy=\"60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"60\" cy=\"30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"60\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"60\" cy=\"-30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"60\" cy=\"-60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 34,
         "id": "bare-rock",
         "name": "Bare rock",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -70 0 L -25 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 70 L 0 25\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 70 0 L 25 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 -70 L 0 -25\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -49.5 49.5 L -17.68 17.68\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -49.5 -49.5 L -17.68 -17.68\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 49.5 49.5 L 17.68 17.68\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 49.5 -49.5 L 17.68 -17.68\"/></svg>"
     },
     {
         "index": 35,
         "id": "narrow-passage",
         "name": "Narrow passage",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -45 70 L -20 70 L -20 -70 L -45 -70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 45 70 L 20 70 L 20 -70 L 45 -70\"/></svg>"
     },
     {
         "index": 36,
         "id": "trench",
         "name": "Trench",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -65 -50 L -35 -50 L -35 50 L 35 50 L 35 -50 L 65 -50\"/></svg>"
     },
     {
         "index": 37,
         "id": "lake",
         "name": "Lake",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" d=\"M -39 10 C  -39 5,  -39 5,  -39 0 C  -39 -20,  -13 -20,  -13 0 C  -13 20,  13 20,  13 0 C  13 -20,  39 -20,  39 0 C  39 5,  39 5,  39 10 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M 0 -48.21 C  40.71 -48.21,  75 -26.79,  75 0 C  75 26.79,  40.71 48.21,  0 48.21 C  -40.71 48.21,  -75 26.79,  -75 0 C  -75 -26.79,  -40.71 -48.21,  0 -48.21 \"/></svg>"
     },
     {
         "index": 38,
         "id": "pond",
         "name": "Pond",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" d=\"M -65 -45 C  -65 -50,  -65 -50,  -65 -55 C  -65 -75,  -39 -75,  -39 -55 C  -39 -35,  -13 -35,  -13 -55 C  -13 -75,  13 -75,  13 -55 C  13 -35,  39 -35,  39 -55 C  39 -75,  65 -75,  65 -55 C  65 -50,  65 -50,  65 -45 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -40 -10 C  -60 30,  -32 66,  0 66 C  32 66,  60 30,  40 -10 \"/></svg>"
     },
     {
         "index": 39,
         "id": "water-hole",
         "name": "Water hole",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -40 -10 L 0 70 L 40 -10\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" d=\"M -65 -45 C  -65 -50,  -65 -50,  -65 -55 C  -65 -75,  -39 -75,  -39 -55 C  -39 -35,  -13 -35,  -13 -55 C  -13 -75,  13 -75,  13 -55 C  13 -35,  39 -35,  39 -55 C  39 -75,  65 -75,  65 -55 C  65 -50,  65 -50,  65 -45 \"/></svg>"
     },
     {
         "index": 40,
         "id": "river-stream-water-course",
         "name": "River, stream, water course",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -60 -80 C  -65 -75,  -65 -75,  -70 -70 C  -90 -50,  -70 -30,  -50 -50 C  -30 -70,  -10 -50,  -30 -30 C  -50 -10,  -30 10,  -10 -10 C  10 -30,  30 -10,  10 10 C  -10 30,  10 50,  30 30 C  50 10,  70 30,  50 50 C  30 70,  50 90,  70 70 C  75 65,  75 65,  80 60 \"/></svg>"
     },
     {
         "index": 41,
         "id": "minor-water-channel-ditch",
         "name": "Minor water channel, ditch",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -32 -80 L -5 -53\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 10 -38 L 38 -10\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 53 5 L 80 32\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -80 -32 L -53 -5\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -38 10 L -10 38\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 5 53 L 32 80\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" d=\"M -48 -64 C  -52 -60,  -52 -60,  -56 -56 C  -72 -40,  -56 -24,  -40 -40 C  -24 -56,  -8 -40,  -24 -24 C  -40 -8,  -24 8,  -8 -8 C  8 -24,  24 -8,  8 8 C  -8 24,  8 40,  24 24 C  40 8,  56 24,  40 40 C  24 56,  40 72,  56 56 C  60 52,  60 52,  64 48 \"/></svg>"
     },
     {
         "index": 42,
         "id": "narrow-marsh",
         "name": "Narrow marsh",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"-50\" cy=\"-50\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-25\" cy=\"-25\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"25\" cy=\"25\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"50\" cy=\"50\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 43,
         "id": "marsh",
         "name": "Marsh",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -64 0 L 64 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -48 -32 L 48 -32\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -48 32 L 48 32\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -32 -64 L 32 -64\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -32 64 L 32 64\"/></svg>"
     },
     {
         "index": 44,
         "id": "firm-ground-in-marsh",
         "name": "Firm ground in marsh",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 70 -70 L 70 -57.5 L -70 -57.5 L -70 -70 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 70 -38.125 L 70 -25.625 L 36.991 -25.625 L 31.765 -31.875 L 23.906 -38.125 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M -70 -38.125 L -70 -25.625 L -36.991 -25.625 L -31.765 -31.875 L -23.906 -38.125 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M -70 -6.25 L -70 6.25 L -44.564 6.25 L -45 0 L -44.564 -6.25 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 70 -6.25 L 70 6.25 L 44.564 6.25 L 45 0 L 44.564 -6.25 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 70 38.125 L 70 25.625 L 36.991 25.625 L 31.765 31.875 L 23.906 38.125 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M -70 38.125 L -70 25.625 L -36.991 25.625 L -31.765 31.875 L -23.906 38.125 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 70 70 L 70 57.5 L -70 57.5 L -70 70 Z\"/></svg>"
     },
     {
         "index": 45,
         "id": "well",
         "name": "Well",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"-25\" r=\"44\" stroke=\"black\" fill=\"none\" stroke-width=\"12.5\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" d=\"M -39 60 C  -39 55,  -39 55,  -39 50 C  -39 30,  -13 30,  -13 50 C  -13 70,  13 70,  13 50 C  13 30,  39 30,  39 50 C  39 55,  39 55,  39 60 \"/></svg>"
     },
     {
         "index": 46,
         "id": "spring",
         "name": "Spring",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -35 -35 C  -28 -26,  -10 -5,  1 -7 C  26 -10,  40 0,  20 20 C  0 40,  20 60,  40 40 C  60 20,  80 40,  60 60 C  55 66,  55 69,  55 75 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -10 -50 C  -40 -103,  -103 -40,  -50 -10 \"/></svg>"
     },
     {
         "index": 47,
         "id": "water-tank-trough",
         "name": "Water tank, trough",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -50 -10 L -50 50 L 50 50 L 50 -10 Z\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" d=\"M -65 -45 C  -65 -50,  -65 -50,  -65 -55 C  -65 -75,  -39 -75,  -39 -55 C  -39 -35,  -13 -35,  -13 -55 C  -13 -75,  13 -75,  13 -55 C  13 -35,  39 -35,  39 -55 C  39 -75,  65 -75,  65 -55 C  65 -50,  65 -50,  65 -45 \"/></svg>"
     },
     {
         "index": 48,
         "id": "open-land",
         "name": "Open land",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"round\" d=\"M 0 -66 L 66 0 L 0 66 L -66 0 Z\"/></svg>"
     },
     {
         "index": 49,
         "id": "semi-open-land",
         "name": "Semi-open land",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"-66\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"22\" cy=\"-44\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"44\" cy=\"-22\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"66\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"44\" cy=\"22\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"22\" cy=\"44\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"66\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-22\" cy=\"44\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-44\" cy=\"22\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-66\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-44\" cy=\"-22\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-22\" cy=\"-44\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 50,
         "id": "forest-corner",
         "name": "Forest corner",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"round\" d=\"M 0 0 L 0 -66 L -66 0 L 0 66 L 66 0 Z\"/></svg>"
     },
     {
         "index": 51,
         "id": "clearing",
         "name": "Clearing",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"-66\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"33\" cy=\"-57.16\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"57.16\" cy=\"-33\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"66\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"57.16\" cy=\"33\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"33\" cy=\"57.16\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"66\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-33\" cy=\"57.16\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-57.16\" cy=\"33\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-66\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-57.16\" cy=\"-33\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-33\" cy=\"-57.16\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 52,
         "id": "thicket",
         "name": "Thicket",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 21 -71 L -71 21\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 47 -47 L -47 47\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 71 -21 L -21 71\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -21 -71 L 71 21\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -47 -47 L 47 47\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -71 -21 L 21 71\"/></svg>"
     },
     {
         "index": 53,
         "id": "hedge-linear-thicket",
         "name": "Hedge, Linear thicket",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -75 75 L -63 63\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 75 -75 L 63 -63\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 35 -35 L 12 -12\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -35 35 L -12 12\"/><circle cx=\"0\" cy=\"0\" r=\"17.5\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"47.5\" cy=\"-47.5\" r=\"17.5\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"-47.5\" cy=\"47.5\" r=\"17.5\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 54,
         "id": "vegetation-boundary",
         "name": "Vegetation boundary",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"-50\" cy=\"-60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-25\" cy=\"-45\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"-30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"25\" cy=\"-15\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"50\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"25\" cy=\"15\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"30\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-25\" cy=\"45\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-50\" cy=\"60\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 55,
         "id": "copse",
         "name": "Copse",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -23 40 L -23 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 23 40 L 23 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -60 35 L -23 -70 L 0 -4.73 L 23 -70 L 60 35 Z\"/></svg>"
     },
     {
         "index": 56,
         "id": "distinctive-tree",
         "name": "Distinctive tree",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 40 L 0 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 -70 L -37 35 L 37 35 Z\"/></svg>"
     },
     {
         "index": 57,
         "id": "tree-stump-root-stock",
         "name": "Tree stump, Root stock",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 42 -42 L -42 42\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 42 42 L -42 -42\"/><circle cx=\"0\" cy=\"0\" r=\"60\" stroke=\"black\" fill=\"none\" stroke-width=\"12.5\"/></svg>"
     },
     {
         "index": 58,
         "id": "road",
         "name": "Road",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"15\" stroke-linejoin=\"miter\" d=\"M -73 73 L 73 -73\"/></svg>"
     },
     {
         "index": 59,
         "id": "track-path",
         "name": "Track, Path",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -75 75 L -39 39\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 18 -18 L -18 18\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 75 -75 L 39 -39\"/></svg>"
     },
     {
         "index": 60,
         "id": "ride",
         "name": "Ride",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"48\" cy=\"-72\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"24\" cy=\"-48\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"-24\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-24\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-48\" cy=\"24\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-72\" cy=\"48\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"72\" cy=\"-48\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"48\" cy=\"-24\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"24\" cy=\"0\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"0\" cy=\"24\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-24\" cy=\"48\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-48\" cy=\"72\" r=\"7.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 61,
         "id": "bridge",
         "name": "Bridge",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 20 -70 L 20 -40 L -40 20 L -70 20\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 70 -20 L 40 -20 L -20 40 L -20 70\"/></svg>"
     },
     {
         "index": 62,
         "id": "power-line",
         "name": "Power line",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -75 75 L 75 -75\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 17.5 -57.5 L 57.5 -17.5\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -17.5 57.5 L -57.5 17.5\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -20 -20 L 20 20\"/></svg>"
     },
     {
         "index": 63,
         "id": "power-line-pylon",
         "name": "Power line pylon",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -75 75 L 75 -75\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 25 -55 L 55 -25\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -25 55 L -55 25\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -15 -15 L 15 15\"/><circle cx=\"0\" cy=\"0\" r=\"40\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 64,
         "id": "tunnel",
         "name": "Tunnel",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -65 30 L 65 30\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -65 -30 L 65 -30\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -25 -65 L 0 -30 L 25 -65\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -25 65 L 0 30 L 25 65\"/></svg>"
     },
     {
         "index": 65,
         "id": "stone-wall",
         "name": "Stone wall",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -75 75 L 75 -75\"/><circle cx=\"0\" cy=\"0\" r=\"20\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"45\" cy=\"-45\" r=\"20\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><circle cx=\"-45\" cy=\"45\" r=\"20\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 66,
         "id": "fence",
         "name": "Fence",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 50 -70 L -50 30\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 50 -70 L 50 -30\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 16.67 -36.67 L 16.67 3.33\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -16.67 -3.33 L -16.67 36.67\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -50 30 L -50 70\"/></svg>"
     },
     {
         "index": 67,
         "id": "crossing-point",
         "name": "Crossing point",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -65 0 L -20 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 65 0 L 20 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -20 -70 L -20 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 20 -70 L 20 70\"/></svg>"
     },
     {
         "index": 68,
         "id": "building",
         "name": "Building",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M -50 50 L -50 -50 L 50 -50 L 50 50 Z\"/></svg>"
     },
     {
         "index": 69,
         "id": "paved-area",
         "name": "Paved area",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -12 -60 L -60 -12\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 36 -60 L -60 36\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -36 60 L 60 -36\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 12 60 L 60 12\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -60 60 L -60 -60 L 60 -60 L 60 60 Z\"/></svg>"
     },
     {
         "index": 70,
         "id": "ruin",
         "name": "Ruin",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -60 -15 L -60 -60 L -15 -60\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -60 15 L -60 60 L -15 60\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 60 -15 L 60 -60 L 15 -60\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 60 15 L 60 60 L 15 60\"/></svg>"
     },
     {
         "index": 71,
         "id": "pipeline",
         "name": "Pipeline",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 70 -70 L -57.5 57.5\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -70 30 L -30 30 L -30 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -30 -10 L 10 -10 L 10 30\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 10 -50 L 50 -50 L 50 -10\"/></svg>"
     },
     {
         "index": 72,
         "id": "tower",
         "name": "Tower",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -50 -60 L 50 -60\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 -60 L 0 60\"/></svg>"
     },
     {
         "index": 73,
         "id": "shooting-platform",
         "name": "Shooting platform",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 30 -60 L -30 -60 L -30 60\"/></svg>"
     },
     {
         "index": 74,
         "id": "boundary-stone-cairn",
         "name": "Boundary stone, Cairn",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"0\" r=\"60\" stroke=\"black\" fill=\"none\" stroke-width=\"12.5\"/><circle cx=\"0\" cy=\"0\" r=\"20\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 75,
         "id": "fodder-rack",
         "name": "Fodder rack",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 65 L 0 -65\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -30 -35 L 0 -65 L 30 -35\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -30 65 L 30 65\"/></svg>"
     },
     {
         "index": 76,
         "id": "charcoal-burning-ground",
         "name": "Charcoal burning ground",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 0 -68 L 58.9 34 L -58.9 34 Z\"/><circle cx=\"0\" cy=\"0\" r=\"68\" stroke=\"black\" fill=\"none\" stroke-width=\"12.5\"/></svg>"
     },
     {
         "index": 77,
         "id": "monument-or-statue",
         "name": "Monument or statue",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -55 60 L 55 60\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -35 60 L 0 -60 L 35 60\"/></svg>"
     },
     {
         "index": 78,
         "id": "building-pass-through",
         "name": "Building pass-through",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -60 -60 L 60 -60\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -40 -60 L -40 60\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 40 -60 L 40 60\"/></svg>"
     },
     {
         "index": 79,
         "id": "stairway",
         "name": "Stairway",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -70 45 L -35 45 L -35 15 L 0 15 L 0 -15 L 35 -15 L 35 -45 L 70 -45\"/></svg>"
     },
     {
         "index": 80,
         "id": "flower-bed--out-of-bounds-area",
         "name": "Flower bed / Out of bounds area",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -70 70 L -70 -70 L 70 -70 L 70 70 Z\"/><circle cx=\"0\" cy=\"2\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" d=\"M 0 37 C  -7.660444 43.42788,  -19.01736 53.69468,  -31.15262 44.8779 C  -43.28787 36.06112,  -37.03304 22.08743,  -33.28698 12.81559 C  -41.76746 7.516402,  -55.04125 -0.1120522,  -50.40599 -14.3779 C  -45.77074 -28.64375,  -30.54812 -27.01316,  -20.57248 -26.3156 C  -18.15326 -36.01855,  -15 -51,  9.301504e-7 -51 C  15 -51,  18.15326 -36.01855,  20.57248 -26.3156 C  30.54812 -27.01316,  45.77074 -28.64375,  50.40599 -14.3779 C  55.04125 -0.1120543,  41.76746 7.516402,  33.28698 12.81559 C  37.03304 22.08743,  43.28787 36.06112,  31.15262 44.8779 C  19.01736 53.69468,  7.660444 43.42788,  0 37 \"/></svg>"
     },
     {
         "index": 81,
         "id": "railway",
         "name": "Railway",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -44.97 67.76 L 74.54 -32.52\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -74.54 32.52 L 44.97 -67.76\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 14.47 37.47 L -34.38 -20.75\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -5.45 54.18 L -54.3 -4.04\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -25.37 70.89 L -74.22 12.67\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 34.38 20.75 L -14.47 -37.47\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 54.3 4.04 L 5.45 -54.18\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 74.22 -12.67 L 25.37 -70.89\"/></svg>"
     },
     {
         "index": 82,
         "id": "special-item-cross",
         "name": "Special item cross",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 45 -45 L -45 45\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -45 -45 L 45 45\"/></svg>"
     },
     {
         "index": 83,
         "id": "special-item-cross",
         "name": "Special item cross",
-        "kind": "E",
+        "kind": 2,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"0\" r=\"55\" stroke=\"black\" fill=\"none\" stroke-width=\"12.5\"/></svg>"
     },
     {
         "index": 0,
         "id": "crossing",
         "name": "Crossing",
-        "kind": "F",
+        "kind": 3,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 70 -70 L -70 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -70 -70 L 70 70\"/></svg>"
     },
     {
         "index": 1,
         "id": "junction",
         "name": "Junction",
-        "kind": "F",
+        "kind": 3,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 55 -70 L -55 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -55 -70 L 0 0\"/></svg>"
     },
     {
         "index": 2,
         "id": "bend",
         "name": "Bend",
-        "kind": "F",
+        "kind": 3,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M 35 -70 C  25 -62.22,  -15 -31.11,  -25 -23.33 C  -45 -7.78,  -45 7.78,  -25 23.33 C  -15 31.11,  25 62.22,  35 70 \"/></svg>"
     },
     {
         "index": 0,
         "id": "north-side",
         "name": "North side",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"20\" r=\"55\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"0\" cy=\"-65\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 1,
         "id": "north-east-side",
         "name": "North-east side",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"-14.14\" cy=\"14.14\" r=\"55\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"45.96\" cy=\"-45.96\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 2,
         "id": "east-side",
         "name": "East side",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"-20\" cy=\"0\" r=\"55\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"65\" cy=\"0\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 3,
         "id": "south-east-side",
         "name": "South-east side",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"-14.14\" cy=\"-14.14\" r=\"55\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"45.96\" cy=\"45.96\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 4,
         "id": "south-side",
         "name": "South side",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"-20\" r=\"55\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"0\" cy=\"65\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 5,
         "id": "south-west-side",
         "name": "South-west side",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"14.14\" cy=\"-14.14\" r=\"55\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"-45.96\" cy=\"45.96\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 6,
         "id": "west-side",
         "name": "West side",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"20\" cy=\"0\" r=\"55\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"-65\" cy=\"0\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 7,
         "id": "north-west-side",
         "name": "North-west side",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"14.14\" cy=\"14.14\" r=\"55\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"-45.96\" cy=\"-45.96\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 8,
         "id": "north-edge",
         "name": "North edge",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 -35 L 0 -75\"/><circle cx=\"0\" cy=\"0\" r=\"55\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 9,
         "id": "north-east-edge",
         "name": "North-east edge",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 24.75 -24.75 L 53.03 -53.03\"/><circle cx=\"0\" cy=\"0\" r=\"55\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 10,
         "id": "east-edge",
         "name": "East edge",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 35 0 L 75 0\"/><circle cx=\"0\" cy=\"0\" r=\"55\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 11,
         "id": "south-east-edge",
         "name": "South-east edge",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 24.75 24.75 L 53.03 53.03\"/><circle cx=\"0\" cy=\"0\" r=\"55\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 12,
         "id": "south-edge",
         "name": "South edge",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 35 L 0 75\"/><circle cx=\"0\" cy=\"0\" r=\"55\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 13,
         "id": "south-west-edge",
         "name": "South-west edge",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -24.75 24.75 L -53.03 53.03\"/><circle cx=\"0\" cy=\"0\" r=\"55\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 14,
         "id": "west-edge",
         "name": "West edge",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -35 0 L -75 0\"/><circle cx=\"0\" cy=\"0\" r=\"55\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 15,
         "id": "north-west-edge",
         "name": "North-west edge",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -24.75 -24.75 L -53.03 -53.03\"/><circle cx=\"0\" cy=\"0\" r=\"55\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 16,
         "id": "north-part",
         "name": "North part",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"0\" r=\"65\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"0\" cy=\"-35\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 17,
         "id": "north-east-part",
         "name": "North-east part",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"0\" r=\"65\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"24.75\" cy=\"-24.75\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 18,
         "id": "east-part",
         "name": "East part",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"0\" r=\"65\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"35\" cy=\"0\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 19,
         "id": "south-east-part",
         "name": "South-east part",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"0\" r=\"65\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"24.75\" cy=\"24.75\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 20,
         "id": "south-part",
         "name": "South part",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"0\" r=\"65\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"0\" cy=\"35\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 21,
         "id": "south-west-part",
         "name": "South-west part",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"0\" r=\"65\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"-24.75\" cy=\"24.75\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 22,
         "id": "west-part",
         "name": "West part",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"0\" r=\"65\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"-35\" cy=\"0\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 23,
         "id": "north-west-part",
         "name": "North-west part",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"0\" cy=\"0\" r=\"65\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"-24.75\" cy=\"-24.75\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 24,
         "id": "north-corner-inside",
         "name": "North corner (inside)",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -65 15 L 0 -50 L 65 15\"/><circle cx=\"0\" cy=\"-12.5\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 25,
         "id": "north-east-corner-inside",
         "name": "North-east corner (inside)",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -56.57 -35.36 L 35.36 -35.36 L 35.36 56.57\"/><circle cx=\"8.84\" cy=\"-8.84\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 26,
         "id": "east-corner-inside",
         "name": "East corner (inside)",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -15 65 L 50 0 L -15 -65\"/><circle cx=\"12.5\" cy=\"0\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 27,
         "id": "south-east-corner-inside",
         "name": "South-east corner (inside)",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -56.57 35.36 L 35.36 35.36 L 35.36 -56.57\"/><circle cx=\"8.84\" cy=\"8.84\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 28,
         "id": "south-corner-inside",
         "name": "South corner (inside)",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -65 -15 L 0 50 L 65 -15\"/><circle cx=\"0\" cy=\"12.5\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 29,
         "id": "south-west-corner-inside",
         "name": "South-west corner (inside)",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 56.57 35.36 L -35.36 35.36 L -35.36 -56.57\"/><circle cx=\"-8.84\" cy=\"8.84\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 30,
         "id": "west-corner-inside",
         "name": "West corner (inside)",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 15 65 L -50 0 L 15 -65\"/><circle cx=\"-12.5\" cy=\"0\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 31,
         "id": "north-west-corner-inside",
         "name": "North-west corner (inside)",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 56.57 -35.36 L -35.36 -35.36 L -35.36 56.57\"/><circle cx=\"-8.84\" cy=\"-8.84\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 32,
         "id": "north-corner-outside",
         "name": "North corner (outside)",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 65 40 L 0 -25 L -65 40\"/><circle cx=\"0\" cy=\"-55\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 33,
         "id": "north-east-corner-outside",
         "name": "North-east corner (outside)",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -69.25 -22.68 L 22.68 -22.68 L 22.68 69.25\"/><circle cx=\"43.89\" cy=\"-43.89\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 34,
         "id": "east-corner-outside",
         "name": "East corner (outside)",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -40 65 L 25 0 L -40 -65\"/><circle cx=\"55\" cy=\"0\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 35,
         "id": "south-east-corner-outside",
         "name": "South-east corner (outside)",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -69.25 22.68 L 22.68 22.68 L 22.68 -69.25\"/><circle cx=\"43.89\" cy=\"43.89\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 36,
         "id": "south-corner-outside",
         "name": "South corner (outside)",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 65 -40 L 0 25 L -65 -40\"/><circle cx=\"0\" cy=\"55\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 37,
         "id": "south-west-corner-outside",
         "name": "South-west corner (outside)",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 69.25 22.68 L -22.68 22.68 L -22.68 -69.25\"/><circle cx=\"-43.89\" cy=\"43.89\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 38,
         "id": "west-corner-outside",
         "name": "West corner (outside)",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 40 65 L -25 0 L 40 -65\"/><circle cx=\"-55\" cy=\"0\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 39,
         "id": "north-west-corner-outside",
         "name": "North-west corner (outside)",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 69.25 -22.68 L -22.68 -22.68 L -22.68 69.25\"/><circle cx=\"-43.89\" cy=\"-43.89\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 40,
         "id": "north-tip",
         "name": "North tip",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 30 65 L 0 -30 L -30 65\"/><circle cx=\"0\" cy=\"-60\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 41,
         "id": "north-east-tip",
         "name": "North-east tip",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -67.18 24.75 L 21.21 -21.21 L -24.75 67.18\"/><circle cx=\"42.43\" cy=\"-42.43\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 42,
         "id": "east-tip",
         "name": "East tip",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -65 -30 L 30 0 L -65 30\"/><circle cx=\"60\" cy=\"0\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 43,
         "id": "south-east-tip",
         "name": "South-east tip",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -67.18 -24.75 L 21.21 21.21 L -24.75 -67.18\"/><circle cx=\"42.43\" cy=\"42.43\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 44,
         "id": "south-tip",
         "name": "South tip",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 30 -65 L 0 30 L -30 -65\"/><circle cx=\"0\" cy=\"60\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 45,
         "id": "south-west-tip",
         "name": "South-west tip",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 67.18 -24.75 L -21.21 21.21 L 24.75 -67.18\"/><circle cx=\"-42.43\" cy=\"42.43\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 46,
         "id": "west-tip",
         "name": "West tip",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 65 -30 L -30 0 L 65 30\"/><circle cx=\"-60\" cy=\"0\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 47,
         "id": "north-west-tip",
         "name": "North-west tip",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 67.18 24.75 L -21.21 -21.21 L 24.75 67.18\"/><circle cx=\"-42.43\" cy=\"-42.43\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 48,
         "id": "north-end",
         "name": "North end",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 0 65 L 0 -65\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -25 -65 L 25 -65\"/></svg>"
     },
     {
         "index": 49,
         "id": "north-east-end",
         "name": "North-east end",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -45.96 45.96 L 45.96 -45.96\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 28.28 -63.64 L 63.64 -28.28\"/></svg>"
     },
     {
         "index": 50,
         "id": "east-end",
         "name": "East end",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -65 0 L 65 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 65 25 L 65 -25\"/></svg>"
     },
     {
         "index": 51,
         "id": "south-east-end",
         "name": "South-east end",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -45.96 -45.96 L 45.96 45.96\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 28.28 63.64 L 63.64 28.28\"/></svg>"
     },
     {
         "index": 52,
         "id": "south-end",
         "name": "South end",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 0 65 L 0 -65\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -25 65 L 25 65\"/></svg>"
     },
     {
         "index": 53,
         "id": "south-west-end",
         "name": "South-west end",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 45.96 -45.96 L -45.96 45.96\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -28.28 63.64 L -63.64 28.28\"/></svg>"
     },
     {
         "index": 54,
         "id": "west-end",
         "name": "West end",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -65 0 L 65 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -65 25 L -65 -25\"/></svg>"
     },
     {
         "index": 55,
         "id": "north-west-end",
         "name": "North-west end",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 45.96 45.96 L -45.96 -45.96\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -28.28 -63.64 L -63.64 -28.28\"/></svg>"
     },
     {
         "index": 56,
         "id": "north-foot",
         "name": "North foot",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -10 -80 L -10 -40 L 15 -40\"/><circle cx=\"0\" cy=\"30\" r=\"50\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 57,
         "id": "north-east-foot",
         "name": "North-east foot",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 40 -70 L 40 -30 L 65 -30\"/><circle cx=\"-20\" cy=\"20\" r=\"50\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 58,
         "id": "east-foot",
         "name": "East foot",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 50 -20 L 50 20 L 75 20\"/><circle cx=\"-25\" cy=\"0\" r=\"50\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 59,
         "id": "south-east-foot",
         "name": "South-east foot",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 40 30 L 40 70 L 65 70\"/><circle cx=\"-20\" cy=\"-20\" r=\"50\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 60,
         "id": "south-foot",
         "name": "South foot",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -10 40 L -10 80 L 15 80\"/><circle cx=\"0\" cy=\"-30\" r=\"50\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 61,
         "id": "south-west-foot",
         "name": "South-west foot",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -65 30 L -65 70 L -40 70\"/><circle cx=\"20\" cy=\"-20\" r=\"50\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 62,
         "id": "west-foot",
         "name": "West foot",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -75 -20 L -75 20 L -50 20\"/><circle cx=\"25\" cy=\"0\" r=\"50\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 63,
         "id": "north-west-foot",
         "name": "North-west foot",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -65 -70 L -65 -30 L -40 -30\"/><circle cx=\"20\" cy=\"20\" r=\"50\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 64,
         "id": "upper-part",
         "name": "Upper part",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -30 -60 L -30 60\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 30 -60 L 30 60\"/><circle cx=\"0\" cy=\"-52.5\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 65,
         "id": "lower-part",
         "name": "Lower part",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -30 -60 L -30 60\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 30 -60 L 30 60\"/><circle cx=\"0\" cy=\"52.5\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 66,
         "id": "top",
         "name": "Top",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -28 60 L -28 -25 L 28 -25 L 28 60\"/><circle cx=\"0\" cy=\"-52.5\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 67,
         "id": "beneath",
         "name": "Beneath",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -50 30 L -50 -30 L 50 -30 L 50 30\"/><circle cx=\"0\" cy=\"22.5\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 68,
         "id": "foot",
         "name": "Foot",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -30 -60 L -30 60 L 30 60\"/><circle cx=\"0\" cy=\"30\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 69,
         "id": "between",
         "name": "Between",
-        "kind": "G",
+        "kind": 4,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -60 -40 L 60 -40\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M -60 40 L 60 40\"/><circle cx=\"0\" cy=\"0\" r=\"12.5\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 0,
         "id": "first-aid-post",
         "name": "First aid post",
-        "kind": "H",
+        "kind": 5,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M -20 -60 L 20 -60 L 20 -20 L 60 -20 L 60 20 L 20 20 L 20 60 L -20 60 L -20 20 L -60 20 L -60 -20 L -20 -20 Z\"/></svg>"
     },
     {
         "index": 1,
         "id": "refreshment-point",
         "name": "Refreshment point",
-        "kind": "H",
+        "kind": 5,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 60 -55 L 40 60\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -60 -55 L -40 60\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M 60 -55 C  60 -63.3,  33.1 -70,  0 -70 C  -33.1 -70,  -60 -63.3,  -60 -55 C  -60 -46.7,  -33.1 -40,  0 -40 C  33.1 -40,  60 -46.7,  60 -55 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M 40 60 C  40 65.5,  22.05 70,  0 70 C  -22.05 70,  -40 65.5,  -40 60 \"/></svg>"
     },
     {
         "index": 2,
         "id": "control-check",
         "name": "Control check",
-        "kind": "H",
+        "kind": 5,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -35 70 L 0 20 L 35 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -35 0 L 0 -20 L 35 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 0 20 L 0 -50\"/><circle cx=\"0\" cy=\"-53\" r=\"20\" stroke=\"black\" fill=\"black\" stroke-width=\"0\"/></svg>"
     },
     {
         "index": 0,
         "id": "map-issue-point",
         "name": "Map issue point",
-        "kind": "V",
+        "kind": 6,
         "svg": "<svg fill=\"transparent\" viewBox=\"-800 -100 1600 200\" width=\"1600px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -760 50 L -760 -50\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -760 0 L -660 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -630 0 L -510 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -480 0 L -360 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -330 0 L -210 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 620 0 L 510 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 480 0 L 360 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 330 0 L 210 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 555 -70 L 625 0 L 555 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 700 -70 L 760.6 35 L 639.4 35 Z\"/></svg>"
     },
     {
         "index": 0,
         "id": "taped-route-away-from-control",
         "name": "Taped route away from control",
-        "kind": "W",
+        "kind": 7,
         "svg": "<svg fill=\"transparent\" viewBox=\"-800 -100 1600 200\" width=\"1600px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -625 0 L -510 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -480 0 L -360 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -330 0 L -210 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 620 0 L 510 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 480 0 L 360 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 330 0 L 210 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 555 -70 L 625 0 L 555 70\"/><circle cx=\"-700\" cy=\"0\" r=\"70\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 1,
         "id": "taped-route-between-controls",
         "name": "Taped route between controls",
-        "kind": "W",
+        "kind": 7,
         "svg": "<svg fill=\"transparent\" viewBox=\"-800 -100 1600 200\" width=\"1600px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -625 0 L -510 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -480 0 L -360 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -330 0 L -210 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 620 0 L 510 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 480 0 L 360 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 330 0 L 210 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 555 -70 L 625 0 L 555 70\"/><circle cx=\"-700\" cy=\"0\" r=\"70\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"700\" cy=\"0\" r=\"70\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 2,
         "id": "map-exchange",
         "name": "Map exchange",
-        "kind": "W",
+        "kind": 7,
         "svg": "<svg fill=\"transparent\" viewBox=\"-800 -100 1600 200\" width=\"1600px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -625 0 L -510 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -480 0 L -360 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -330 0 L -210 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 620 0 L 510 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 480 0 L 360 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 330 0 L 210 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 555 -70 L 625 0 L 555 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 700 -70 L 760.6 35 L 639.4 35 Z\"/><circle cx=\"-700\" cy=\"0\" r=\"70\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 0,
         "id": "mandatory-crossing-point-or-points",
         "name": "Mandatory crossing point or points",
-        "kind": "X",
+        "kind": 8,
         "svg": "<svg fill=\"transparent\" viewBox=\"-800 -100 1600 200\" width=\"1600px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -555 -70 L -625 0 L -555 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 555 -70 L 625 0 L 555 70\"/><circle cx=\"-700\" cy=\"0\" r=\"70\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"700\" cy=\"0\" r=\"70\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -150 -70 C  -80 0,  80 0,  150 -70 \"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" d=\"M -150 70 C  -80 0,  80 0,  150 70 \"/></svg>"
     },
     {
         "index": 1,
         "id": "mandatory-passage",
         "name": "Mandatory passage",
-        "kind": "X",
+        "kind": 8,
         "svg": "<svg fill=\"transparent\" viewBox=\"-800 -100 1600 200\" width=\"1600px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -555 -70 L -625 0 L -555 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 555 -70 L 625 0 L 555 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -300 -70 L -250 -20 L 250 -20 L 300 -70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -300 70 L -250 20 L 250 20 L 300 70\"/><circle cx=\"-700\" cy=\"0\" r=\"70\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"700\" cy=\"0\" r=\"70\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 0,
         "id": "map-exchange-at-a-control",
         "name": "Map exchange at a control",
-        "kind": "Y",
+        "kind": 9,
         "svg": "<svg fill=\"transparent\" viewBox=\"-800 -100 1600 200\" width=\"1600px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -625 0 L -510 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -480 0 L -360 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -330 0 L -210 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 620 0 L 510 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 480 0 L 360 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 330 0 L 210 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 555 -70 L 625 0 L 555 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"10\" stroke-linejoin=\"miter\" d=\"M 700 -70 L 760.6 35 L 639.4 35 Z\"/><circle cx=\"-700\" cy=\"0\" r=\"70\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 1,
         "id": "map-flip",
         "name": "Map flip",
-        "kind": "Y",
+        "kind": 9,
         "svg": "<svg fill=\"transparent\" viewBox=\"-100 -100 200 200\" width=\"200px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -140 70 L 140 70 L 140 -70 L -140 -70 Z\"/><path stroke=\"black\" fill=\"black\" stroke-width=\"0\" stroke-linejoin=\"miter\" d=\"M 125 -58 L 125 6 L 45 -26 Z\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"0\" d=\"M 120 -42 C  120 -32,  120 -20,  120 -10 C  140 -10,  190 -3,  190 21 C  190 42,  166 52,  148 58 C  183 58,  215 40,  215 10 C  215 -25,  145 -42,  120 -42 \"/></svg>"
     },
     {
         "index": 0,
         "id": "taped-route-to-finish",
         "name": "Taped route to finish",
-        "kind": "Z",
+        "kind": 10,
         "svg": "<svg fill=\"transparent\" viewBox=\"-800 -100 1600 200\" width=\"1600px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -625 0 L -510 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -480 0 L -360 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -330 0 L -210 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 620 0 L 510 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 480 0 L 360 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 330 0 L 210 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 555 -70 L 625 0 L 555 70\"/><circle cx=\"-700\" cy=\"0\" r=\"70\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"700\" cy=\"0\" r=\"70\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"700\" cy=\"0\" r=\"50\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 1,
         "id": "navigate-to-finish-funnel",
         "name": "Navigate to finish funnel",
-        "kind": "Z",
+        "kind": 10,
         "svg": "<svg fill=\"transparent\" viewBox=\"-800 -100 1600 200\" width=\"1600px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -550 -70 L -480 0 L -550 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -480 0 L -360 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -330 0 L -210 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 620 0 L 510 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 480 0 L 360 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 330 0 L 210 0\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 555 -70 L 625 0 L 555 70\"/><circle cx=\"-700\" cy=\"0\" r=\"70\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"700\" cy=\"0\" r=\"70\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"700\" cy=\"0\" r=\"50\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     },
     {
         "index": 2,
         "id": "navigate-to-finish-no-tapes",
         "name": "Navigate to finish (no tapes)",
-        "kind": "Z",
+        "kind": 10,
         "svg": "<svg fill=\"transparent\" viewBox=\"-800 -100 1600 200\" width=\"1600px\" height=\"200px\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M -555 -70 L -625 0 L -555 70\"/><path stroke=\"black\" fill=\"none\" stroke-width=\"12.5\" stroke-linejoin=\"miter\" d=\"M 555 -70 L 625 0 L 555 70\"/><circle cx=\"-700\" cy=\"0\" r=\"70\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"700\" cy=\"0\" r=\"70\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/><circle cx=\"700\" cy=\"0\" r=\"50\" stroke=\"black\" fill=\"none\" stroke-width=\"10\"/></svg>"
     }
 ]

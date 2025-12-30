@@ -186,7 +186,7 @@ function ControlLine({ sortedControls }: {
       let dx = nextControl.coords.x - currentControl.coords.x;
       let dy = nextControl.coords.y - currentControl.coords.y;
       let lenght = Math.sqrt(dx * dx + dy * dy);
-      if (lenght < 24) continue; //avoid drawing lines between close controls
+      if (lenght < 24) continue;
       let unitX = dx / lenght;
       let unitY = dy / lenght;
       let newAx = currentControl.coords.x + unitX * trimRadA;

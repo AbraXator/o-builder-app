@@ -1,12 +1,21 @@
-# Credit: This script uses the https://github.com/perliedman/svg-control-descriptions repository. Thank you!
-
 import os
 import json
 from collections import Counter
 
-symbolsPath = "D:/Things/GitHub/svg-control-descriptions"
-langPath = "D:/Things/GitHub/svg-control-descriptions/symbols/lang.json"
+symbolsPath = "C:/Users/adamm/Documents/Github/svg-control-descriptions"
+langPath = "C:/Users/adamm/Documents/Github/svg-control-descriptions/symbols/lang.json"
 listOfSymbols = []
+
+KIND_ORDER = ["C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"]
+KIND_MAP = {k: i for i, k in enumerate(KIND_ORDER)}
+
+KIND_REMAP = {
+    "V": "I",
+    "W": "J",
+    "X": "K",
+    "Y": "L",
+    "Z": "M",
+}
 
 with open(langPath, "r", encoding="utf-8") as f:
     lang = json.load(f)
@@ -14,10 +23,19 @@ with open(langPath, "r", encoding="utf-8") as f:
 symbolIndex = 0
 
 for key, value in lang.items():
-    symbolId = ""
-    symbolName = ""
-    symbolKind = ""
     symbolSvg = ""
+
+    rawKind = value.get("kind")
+    if not rawKind:
+        continue
+
+    if rawKind in KIND_REMAP:
+        rawKind = KIND_REMAP[rawKind]
+
+    if rawKind not in KIND_MAP:
+        continue
+
+    symbolKind = KIND_MAP[rawKind]
 
     for root, dirs, files in os.walk(symbolsPath):
         for file in files:
@@ -25,36 +43,52 @@ for key, value in lang.items():
                 with open(os.path.join(root, file), "r", encoding="utf-8") as svgFile:
                     symbolSvg = svgFile.read()
                 break
+
+    if not symbolSvg:
+        continue
+
     symbolSvg = symbolSvg.replace('<?xml version="1.0"?>', "")
     symbolSvg = symbolSvg.replace(r'="null"', '="0"')
 
-    symbolKind = value.get('kind')
-
-    names = value.get('names', {})
-    for lang, name in names.items():
-        if lang == "en":
+    symbolName = ""
+    names = value.get("names", {})
+    for langCode, name in names.items():
+        if langCode == "en":
             symbolName = name
-            if(symbolName == "Special item"):
-                if(not listOfSymbols.__contains__(symbolName)):
+            if symbolName == "Special item":
+                if symbolName not in [s["name"] for s in listOfSymbols]:
                     symbolName = "Special item cross"
-                else: 
+                else:
                     symbolName = "Special item circle"
             break
-        
-    symbolId = symbolName.lower().replace(" ", "-").replace("'", "").replace(":", "").replace(";", "").replace(",", "").replace("(", "").replace(")", "").replace("/", "")
 
-    dictionary = {
+    if not symbolName:
+        continue
+
+    symbolId = (
+        symbolName.lower()
+        .replace(" ", "-")
+        .replace("'", "")
+        .replace(":", "")
+        .replace(";", "")
+        .replace(",", "")
+        .replace("(", "")
+        .replace(")", "")
+        .replace("/", "")
+    )
+
+    listOfSymbols.append({
         "index": symbolIndex,
         "id": symbolId,
         "name": symbolName,
         "kind": symbolKind,
         "svg": symbolSvg,
-    }
-
-    listOfSymbols.append(dictionary)
+    })
 
 duplicates = [
-    {**item, "kind": "E"} for item in listOfSymbols if item["kind"] == "D"
+    {**item, "kind": KIND_MAP["E"]}
+    for item in listOfSymbols
+    if item["kind"] == KIND_MAP["D"]
 ]
 
 listOfSymbols.extend(duplicates)
@@ -66,7 +100,6 @@ totalCount = 0
 
 for kind, count in kind_counts.items():
     symbolIndex = 0
-    print(count)
     for i in range(count):
         sortedSymbols[totalCount + i]["index"] = symbolIndex
         symbolIndex += 1

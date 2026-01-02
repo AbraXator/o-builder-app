@@ -61,7 +61,7 @@ export default function MapPage() {
   const styles = createStyles(useTheme().theme);
   const mapViewProps: MapViewProps = {
     imageUri: appState((s) => s.currentCourse.map),
-    scale: 1,
+    scale: 10,
     rotation: 0,
     translationX: 0,
     translationY: 0,

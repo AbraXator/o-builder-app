@@ -50,6 +50,7 @@ export const appState = create<AppState>((set) => ({
       length: 0,
       climb: 0,
       controls: [],
+      finishType: 0
     };
   },
   createRoute: (route) => set((state) => {

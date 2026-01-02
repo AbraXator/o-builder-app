@@ -1,3 +1,5 @@
+import { Image } from "react-native";
+
 export function removeControl(
   controlIndex: number,
   currentRoute: Route,
@@ -31,6 +33,7 @@ export function getCurrentRoute(currentCourseState: CourseState, currentCourse: 
       length: 0,
       climb: 0,
       controls: [],
+      finishType: 0
     }
   );
 }
@@ -97,4 +100,32 @@ export function indexToKind(index: number) {
     default:
       return null;
   }
+}
+
+function mapDistance(a: Vec, b: Vec) {
+  const dx = b.x - a.x;
+  const dy = b.y - a.y;
+
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
+export function realDistanceMeters(a: Vec, b: Vec, scale: number) {
+  return mapDistance(a, b) * scale;
+}
+
+export function mapDimensions(map: string): Vec {
+  var w = 0, h = 0;
+
+  Image.getSize(
+    map,
+    (width, height) => {
+      w = width;
+      h = height;
+    },
+    (error) => {
+      console.error('Failed to get image size', error);
+    }
+  );
+
+  return {x: w, y: h};
 }

@@ -1,21 +1,29 @@
+import { appState } from '@/libs/state/store';
 import { ThemeType } from "@/libs/state/theme";
-import { useState } from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
-import { TextCellModalProps } from "./TextCellModal";
+import { JSX, useState } from "react";
+import { StyleSheet } from "react-native";
 
-enum CellInteractionTypes {
+export enum CellTypes {
   DISPLAY,
-  SYMBOL,
-  TEXT,
+  CONTROL_SYMBOL,
+  CHOOSE_SYMBOL,
+  FINISH
 }
 
-type TextCell = {
+export type CellInteractionType = typeof CellTypes[keyof typeof CellTypes];
+
+/*interface Cella = {
+  type: CellInteractionType,
+  size: number,
+  text?: string;
+}
+
+interface TextCell extends BaseCell = {
   type: CellInteractionTypes.TEXT;
-  text: string;
 };
 
-type SymbolCell = {
-  type: CellInteractionTypes.SYMBOL;
+type ControlSymbolCell = {
+  type: CellInteractionTypes.CONTROL_SYMBOL;
   symbol: ControlSymbol;
 };
 
@@ -23,32 +31,66 @@ type DisplayCell = {
   type: CellInteractionTypes.DISPLAY;
 };
 
-export type Cell = TextCell | SymbolCell | DisplayCell;
+type ChooseControlSymbolCell = {
+  type: CellInteractionTypes.CONTROL_SYMBOL;
+};*/
 
-function pressTextCell(cell: TextCell, control: Control) {
+export type Cell = {
+  type: CellInteractionType,
+  size: number,
+  text?: string,
+  symbol?: ControlSymbol,
+  finishType?: number
+}
+
+//PRESS
+function pressTextCell(cell: TextCell) {
 
 }
 
-function pressSymbolCell(cell: SymbolCell) {}
+function pressControlSymbolCell(cell: SymbolCell, control: Control) {
+
+}
+
+function pressDisplayCell(cell: DisplayCell) {}
+
+function pressChooseSymbolCell(cell: DisplayCell, control: Control) {
+
+}
+
+function TextCellRenderer(cell: TextCell) {
+
+}
+
+function ControlSymbolCellRenderer(cell: SymbolCell, control: Control) {
+
+}
+
+function DisplayCellRenderer(cell: DisplayCell) {}
+
+function ChooseSymbolCellRenderer(cell: DisplayCell, control: Control) {
+
+}
 
 export default function CellRenderer(
-  { cell, control }: { cell: Cell; control: Control }
+  { cell, control }: { cell: Cell; control?: Control }
 ) {
+  const [showTextModal, setShowTextModal] = useState<Boolean>(false);
+  const currentCourseState = appState((s) => s.currentCourseState);
+
   const renderMethod = {
-    [CellInteractionTypes.TEXT]: pressTextCell,
-    [CellInteractionTypes.SYMBOL]: pressSymbolCell,
-    [CellInteractionTypes.DISPLAY]: (cell, control) => {},
+    [CellTypes.TEXT]: pressTextCell,
+    [CellTypes.CONTROL_SYMBOL]: pressControlSymbolCell,
+    [CellTypes.DISPLAY]: pressDisplayCell,
+    [CellTypes.CHOOSE_SYMBOL]: pressChooseSymbolCell,
   } satisfies {
-    [T in CellInteractionTypes]: (cell: Extract<Cell, { type: T }>, control: Control) => void;
+    [T in CellTypes]: (cell: Extract<Cell, { type: T }>, control: Control) => JSX.Element;
   };
-  const [modalProps, setModalProps] = useState<TextCellModalProps>({
-    
-  });
 
   return (
-    <TouchableOpacity>
+    <View>
 
-    </TouchableOpacity>
+    </View>
   )
 }
 

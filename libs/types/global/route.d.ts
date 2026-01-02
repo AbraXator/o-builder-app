@@ -24,6 +24,7 @@ declare global {
     length: number;
     climb: number;
     controls: Control[];
+    finishType: number
   }
 }
 

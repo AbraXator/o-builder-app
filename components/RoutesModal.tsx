@@ -143,7 +143,8 @@ function CreateRouteModal({ routesModalProps, setModalContent }: {
       name: formData.routeName,
       climb: formData.routeClimb,
       length: formData.routeLength,
-      controls: []
+      controls: [],
+      finishType: 0,
     })
 
     if (currentCourse.id !== undefined) {

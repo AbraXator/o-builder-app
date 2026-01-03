@@ -1,5 +1,5 @@
 import { GetIcon } from '@/constants/icons/controlIcons';
-import { mapDimensions, sortControls } from '@/hooks/CourseHooks';
+import { sortControls } from '@/hooks/CourseHooks';
 import { appState } from '@/libs/state/store';
 import { ControlTypes, InteractionModes } from '@/libs/types/enums';
 import { useState } from 'react';
@@ -36,7 +36,7 @@ function ControlMarker({ control, index, helperControl, controlOffset, numberOff
   const baseTop = control.coords.y - 12;
 
   const animatedControlStyle = useAnimatedStyle(() => {
-    if (!isControlSelected || !controlOffset || controlOffset.value === { x: 0, y: 0 } as Vec) {
+    if (!isControlSelected || !controlOffset || controlOffset.value === { x: 0, y: 0} as Vec) {
       return {
         position: 'absolute',
         left: baseLeft,
@@ -210,10 +210,8 @@ function ControlLine({ sortedControls }: {
 }
 
 export function moveMapToCoords(coords: Vec, mapViewProps: MapViewProps) {
-  const map = appState.getState().currentCourse.map;
-
-  mapViewProps.translationX = -coords.x * mapViewProps.scale + mapDimensions(map).x / 2;
-  mapViewProps.translationY = -coords.y * mapViewProps.scale + mapDimensions(map).y / 2;
+  mapViewProps.translationX = -coords.x * mapViewProps.scale + window.width / 2;
+  mapViewProps.translationY = -coords.y * mapViewProps.scale + window.height / 2;
 }
 
 export type MapViewProps = {
@@ -288,15 +286,14 @@ export function MapView({ mapViewProps }: { mapViewProps: MapViewProps }) {
   const shouldRenderHelperControls = () => {
     return interactionMode === InteractionModes.PLACING && currentCourseState.currentRoute !== 0;
   }
-  const imageDimensions = mapDimensions(currentCourse.map);
 
   return (
     <GestureDetector gesture={getCurrentGestures()}>
       <Animated.View
         style={[
           {
-            width: imageDimensions.x,
-            height: imageDimensions.y,
+            width: window.width,
+            height: window.height,
           },
           animatedStyle,
         ]}
@@ -309,16 +306,16 @@ export function MapView({ mapViewProps }: { mapViewProps: MapViewProps }) {
         <Animated.Image
           source={{ uri: imageUri }}
           style={{
-            width: imageDimensions.x,
-            height: imageDimensions.y,
+            width: window.width,
+            height: window.height,
           }}
           resizeMode="contain"
         />
 
         {currentRoute !== 0 &&
           <Svg
-            width={imageDimensions.x}
-            height={imageDimensions.y}
+            height={window.height}
+            width={window.width}
             style={{ position: 'absolute', top: 0, left: 0 }}
           >
             <ControlLine sortedControls={sortedControls} />

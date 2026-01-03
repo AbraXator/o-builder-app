@@ -61,7 +61,7 @@ export default function MapPage() {
   const styles = createStyles(useTheme().theme);
   const mapViewProps: MapViewProps = {
     imageUri: appState((s) => s.currentCourse.map),
-    scale: 10,
+    scale: 1,
     rotation: 0,
     translationX: 0,
     translationY: 0,
@@ -75,16 +75,6 @@ export default function MapPage() {
   }
   return (
     <SafeAreaView style={styles.container}>
-      {showLeaveModal && (
-        <ConfirmationModal
-          title={'Exit to main page?'}
-          message={'Any unsaved changes will be lost'}
-          confirmText={'Exit'}
-          onConfirm={() => router.push('/')}
-          onCancel={() => setShowLeaveModal(false)}
-          showModal={showLeaveModal}
-        />
-      )}
       {showLeaveModal && (
         <ConfirmationModal
           title={'Exit to main page?'}

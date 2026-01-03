@@ -1,5 +1,4 @@
 import { appState } from "@/libs/state/store";
-import { ThemeType } from "@/libs/state/theme";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import CellRenderer, { Cell, CellTypes } from "./Cell";
 
@@ -15,79 +14,84 @@ export type RowType = typeof RowTypes[keyof typeof RowTypes];
 
 export type Row = {
   type: RowTypes;
-  control: Control
+  control?: Control;
+  route?: Route;
 };
 
-function renderTitleRow(row: Row) { //TITLE
+export function TitleRow({ row }: { row: Row }) {
   const currentCourse = appState((s) => s.currentCourse);
 
   return (
-    <View>
+    <View style={styles.row}>
       <CellRenderer
         cell={{
           type: CellTypes.DISPLAY,
           size: 8,
-          text: currentCourse.name
+          text: currentCourse.name,
         }}
       />
     </View>
   );
 }
 
-function renderRouteRow(row: Row) { //ROUTE NAME, ROUTE LENGTH, ROUTE CLIMB
-  const currentRoute = appState((s) => s.currentRoute);
+export function RouteRow({ row }: { row: Row }) {
+  const route = row.route;
+
+  if (!route) return <View style={styles.row} />;
+
   const cells: Cell[] = [
-    { type: CellTypes.DISPLAY, size: 3, text: currentRoute().name },
-    { type: CellTypes.DISPLAY, size: 3, text: currentRoute().length.toString() },
-    { type: CellTypes.DISPLAY, size: 2, text: currentRoute().climb.toString() },
-  ]
+    { type: CellTypes.DISPLAY, size: 3, text: route.name },
+    { type: CellTypes.DISPLAY, size: 3, text: route.length.toString() },
+    { type: CellTypes.DISPLAY, size: 2, text: route.climb.toString() },
+  ];
 
   return (
     <FlatList
+      style={styles.row}
       data={cells}
-      renderItem={({ item }) => (
-        <CellRenderer cell={item} />
-      )}
+      horizontal
+      renderItem={({ item }) => <CellRenderer cell={item} />}
+      keyExtractor={(_, index) => index.toString()}
     />
   );
 }
 
-function renderControlRow(row: Row) { //CONTROL NUMBER, CONTROL CODE, 6 CONTROL SYMBOLS
+export function ControlRow({ row }: { row: Row }) {
+  if (!row.control) return <View style={styles.row} />;
+
   const cells: Cell[] = [
-    {
-      type: CellTypes.DISPLAY,
-      size: 1,
-      text: row.control.number.toString(),
-    },
-    {
-      type: CellTypes.DISPLAY,
-      size: 1,
-      text: row.control.code.toString(),
-    },
-    ...row.control.symbols.slice(0, 6).map(symbol => ({
+    { type: CellTypes.DISPLAY, size: 1, text: row.control.number.toString() },
+    { type: CellTypes.DISPLAY, size: 1, text: row.control.code.toString() },
+    ...row.control.symbols.slice(0, 6).map((symbol) => ({
       type: CellTypes.CONTROL_SYMBOL,
       size: 1,
       symbol,
+      control: row.control,
     })),
   ];
 
   return (
     <FlatList
+      style={styles.row}
       data={cells}
-      renderItem={({ item }) => (
-        <CellRenderer cell={item} />
-      )}
+      horizontal
+      renderItem={({ item }) => <CellRenderer cell={item} />}
+      keyExtractor={(_, index) => index.toString()}
     />
   );
 }
 
-function renderCrossingRow(row: Row) {
-  return <Text>TO-DO</Text>;
+export function CrossingRow({ row }: { row: Row }) {
+  return (
+    <View style={styles.row}>
+      <Text>TO-DO</Text>
+    </View>
+  );
 }
 
-function renderFinishRow(row: Row) {
+export function FinishRow({ row }: { row: Row }) {
   return (
-    <View>
+    <View style={styles.row}>
       <CellRenderer
         cell={{
           type: CellTypes.DISPLAY,
@@ -98,29 +102,23 @@ function renderFinishRow(row: Row) {
   );
 }
 
+const rowComponentMap: Record<RowTypes, React.FC<{ row: Row }>> = {
+  [RowTypes.TITLE]: TitleRow,
+  [RowTypes.ROUTE]: RouteRow,
+  [RowTypes.CONTROL]: ControlRow,
+  [RowTypes.CROSSING]: CrossingRow,
+  [RowTypes.FINISH]: FinishRow,
+};
 
-export default function Row(cells: Cell[]) {
-  const renderRowMethod = {
-    [RowTypes.TITLE]: renderTitleRow,
-    [RowTypes.ROUTE]: renderRouteRow,
-    [RowTypes.CONTROL]: renderControlRow,
-    [RowTypes.CROSSING]: renderCrossingRow,
-    [RowTypes.FINISH]: renderFinishRow,
-  } as any;
+export default function RowRenderer({ row }: { row: Row }) {
+  const RowComponent = rowComponentMap[row.type];
+  if (!RowComponent) return null;
 
-
-  return (
-    <View>
-      <FlatList
-        data={cells}
-        renderItem={({ item }) => (
-          <CellRenderer cell={item} />
-        )}
-      />
-    </View>
-  )
+  return <RowComponent row={row} />;
 }
 
-const createStyles = (theme: ThemeType) => StyleSheet.create({
-
+const styles = StyleSheet.create({
+  row: {
+    marginVertical: 4,
+  },
 });

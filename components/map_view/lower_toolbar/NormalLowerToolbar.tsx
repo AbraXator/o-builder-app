@@ -5,6 +5,7 @@ import { realDistanceMeters } from "@/hooks/CourseHooks";
 import { appState } from "@/libs/state/store";
 import { ThemeType, useTheme } from "@/libs/state/theme";
 import { setCourse } from "@/libs/storage/AsyncStorage";
+import { router } from "expo-router";
 import { StyleSheet, View } from "react-native";
 
 export default function NormalLowerToolbar({ setShowConfirmationModal, setNotificationState, setShowRoutesModal }: {
@@ -41,7 +42,7 @@ export default function NormalLowerToolbar({ setShowConfirmationModal, setNotifi
     <View style={styles.lowerToolbarContainer}>
       <ToolbarButton icon={<Home />} onPress={() => setShowConfirmationModal(true)} />
       <ToolbarButton icon={<Save />} onPress={saveCurrentCourse} />
-      <ToolbarButton label="SYMBOLS" onPress={symbols} />
+      <ToolbarButton label="SYMBOLS" onPress={() => router.push("/map/controlSymbols")} />
       <ToolbarButton label="ROUTES" onPress={() => setShowRoutesModal(true)} />
     </View>
   );

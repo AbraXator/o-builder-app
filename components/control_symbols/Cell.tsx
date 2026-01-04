@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { ControlSymbolIcon } from "./symbolsHooks";
 
@@ -18,17 +17,11 @@ export type Cell = {
   control?: Control;
   symbol?: ControlSymbol;
   finishType?: number;
+  openSymbolsModal?: (kind: number, control: number) => void;
 };
 
-export type CellRenderContext = {
-  setShowChooseSymbols: React.Dispatch<React.SetStateAction<boolean>>;
-  setChosenKind: React.Dispatch<React.SetStateAction<number | undefined>>;
-  setChosenControl: React.Dispatch<React.SetStateAction<number | undefined>>;
-};
-
-export function DisplayCell({ cell, ctx }: {
+export function DisplayCell({ cell }: {
   cell: Cell,
-  ctx: CellRenderContext;
 }) {
   const text = cell.text ?? "UNDEFINED";
   return (
@@ -38,9 +31,8 @@ export function DisplayCell({ cell, ctx }: {
   );
 }
 
-export function ControlSymbolCell({ cell, ctx }: {
+export function ControlSymbolCell({ cell }: {
   cell: Cell;
-  ctx: CellRenderContext;
 }) {
   const { kind = 0, symbolId: id = 0 } = cell.symbol ?? {};
   const controlId = cell.control?.index;
@@ -48,9 +40,12 @@ export function ControlSymbolCell({ cell, ctx }: {
   if (!controlId) return <View style={styles.cell} />;
 
   const handlePress = () => {
-    ctx.setShowChooseSymbols(true);
-    ctx.setChosenKind(kind);
-    ctx.setChosenControl(controlId);
+    if(!cell.openSymbolsModal) {
+      console.error(`Could not open symbol modal for cell: ${cell}`)
+      return;
+    }
+
+    return cell.openSymbolsModal(kind, controlId);
   };
 
   return (
@@ -60,16 +55,14 @@ export function ControlSymbolCell({ cell, ctx }: {
   );
 }
 
-export function ChooseSymbolCell({ cell, ctx }: {
+export function ChooseSymbolCell({ cell }: {
   cell: Cell,
-  ctx: CellRenderContext
 }) {
   return <View style={styles.cell} />;
 }
 
-export function FinishCell({ cell, ctx }: {
+export function FinishCell({ cell }: {
   cell: Cell,
-  ctx: CellRenderContext
 }) {
   return (
     <View style={styles.cell}>
@@ -80,7 +73,7 @@ export function FinishCell({ cell, ctx }: {
 
 const cellComponentMap: Record<
   CellTypes,
-  React.FC<{ cell: Cell; ctx: CellRenderContext }>
+  React.FC<{ cell: Cell }>
 > = {
   [CellTypes.DISPLAY]: DisplayCell,
   [CellTypes.CONTROL_SYMBOL]: ControlSymbolCell,
@@ -89,21 +82,11 @@ const cellComponentMap: Record<
 };
 
 export default function CellRenderer({ cell }: { cell: Cell }) {
-  const [showChooseSymbols, setShowChooseSymbols] = useState(false);
-  const [chosenKind, setChosenKind] = useState<number | undefined>();
-  const [chosenControl, setChosenControl] = useState<number | undefined>();
-
   const CellComponent = cellComponentMap[cell.type];
 
   if (!CellComponent) return null;
 
-  const ctx: CellRenderContext = {
-    setShowChooseSymbols,
-    setChosenKind,
-    setChosenControl,
-  };
-
-  return <CellComponent cell={cell} ctx={ctx} />;
+  return <CellComponent cell={cell} />;
 }
 
 const styles = StyleSheet.create({

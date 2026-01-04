@@ -16,6 +16,7 @@ export type Row = {
   type: RowTypes;
   control?: Control;
   route?: Route;
+  openSymbolsModal?: (kind: number, control: number) => void;
 };
 
 export function TitleRow({ row }: { row: Row }) {
@@ -67,6 +68,7 @@ export function ControlRow({ row }: { row: Row }) {
       size: 1,
       symbol,
       control: row.control,
+      openSymbolsModal: row.openSymbolsModal
     })),
   ];
 
@@ -113,7 +115,6 @@ const rowComponentMap: Record<RowTypes, React.FC<{ row: Row }>> = {
 export default function RowRenderer({ row }: { row: Row }) {
   const RowComponent = rowComponentMap[row.type];
   if (!RowComponent) return null;
-
   return <RowComponent row={row} />;
 }
 

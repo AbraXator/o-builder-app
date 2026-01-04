@@ -35,23 +35,23 @@ export function addControl(x: number, y: number, setNotification: SetState<Notif
     number: { number: -1, coords: { x: 5, y: 5 } },
     symbols: [
       {
-        kind: "C",
+        kind: 0,
         symbolId: -1,
       },
       {
-        kind: "D",
+        kind: 1,
         symbolId: -1,
       },
       {
-        kind: "E",
+        kind: 2,
         symbolId: -1,
       },
       {
-        kind: "F",
+        kind: 3,
         symbolId: -1,
       },
       {
-        kind: "G",
+        kind: 4,
         symbolId: -1,
       }
     ],

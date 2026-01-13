@@ -45,6 +45,7 @@ export function ControlSymbolCell({ cell }: {
       return;
     }
 
+    console.log("Presssed")
     return cell.openSymbolsModal(kind, controlId);
   };
 

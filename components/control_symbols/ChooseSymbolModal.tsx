@@ -43,15 +43,22 @@ function SymbolTypeColumn({
       control.index === controlIndex
         ? {
           ...control,
-          symbols: control.symbols.map(() => ({
-            kind,
-            symbolId: Number(symbol.id),
-          })),
+          symbols: control.symbols.map((s) => (
+            s.kind === kind
+              ? {
+                kind,
+                symbolId: symbol.index
+              }
+              : s
+          )),
         }
         : control
     );
 
     updateCurrentRoute({ controls: editedControls });
+    appState.getState().currentRoute().controls.forEach((c) => {
+      c.symbols.forEach((s) => console.log(s.symbolId));
+    })
     closeModal();
   };
 

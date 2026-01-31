@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { RefObject, useRef, useState } from 'react';
 import { SafeAreaView, View } from 'react-native';
 import ConfirmationModal from '../../components/ConfirmationModal';
 import { MapView, MapViewProps } from '../../components/map_view/MapView';
@@ -17,6 +17,7 @@ import { ThemeType, useTheme } from '@/libs/state/theme';
 import { InteractionModes } from '@/libs/types/enums';
 import { router } from 'expo-router';
 import { StyleSheet } from 'react-native';
+import ViewShot from 'react-native-view-shot';
 
 function UpperToolbar() {
   const currentCourseState = appState((s) => s.currentCourseState);
@@ -44,6 +45,29 @@ function UpperToolbar() {
   );
 }
 
+function ExportMapViewShot({ mapExportRef }: {
+  mapExportRef: RefObject<null | View>,
+}) {
+  return (
+    <ViewShot
+      ref={mapExportRef}
+      options={{ format: "png", quality: 1 }}
+      style={{
+        position: "absolute",
+        left: -10000,
+        width: 2480,
+        height: 3508,
+      }}
+    >
+      <MapView mapViewProps={{
+        scale: 1,
+        rotation: 0,
+        translationX: 0,
+        translationY: 0,
+      }} />
+    </ViewShot>
+  )
+}
 
 export default function MapPage() {
   const [notificationState, setNotificationState] = useState<NotificationState>({
@@ -60,12 +84,12 @@ export default function MapPage() {
   const currentCourse = appState((s) => s.currentCourse);
   const styles = createStyles(useTheme().theme);
   const mapViewProps: MapViewProps = {
-    imageUri: appState((s) => s.currentCourse.map),
     scale: 1,
     rotation: 0,
     translationX: 0,
     translationY: 0,
   };
+  const mapExportRef = useRef<View>(null); //Holds the view for exporting the map
 
   const routesModalProps: RoutesModalProps = {
     routes: currentCourse.routes,
@@ -105,6 +129,21 @@ export default function MapPage() {
         <MapView mapViewProps={mapViewProps} />
       </View>
 
+      <ExportMapViewShot mapExportRef={mapExportRef} />
+
+      <ViewShot
+        ref={mapExportRef}
+        options={{ format: "png", quality: 1 }}
+        style={{
+          position: "absolute",
+          left: -10000,
+          width: 2480,
+          height: 3508,
+        }}
+      >
+        <MapView mapViewProps={mapViewProps} />
+      </ViewShot>
+
       {currentCourseState.mode === InteractionModes.NORMAL && (
         <NormalLowerToolbar
           setShowConfirmationModal={setShowLeaveModal}
@@ -126,7 +165,7 @@ export default function MapPage() {
 
       <View style={styles.horizontalSeparator} />
 
-      <LowBar />
+      <LowBar mapExportRef={mapExportRef}/>
 
     </SafeAreaView>
   );

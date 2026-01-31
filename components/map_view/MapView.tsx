@@ -215,7 +215,6 @@ export function moveMapToCoords(coords: Vec, mapViewProps: MapViewProps) {
 }
 
 export type MapViewProps = {
-  imageUri: string;
   scale: number;
   rotation: number;
   translationX: number;
@@ -223,7 +222,7 @@ export type MapViewProps = {
 }
 
 export function MapView({ mapViewProps }: { mapViewProps: MapViewProps }) {
-  const imageUri = mapViewProps.imageUri;
+  const imageUri = appState((s) => s.currentCourse).map;
   const scale = useSharedValue(mapViewProps.scale);
   const offsetScale = useSharedValue(1);
   const rotation = useSharedValue(mapViewProps.rotation);

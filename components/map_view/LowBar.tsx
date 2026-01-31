@@ -2,7 +2,9 @@ import { Menu } from "@/constants/icons/icons";
 import { appState } from "@/libs/state/store";
 import { ThemeType, useTheme } from "@/libs/state/theme";
 import { InteractionModes } from "@/libs/types/enums";
-import { StyleSheet, Text, View } from "react-native";
+import { RefObject } from "react";
+import { StyleSheet, Text, View, ViewComponent } from "react-native";
+import { captureRef } from "react-native-view-shot";
 import ToolbarButton from "../ToolbarButton";
 
 export function colorForMode(theme: ThemeType, mode: InteractionMode) {
@@ -13,11 +15,25 @@ export function colorForMode(theme: ThemeType, mode: InteractionMode) {
   }
 }
 
-export function LowBar() {
+export function LowBar({ mapExportRef }: {
+  mapExportRef: RefObject<null | ViewComponent>
+}) {
   const currentCourseState = appState((s) => s.currentCourseState);
   const interactionMode = currentCourseState.mode;
   const theme = useTheme().theme;
   const styles = createStyles(theme);
+
+  const exportMap = async () => {
+    console.log(`Exporting map, Ref: ${mapExportRef}`)
+    if (!mapExportRef.current) return;
+
+    const uri = await captureRef(mapExportRef, {
+      format: "png",
+      quality: 1,
+    });
+
+    console.log("Exported map:", uri);
+  };
 
   return (
     <View style={styles.lowerToolbarContainer}>
@@ -37,7 +53,7 @@ export function LowBar() {
       <View style={styles.menuButton}>
         <ToolbarButton
           icon={<Menu />}
-          onPress={console.log}
+          onPress={exportMap}
         />
       </View>
 

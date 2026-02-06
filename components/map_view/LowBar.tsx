@@ -1,11 +1,10 @@
 import { Menu } from "@/constants/icons/icons";
-import { savePicture } from "@/hooks/permissionHooks";
 import { appState } from "@/libs/state/store";
 import { ThemeType, useTheme } from "@/libs/state/theme";
 import { InteractionModes } from "@/libs/types/enums";
+import MediaLibrary from 'expo-media-library';
 import { RefObject } from "react";
 import { StyleSheet, Text, View, ViewComponent } from "react-native";
-import RNSF from "react-native-fs";
 import { captureRef } from "react-native-view-shot";
 import ToolbarButton from "../ToolbarButton";
 
@@ -29,14 +28,32 @@ export function LowBar({ mapExportRef }: {
     console.log(`Exporting map, Ref: ${mapExportRef}`)
     if (!mapExportRef.current) return;
 
+    console.log("Ref found")
+
     const uri = await captureRef(mapExportRef, {
       format: "png",
       quality: 1,
     });
 
-    const destPath = `${RNSF.PicturesDirectoryPath}/obuilder-map.png`;
-    await RNSF.copyFile(uri, destPath);
-    await savePicture(destPath)
+    console.log("Getting permission")
+
+    const existing = await MediaLibrary.getPermissionsAsync();
+    console.log("Existing permission:", existing);
+
+    let permission = existing;
+    if (!existing.granted) {
+      permission = await MediaLibrary.requestPermissionsAsync();
+      console.log("Requested permission:", permission);
+    }
+
+    if (!permission.granted) {
+      console.log("Permission denied");
+      return;
+    }
+
+    console.log("Have permission, saving...")
+    const asset = await MediaLibrary.createAssetAsync(uri);
+    await MediaLibrary.createAlbumAsync("oBuilder", asset, false);
 
     console.log("Exported map:", uri);
   };

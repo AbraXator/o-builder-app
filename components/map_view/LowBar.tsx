@@ -1,9 +1,11 @@
 import { Menu } from "@/constants/icons/icons";
+import { savePicture } from "@/hooks/permissionHooks";
 import { appState } from "@/libs/state/store";
 import { ThemeType, useTheme } from "@/libs/state/theme";
 import { InteractionModes } from "@/libs/types/enums";
 import { RefObject } from "react";
 import { StyleSheet, Text, View, ViewComponent } from "react-native";
+import RNSF from "react-native-fs";
 import { captureRef } from "react-native-view-shot";
 import ToolbarButton from "../ToolbarButton";
 
@@ -31,6 +33,10 @@ export function LowBar({ mapExportRef }: {
       format: "png",
       quality: 1,
     });
+
+    const destPath = `${RNSF.PicturesDirectoryPath}/obuilder-map.png`;
+    await RNSF.copyFile(uri, destPath);
+    await savePicture(destPath)
 
     console.log("Exported map:", uri);
   };

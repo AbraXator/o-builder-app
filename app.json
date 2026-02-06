@@ -13,14 +13,20 @@
       "supportsTablet": true
     },
     "android": {
-      "edgeToEdgeEnabled": true,
-      "package": "com.anonymous.obuilderapp"
+      "edgeToEdgeEnabled": false,
+      "package": "com.anonymous.obuilderapp",
+      "permissions": [
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.READ_MEDIA_VIDEO",
+        "android.permission.READ_MEDIA_IMAGES"
+      ]
     },
     "web": {
       "bundler": "metro",
       "output": "static",
       "favicon": "./assets/images/logo.png"
-    },
+    },  
     "plugins": [
       "expo-router",
       [

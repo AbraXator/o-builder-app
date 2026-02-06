@@ -3,6 +3,7 @@ import { SafeAreaView, View } from 'react-native';
 import ConfirmationModal from '../../components/ConfirmationModal';
 import { MapView, MapViewProps } from '../../components/map_view/MapView';
 //import { exportAsImage, ExportDialog } from '../components/ExportCourse';
+import { scaleForPrint } from '@/components/map_view/export/scaleAndSize';
 import { LowBar } from '@/components/map_view/LowBar';
 import EditingLowerToolbar from '@/components/map_view/lower_toolbar/EditingLowerToolbar';
 import NormalLowerToolbar from '@/components/map_view/lower_toolbar/NormalLowerToolbar';
@@ -55,12 +56,12 @@ function ExportMapViewShot({ mapExportRef }: {
       style={{
         position: "absolute",
         left: -10000,
-        width: 2480,
-        height: 3508,
+        width: 3508,
+        height: 2480,
       }}
     >
       <MapView mapViewProps={{
-        scale: 1,
+        scale: scaleForPrint(4000),
         rotation: 0,
         translationX: 0,
         translationY: 0,

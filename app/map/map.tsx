@@ -1,5 +1,5 @@
 import React, { RefObject, useRef, useState } from 'react';
-import { SafeAreaView, View } from 'react-native';
+import { PixelRatio, SafeAreaView, View } from 'react-native';
 import ConfirmationModal from '../../components/ConfirmationModal';
 import { MapView, MapViewProps } from '../../components/map_view/MapView';
 //import { exportAsImage, ExportDialog } from '../components/ExportCourse';
@@ -49,23 +49,32 @@ function UpperToolbar() {
 function ExportMapViewShot({ mapExportRef }: {
   mapExportRef: RefObject<null | View>,
 }) {
+  const TARGET_WIDTH = 3508;
+  const TARGET_HEIGHT = 2480;
+
+  const screenDensity = PixelRatio.get();
+  const layoutWidth = TARGET_WIDTH / screenDensity;
+  const layoutHeight = TARGET_HEIGHT / screenDensity;
+
   return (
     <ViewShot
       ref={mapExportRef}
-      options={{ format: "png", quality: 1 }}
+      options={{ format: "png", quality: 1, width: TARGET_HEIGHT, height: TARGET_HEIGHT }}
       style={{
         position: "absolute",
         left: -10000,
-        width: 3508,
-        height: 2480,
+        width: layoutWidth,
+        height: layoutHeight,
       }}
     >
-      <MapView mapViewProps={{
-        scale: scaleForPrint(4000),
-        rotation: 0,
-        translationX: 0,
-        translationY: 0,
-      }} />
+      <MapView
+        style={{ width: layoutWidth, height: layoutHeight }}
+        mapViewProps={{
+          scale: scaleForPrint(4000),
+          rotation: 0,
+          translationX: 0,
+          translationY: 0,
+        }} />
     </ViewShot>
   )
 }
@@ -115,7 +124,9 @@ export default function MapPage() {
           routesModalProps={routesModalProps}
         />
       )}
+
       {/* {showExportDialog && <ExportDialog />} */}
+
       {notificationState.show && (
         <Notification
           message={notificationState.message}
@@ -166,7 +177,7 @@ export default function MapPage() {
 
       <View style={styles.horizontalSeparator} />
 
-      <LowBar mapExportRef={mapExportRef}/>
+      <LowBar mapExportRef={mapExportRef} />
 
     </SafeAreaView>
   );

@@ -8,7 +8,6 @@
     "scheme": "obuilderapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-    
     "ios": {
       "supportsTablet": true
     },
@@ -20,7 +19,7 @@
       "bundler": "metro",
       "output": "static",
       "favicon": "./assets/images/logo.png"
-    },  
+    },
     "plugins": [
       "expo-router",
       [
@@ -30,6 +29,14 @@
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Allow oBuilder to access your photos.",
+          "savePhotosPermission": "Allow oBuilder to save photos to your library.",
+          "isAccessMediaLocationEnabled": true
         }
       ]
     ],

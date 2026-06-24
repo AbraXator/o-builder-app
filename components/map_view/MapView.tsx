@@ -3,7 +3,7 @@ import { sortControls } from '@/hooks/CourseHooks';
 import { appState } from '@/libs/state/store';
 import { ControlTypes, InteractionModes } from '@/libs/types/enums';
 import { useState } from 'react';
-import { Dimensions, TouchableOpacity, View } from 'react-native';
+import { Dimensions, StyleProp, TouchableOpacity, View, ViewStyle } from 'react-native';
 import {
   GestureDetector
 } from 'react-native-gesture-handler';
@@ -221,7 +221,10 @@ export type MapViewProps = {
   translationY: number;
 }
 
-export function MapView({ mapViewProps }: { mapViewProps: MapViewProps }) {
+export function MapView({ mapViewProps, style }: { 
+  mapViewProps: MapViewProps;
+  style?: StyleProp<ViewStyle>;
+}) {
   const imageUri = appState((s) => s.currentCourse).map;
   const scale = useSharedValue(mapViewProps.scale);
   const offsetScale = useSharedValue(1);
@@ -290,10 +293,11 @@ export function MapView({ mapViewProps }: { mapViewProps: MapViewProps }) {
     <GestureDetector gesture={getCurrentGestures()}>
       <Animated.View
         style={[
-          {
+          /*{
             width: window.width,
             height: window.height,
-          },
+          },*/
+          style,
           animatedStyle,
         ]}
       >

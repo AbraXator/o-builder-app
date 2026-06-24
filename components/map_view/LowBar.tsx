@@ -2,7 +2,7 @@ import { Menu } from "@/constants/icons/icons";
 import { appState } from "@/libs/state/store";
 import { ThemeType, useTheme } from "@/libs/state/theme";
 import { InteractionModes } from "@/libs/types/enums";
-import MediaLibrary from 'expo-media-library';
+import * as MediaLibrary from 'expo-media-library';
 import { RefObject } from "react";
 import { StyleSheet, Text, View, ViewComponent } from "react-native";
 import { captureRef } from "react-native-view-shot";
@@ -35,27 +35,30 @@ export function LowBar({ mapExportRef }: {
       quality: 1,
     });
 
-    console.log("Getting permission")
+    console.log("Getting permission");
+    try {
+      const existing = await MediaLibrary.getPermissionsAsync();
+      console.log("Existing permission:", existing);
 
-    const existing = await MediaLibrary.getPermissionsAsync();
-    console.log("Existing permission:", existing);
+      let permission = existing;
+      if (!existing.granted) {
+        permission = await MediaLibrary.requestPermissionsAsync();
+        console.log("Requested permission:", permission);
+      }
 
-    let permission = existing;
-    if (!existing.granted) {
-      permission = await MediaLibrary.requestPermissionsAsync();
-      console.log("Requested permission:", permission);
+      if (!permission.granted) {
+        console.log("Permission denied");
+        return;
+      }
+
+      console.log("Have permission, saving...")
+      const asset = await MediaLibrary.createAssetAsync(uri);
+      await MediaLibrary.createAlbumAsync("oBuilder", asset, false);
+
+      console.log("Exported map:", uri);
+    } catch (nativeError) {
+      console.error("CRITICAL: MediaLibrary native error caught!", nativeError);
     }
-
-    if (!permission.granted) {
-      console.log("Permission denied");
-      return;
-    }
-
-    console.log("Have permission, saving...")
-    const asset = await MediaLibrary.createAssetAsync(uri);
-    await MediaLibrary.createAlbumAsync("oBuilder", asset, false);
-
-    console.log("Exported map:", uri);
   };
 
   return (
